@@ -1,0 +1,7 @@
+mountpoints:
+  /:
+    url: https://content.da.live/sayurihanki/jeniferb2bfeb92026/
+    type: markup
+
+folders:
+  /products/: /products/default

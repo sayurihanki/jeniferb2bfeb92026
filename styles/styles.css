@@ -553,6 +553,265 @@ body.columns main > .section:empty {
   }
 }
 
+/* Landing page refresh */
+main > .section.landing-generated {
+  margin: 0;
+  padding: clamp(3.2rem, 6vw, 8rem) 0;
+}
+
+main > .section.landing-generated > div {
+  max-width: 1120px;
+}
+
+.landing-eyebrow {
+  margin: 0 0 1.2rem;
+  color: #4f46e5;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.landing-section-intro {
+  max-width: 72rem;
+  margin: 0 auto 3.2rem;
+  text-align: center;
+}
+
+.landing-section-intro h2 {
+  margin: 0;
+  font: normal normal 700 clamp(2.8rem, 4vw, 4.8rem)/1.15 var(--type-base-font-family);
+  letter-spacing: 0;
+}
+
+.landing-section-intro p {
+  margin: 1.6rem 0 0;
+  color: var(--color-neutral-700);
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+main > .section.landing-hero-fallback {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 9vw, 12rem) 0;
+  background:
+    radial-gradient(circle at 80% -20%, rgb(79 70 229 / 20%), transparent 56%),
+    radial-gradient(circle at 0% 100%, rgb(14 165 233 / 16%), transparent 45%),
+    linear-gradient(180deg, #f7f8ff 0%, #f9fbff 100%);
+}
+
+.landing-hero-content {
+  max-width: 74rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.landing-hero-content h1 {
+  margin: 0;
+  color: #111827;
+  font: normal normal 700 clamp(3.2rem, 6vw, 6.4rem)/1.06 var(--type-base-font-family);
+  letter-spacing: -0.02em;
+}
+
+.landing-hero-content p {
+  margin: 2rem auto 0;
+  color: #4b5563;
+  font-size: clamp(1.7rem, 2vw, 2rem);
+  line-height: 1.6;
+}
+
+.landing-hero-content p .button {
+  margin-top: 2.8rem;
+}
+
+main > .section.landing-features {
+  background-color: #fff;
+}
+
+main > .section.landing-pricing {
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+}
+
+main > .section.landing-faq {
+  background-color: #fff;
+}
+
+main > .section.landing-newsletter {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+.pricing-plan {
+  border: 1px solid #e5e7eb;
+  border-radius: 1.6rem;
+  background-color: #fff;
+  padding: 2.4rem;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
+}
+
+.pricing-plan-recommended {
+  border-color: #4f46e5;
+  box-shadow: 0 16px 40px rgb(79 70 229 / 20%);
+  transform: translateY(-4px);
+}
+
+.pricing-badge {
+  display: inline-block;
+  margin: 0 0 1.2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background-color: #eef2ff;
+  color: #4338ca;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pricing-plan-name {
+  margin: 0;
+  color: #111827;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.pricing-plan-price {
+  margin: 1.2rem 0 0;
+  color: #111827;
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.pricing-plan-price span {
+  color: #6b7280;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.pricing-plan ul {
+  margin: 2rem 0 0;
+  padding-left: 2rem;
+  color: #4b5563;
+}
+
+.pricing-plan ul li {
+  margin: 0.8rem 0;
+}
+
+.pricing-plan p:last-child {
+  margin: 2.4rem 0 0;
+}
+
+.newsletter-card {
+  max-width: 78rem;
+  margin: 0 auto;
+  border: 1px solid #dde3f4;
+  border-radius: 2rem;
+  background-color: #fff;
+  padding: clamp(2.4rem, 4vw, 4rem);
+  box-shadow: 0 16px 40px rgb(15 23 42 / 8%);
+}
+
+.newsletter-card h2 {
+  margin: 0;
+  color: #111827;
+  font: normal normal 700 clamp(2.6rem, 4vw, 4.2rem)/1.15 var(--type-base-font-family);
+  letter-spacing: 0;
+}
+
+.newsletter-card > p {
+  margin: 1.6rem 0 0;
+  color: #4b5563;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.landing-newsletter-form {
+  margin-top: 2.4rem;
+}
+
+.landing-newsletter-form label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #111827;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.newsletter-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.newsletter-form-row input {
+  width: 100%;
+  min-height: 4.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+}
+
+.newsletter-form-row input:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+  border-color: #6366f1;
+}
+
+.landing-newsletter-form .button {
+  margin: 0;
+  border-radius: 1.2rem;
+  background-color: #4f46e5;
+}
+
+.landing-newsletter-form .button:hover,
+.landing-newsletter-form .button:focus {
+  background-color: #4338ca;
+}
+
+.newsletter-message {
+  min-height: 2rem;
+  margin: 1rem 0 0;
+  font-size: 1.4rem;
+  color: #4b5563;
+}
+
+.landing-newsletter-form[data-status="error"] .newsletter-message {
+  color: #b91c1c;
+}
+
+.landing-newsletter-form[data-status="success"] .newsletter-message {
+  color: #166534;
+}
+
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .newsletter-form-row {
+    flex-direction: row;
+  }
+
+  .newsletter-form-row input {
+    flex: 1;
+  }
+
+  .newsletter-form-row .button {
+    min-width: 18rem;
+  }
+}
+
 /**
 * Reset main element visibility
 * https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden

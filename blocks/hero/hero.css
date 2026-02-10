@@ -5,33 +5,50 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  overflow: hidden;
+  padding: clamp(48px, 10vw, 120px) 24px;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(160deg, rgb(17 24 39 / 82%), rgb(31 41 55 / 76%));
 }
 
 .hero h1 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--background-color);
+  margin-top: 0;
+  color: #fff;
+  font: normal normal 700 clamp(3.2rem, 6vw, 6.4rem)/1.06 var(--type-base-font-family);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 5% 10%, rgb(79 70 229 / 26%), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgb(14 165 233 / 18%), transparent 45%);
+  pointer-events: none;
 }
 
 .hero img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  filter: saturate(0.95);
 }
 
 @media (min-width: 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: clamp(64px, 11vw, 140px) 32px;
   }
 }

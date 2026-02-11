@@ -335,5 +335,259 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "card-circular-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "label": "Image Alt Text",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "div:nth-child(2)",
+        "value": "",
+        "label": "Card Name",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footer-columns",
+    "fields": [
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(1)",
+        "value": "",
+        "label": "Column 1 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(2)",
+        "value": "",
+        "label": "Column 2 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(3)",
+        "value": "",
+        "label": "Column 3 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(4)",
+        "value": "",
+        "label": "Column 4 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(5)",
+        "value": "",
+        "label": "Column 5 Header",
+        "valueType": "string"
+      },
+      {
+        "component": "plaintext",
+        "name": "tr:nth-child(1) > th:nth-child(6)",
+        "value": "",
+        "label": "Column 6 Header",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "luxury-events",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "label": "Logo Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "label": "Logo Alt Text",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)",
+        "label": "Title",
+        "value": "Destination Luxury"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(2)",
+        "label": "Subtitle",
+        "value": "EVENTS, STORIES AND MORE, FROM PICCADILLY AND BEYOND"
+      }
+    ]
+  },
+  {
+    "id": "luxury-event-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "label": "Image Alt Text",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)",
+        "label": "Event Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "div:nth-child(3)",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(4)>a:nth-child(1)[href]",
+        "label": "Link URL",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(4)>a:nth-child(1)",
+        "label": "Link Text",
+        "value": "Read more +"
+      }
+    ]
+  },
+  {
+    "id": "newsletter",
+    "fields": [
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)",
+        "label": "Title",
+        "value": "Sign up to our newsletter"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(2)",
+        "label": "Description",
+        "value": "Exciting news, exclusive events, & delicious products: subscribe to our emails to hear the latest from our luxury collection"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(2)>div:nth-child(1)",
+        "label": "Dropdown 1 Label",
+        "value": "Where do you live?"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(2)>div:nth-child(2)",
+        "label": "Dropdown 1 Options (comma-separated)",
+        "value": "United Kingdom, United States, Europe, Asia, Other"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(3)>div:nth-child(1)",
+        "label": "Dropdown 2 Label",
+        "value": "Why did you decide to visit us today?"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(3)>div:nth-child(2)",
+        "label": "Dropdown 2 Options (comma-separated)",
+        "value": "Shopping for gifts, Browsing for myself, Special occasion, Just browsing, Other"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(4)>div:nth-child(1)",
+        "label": "Privacy Text",
+        "value": "For more details about how we use your information please see our Privacy Policy"
+      },
+      {
+        "component": "plaintext",
+        "valueType": "string",
+        "name": "div:nth-child(4)>div:nth-child(2)",
+        "label": "Button Text",
+        "value": "Sign Up"
+      }
+    ]
+  },
+  {
+    "id": "promotional-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "label": "Image Alt Text",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "div:nth-child(2)",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(3)>a:nth-child(1)[href]",
+        "label": "Button Link",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(3)>a:nth-child(1)",
+        "label": "Button Text",
+        "multi": false
+      }
+    ]
   }
 ]

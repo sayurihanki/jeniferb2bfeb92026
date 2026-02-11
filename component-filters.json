@@ -8,16 +8,21 @@
   {
     "id": "section",
     "components": [
-      "hero",
       "accordion",
       "cards",
+      "cards-circular",
       "carousel",
       "columns",
+      "footer-columns",
       "fragment",
+      "hero",
       "image",
-      "text",
+      "luxury-events",
+      "newsletter",
+      "product-recommendations",
+      "promotional-hero",
       "targeted-block",
-      "product-recommendations"
+      "text"
     ]
   },
   {
@@ -53,6 +58,24 @@
     "components": [
       "text",
       "image"
+    ]
+  },
+  {
+    "id": "cards-circular",
+    "components": [
+      "card-circular-item"
+    ]
+  },
+  {
+    "id": "luxury-events",
+    "components": [
+      "luxury-event-card"
+    ]
+  },
+  {
+    "id": "promotional-hero",
+    "components": [
+      "promotional-card"
     ]
   }
 ]

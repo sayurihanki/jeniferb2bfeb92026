@@ -2,13 +2,12 @@
 import { events } from '@dropins/tools/event-bus.js';
 
 import { tryRenderAemAssetsImage } from '@dropins/tools/lib/aem/assets.js';
-import { getConfigValue } from '@dropins/tools/lib/aem/configs.js';
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { fetchPlaceholders, getProductLink, rootLink } from '../../scripts/commerce.js';
 
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
+import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -187,6 +186,9 @@ export default async function decorate(block) {
     navSections
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
+        if (navSection.querySelector('a')?.href === window.location.href) {
+          navSection.classList.add('active');
+        }
         if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
         setupSubmenu(navSection);
         navSection.addEventListener('click', (event) => {
@@ -375,7 +377,7 @@ export default async function decorate(block) {
         render.render(SearchResults, {
           skeletonCount: pageSize,
           scope: 'popover',
-          routeProduct: ({ urlKey, sku }) => getProductLink(urlKey, sku),
+          routeProduct: ({ urlKey, sku }) => rootLink(`/products/${urlKey}/${sku}`),
           onSearchResult: (results) => {
             searchResult.style.display = results.length > 0 ? 'block' : 'none';
           },
@@ -383,7 +385,7 @@ export default async function decorate(block) {
             ProductImage: (ctx) => {
               const { product, defaultImageProps } = ctx;
               const anchorWrapper = document.createElement('a');
-              anchorWrapper.href = getProductLink(product.urlKey, product.sku);
+              anchorWrapper.href = rootLink(`/products/${product.urlKey}/${product.sku}`);
 
               tryRenderAemAssetsImage(ctx, {
                 alias: product.sku,
@@ -441,9 +443,6 @@ export default async function decorate(block) {
             search({
               phrase,
               pageSize,
-              filter: [
-                { attribute: 'visibility', in: ['Search', 'Catalog, Search'] },
-              ],
             }, { scope: 'popover' });
           },
         })(searchForm);
@@ -529,10 +528,4 @@ export default async function decorate(block) {
     () => !isDesktop.matches && toggleMenu(nav, navSections, false),
   );
   renderAuthDropdown(navTools);
-
-  /** Company Switcher */
-  const isAuthenticated = events.lastPayload('authenticated');
-  if (isAuthenticated && getConfigValue('commerce-companies-enabled') === true) {
-    await (await import('./renderCompanySwitcher.js')).default(navTools);
-  }
 }

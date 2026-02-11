@@ -1,5 +1,5 @@
 .cards-container .cards-wrapper {
-  margin-top: var(--spacing-big);
+  margin-top: var(--spacing-xbig);
 }
 
 .cards > ul {
@@ -8,45 +8,20 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: var(--spacing-medium);
+  grid-gap: var(--spacing-medium);
 }
 
 .cards > ul > li {
-  border: 1px solid var(--site-border, #e5e7eb);
-  border-radius: 16px;
-  background-color: var(--site-bg-elevated, #fff);
-  box-shadow: 0 10px 30px rgb(15 23 42 / 12%);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.cards > ul > li:hover {
-  transform: translateY(-3px);
-  border-color: var(--site-border-hover, #3f4f7f);
-  box-shadow: 0 16px 34px rgb(15 23 42 / 18%);
+  border: var(--shape-border-width-1) solid var(--color-neutral-500);
+  background-color: var(--background-color);
 }
 
 .cards .cards-card-body {
-  margin: 0;
-  padding: var(--spacing-medium);
-}
-
-.cards .cards-card-body h3 {
-  margin: 0;
-  font-size: 2.1rem;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.cards .cards-card-body p {
-  margin: 1rem 0 0;
-  color: var(--site-text-secondary, var(--color-neutral-700));
-  line-height: 1.6;
+  margin: var(--spacing-small);
 }
 
 .cards .cards-card-image {
   line-height: 0;
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
 }
 
 .cards > ul > li img {

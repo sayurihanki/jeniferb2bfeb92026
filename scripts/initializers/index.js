@@ -1,28 +1,26 @@
 // Drop-in Tools
 import { getCookie } from '@dropins/tools/lib.js';
-import { events } from '@dropins/tools/event-bus.js';
-import { initializers } from '@dropins/tools/initializer.js';
 import { getConfigValue } from '@dropins/tools/lib/aem/configs.js';
-import { isAemAssetsEnabled } from '@dropins/tools/lib/aem/assets.js';
-import { CORE_FETCH_GRAPHQL, CS_FETCH_GRAPHQL, fetchPlaceholders } from '../commerce.js';
+import { events } from '@dropins/tools/event-bus.js';
+import {
+  removeFetchGraphQlHeader,
+  setEndpoint,
+  setFetchGraphQlHeader,
+} from '@dropins/tools/fetch-graphql.js';
+import * as authApi from '@dropins/storefront-auth/api.js';
+import { fetchPlaceholders } from '../commerce.js';
 
 export const getUserTokenCookie = () => getCookie('auth_dropin_user_token');
 
+// Update auth headers
 const setAuthHeaders = (state) => {
   if (state) {
     const token = getUserTokenCookie();
-    CORE_FETCH_GRAPHQL.setFetchGraphQlHeader('Authorization', `Bearer ${token}`);
-    CS_FETCH_GRAPHQL.setFetchGraphQlHeader('Authorization', `Bearer ${token}`);
+    setFetchGraphQlHeader('Authorization', `Bearer ${token}`);
   } else {
-    sessionStorage.removeItem('DROPIN__COMPANYSWITCHER__COMPANY__CONTEXT');
-    sessionStorage.removeItem('DROPIN__COMPANYSWITCHER__GROUP__CONTEXT');
-    CORE_FETCH_GRAPHQL.removeFetchGraphQlHeader('Authorization');
-    CS_FETCH_GRAPHQL.removeFetchGraphQlHeader('Authorization');
+    removeFetchGraphQlHeader('Authorization');
+    authApi.removeFetchGraphQlHeader('Authorization');
   }
-};
-
-const setCustomerGroupHeader = (customerGroupId) => {
-  CS_FETCH_GRAPHQL.setFetchGraphQlHeader('Magento-Customer-Group', customerGroupId);
 };
 
 const persistCartDataInSession = (data) => {
@@ -33,27 +31,10 @@ const persistCartDataInSession = (data) => {
   }
 };
 
-const setupAemAssetsImageParams = () => {
-  if (isAemAssetsEnabled()) {
-    // Convert decimal values to integers for AEM Assets compatibility
-    initializers.setImageParamKeys({
-      width: (value) => ['width', Math.floor(value)],
-      height: (value) => ['height', Math.floor(value)],
-      quality: 'quality',
-      auto: 'auto',
-      crop: 'crop',
-      fit: 'fit',
-    });
-  }
-};
-
 export default async function initializeDropins() {
   const init = async () => {
-    // Set Customer-Group-ID header
-    events.on('auth/group-uid', setCustomerGroupHeader, { eager: true });
-
     // Set auth headers on authenticated event
-    events.on('authenticated', setAuthHeaders, { eager: true });
+    events.on('authenticated', setAuthHeaders);
 
     // Cache cart data in session storage
     events.on('cart/data', persistCartDataInSession, { eager: true });
@@ -65,33 +46,14 @@ export default async function initializeDropins() {
 
     // Event Bus Logger
     events.enableLogger(true);
-
-    // Set up AEM Assets image parameter conversion
-    setupAemAssetsImageParams();
+    // Set Fetch Endpoint (Global)
+    setEndpoint(getConfigValue('commerce-core-endpoint'));
 
     // Fetch global placeholders
     await fetchPlaceholders('placeholders/global.json');
 
-    /*
-     * Set the company context before initializing the auth drop-in
-     * This ensures proper permissions are retrieved, and the auth/permissions event includes
-     * the correct payload.
-     */
-    const companyContext = sessionStorage.getItem('DROPIN__COMPANYSWITCHER__COMPANY__CONTEXT');
-    if (companyContext) {
-      CORE_FETCH_GRAPHQL.setFetchGraphQlHeader('X-Adobe-Company', companyContext);
-    }
-
     // Initialize Global Drop-ins
     await import('./auth.js');
-
-    // Initialize Company Switcher
-    const authenticated = events.lastPayload('authenticated');
-
-    if (authenticated && getConfigValue('commerce-companies-enabled') === true) {
-      await import('./company-switcher.js');
-    }
-
     await import('./personalization.js');
 
     import('./cart.js');
@@ -99,8 +61,8 @@ export default async function initializeDropins() {
     events.on('aem/lcp', async () => {
       // Recaptcha
       await import('@dropins/tools/recaptcha.js').then((recaptcha) => {
-        recaptcha.setEndpoint(CORE_FETCH_GRAPHQL);
         recaptcha.enableLogger(true);
+        recaptcha.setEndpoint(getConfigValue('commerce-core-endpoint'));
         return recaptcha.setConfig();
       });
     });

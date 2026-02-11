@@ -20,7 +20,7 @@ import { render as wishlistRender } from '@dropins/storefront-wishlist/render.js
 
 // Block-level
 import { readBlockConfig } from '../../scripts/aem.js';
-import { fetchPlaceholders, getProductLink } from '../../scripts/commerce.js';
+import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
 
 // Initializers
 import '../../scripts/initializers/recommendations.js';
@@ -63,12 +63,6 @@ function getPurchaseHistory(storeViewCode) {
 export default async function decorate(block) {
   const labels = await fetchPlaceholders();
 
-  // Hide configuration rows if they exist
-  const children = [...block.children];
-  children.forEach((child) => {
-    child.style.display = 'none';
-  });
-
   // Configuration
   const { currentsku, recid } = readBlockConfig(block);
 
@@ -80,7 +74,6 @@ export default async function decorate(block) {
   `);
 
   const $list = fragment.querySelector('.recommendations__list');
-  const $wrapper = fragment.querySelector('.recommendations__wrapper');
 
   block.appendChild(fragment);
 
@@ -117,7 +110,7 @@ export default async function decorate(block) {
     }
 
     const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
-    const createProductLink = (item) => getProductLink(item.urlKey, item.sku);
+    const getProductLink = (item) => rootLink(`/products/${item.urlKey}/${item.sku}`);
 
     // Get product view history
     context.userViewHistory = getProductViewHistory(storeViewCode);
@@ -142,7 +135,7 @@ export default async function decorate(block) {
     try {
       await Promise.all([
         provider.render(ProductList, {
-          routeProduct: createProductLink,
+          routeProduct: getProductLink,
           recId: recid,
           currentSku: currentsku || context.currentSku,
           userViewHistory: context.userViewHistory,
@@ -190,7 +183,7 @@ export default async function decorate(block) {
                 UI.render(Button, {
                   children:
                     labels.Global?.SelectProductOptions,
-                  href: createProductLink(ctx.item),
+                  href: rootLink(`/products/${ctx.item.urlKey}/${ctx.item.sku}`),
                   variant: 'tertiary',
                 })(addToCart);
               }
@@ -213,7 +206,7 @@ export default async function decorate(block) {
             Thumbnail: (ctx) => {
               const { item, defaultImageProps } = ctx;
               const wrapper = document.createElement('a');
-              wrapper.href = createProductLink(item);
+              wrapper.href = getProductLink(item);
 
               tryRenderAemAssetsImage(ctx, {
                 alias: item.sku,
@@ -227,7 +220,7 @@ export default async function decorate(block) {
               });
             },
           },
-        })($wrapper),
+        })($list),
       ]);
     } finally {
       isLoading = false;

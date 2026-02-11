@@ -1,7 +1,7 @@
 .product-details__wrapper {
   display: grid;
   grid-template-columns: repeat(var(--grid-1-columns), 1fr);
-  column-gap: var(--grid-1-gutters);
+  grid-column-gap: var(--grid-1-gutters);
   margin-top: var(--spacing-medium);
 }
 
@@ -58,7 +58,7 @@
 
 .product-details__buttons {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   gap: var(--grid-1-gutters);
   grid-auto-rows: max-content;
 }
@@ -74,7 +74,7 @@
 @media (min-width: 900px) {
   .product-details__wrapper {
     grid-template-columns: repeat(var(--grid-3-columns), 1fr);
-    column-gap: var(--grid-3-gutters);
+    grid-column-gap: var(--grid-3-gutters);
     position: relative;
   }
 
@@ -99,7 +99,7 @@
 
   .product-details__configuration {
     grid-template-columns: repeat(var(--grid-1-columns), 1fr);
-    gap: var(--grid-1-gutters);
+    grid-gap: var(--grid-1-gutters);
     margin-top: var(--spacing-xxbig);
   }
 

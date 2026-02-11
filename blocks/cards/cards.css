@@ -12,16 +12,17 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--site-border, #e5e7eb);
   border-radius: 16px;
-  background-color: #fff;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
+  background-color: var(--site-bg-elevated, #fff);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 12%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cards > ul > li:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 34px rgb(15 23 42 / 10%);
+  border-color: var(--site-border-hover, #3f4f7f);
+  box-shadow: 0 16px 34px rgb(15 23 42 / 18%);
 }
 
 .cards .cards-card-body {
@@ -38,7 +39,7 @@
 
 .cards .cards-card-body p {
   margin: 1rem 0 0;
-  color: var(--color-neutral-700);
+  color: var(--site-text-secondary, var(--color-neutral-700));
   line-height: 1.6;
 }
 

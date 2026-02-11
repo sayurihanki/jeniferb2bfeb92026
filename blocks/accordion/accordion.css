@@ -1,8 +1,8 @@
 .accordion details {
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--site-border, #e5e7eb);
     border-radius: 12px;
-    background-color: #fff;
-    box-shadow: 0 8px 24px rgb(15 23 42 / 5%);
+    background-color: var(--site-bg-elevated, #fff);
+    box-shadow: 0 8px 24px rgb(15 23 42 / 10%);
     overflow: hidden;
 }
 
@@ -26,12 +26,12 @@
 }
 
 .accordion details[open] summary {
-    background-color: #f8fafc;
+    background-color: var(--site-bg-secondary, #f8fafc);
 }
 
 .accordion details summary:focus,
 .accordion details summary:hover {
-    background-color: #f8fafc;
+    background-color: var(--site-bg-secondary, #f8fafc);
 }
 
 .accordion details summary::-webkit-details-marker {
@@ -60,6 +60,6 @@
 }
 
 .accordion details[open] .accordion-item-body {
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--site-border, #e5e7eb);
     background-color: var(--background-color);
 }

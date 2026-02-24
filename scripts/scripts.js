@@ -143,7 +143,13 @@ async function loadEager(doc) {
       fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:catch', message: 'commerce/decoration threw', data: { err: String(e && e.message) }, timestamp: Date.now(), hypothesisId: 'H3' }) }).catch(() => {});
       // #endregion
       console.error('Error initializing commerce configuration:', e);
-      loadErrorPage(418);
+      /* Do not replace page with 418.html — show content anyway so the site is not blank */
+      try {
+        decorateMain(main);
+        applyTemplates(doc);
+      } catch (e2) {
+        console.error('Fallback decoration failed:', e2);
+      }
     }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

@@ -1,0 +1,253 @@
+/*
+ * ARCTIS theme overlay for EDS / Fortnum & Mason
+ * Load after styles.css to apply dark palette, glass accents, and cursor.
+ */
+
+/* ─── ARCTIS tokens ─── */
+:root {
+  --void: #070d18;
+  --deep: #0a1322;
+  --navy: #0f1e34;
+  --ice: #b8dff0;
+  --ice-dim: rgba(184, 223, 240, 0.5);
+  --flame: #e8622a;
+  --flame-lo: rgba(232, 98, 42, 0.15);
+  --white: #eaf4fa;
+  --muted: rgba(184, 210, 228, 0.48);
+  --rim: rgba(255, 255, 255, 0.08);
+  --rim-hi: rgba(255, 255, 255, 0.18);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* Map Commerce/EDS design tokens to ARCTIS */
+:root, .dropin-design {
+  --background-color: var(--void);
+  --color-neutral-50: var(--white);
+  --color-neutral-100: var(--void);
+  --color-neutral-200: var(--deep);
+  --color-neutral-300: var(--rim);
+  --color-neutral-400: var(--muted);
+  --color-neutral-500: var(--muted);
+  --color-neutral-600: var(--ice-dim);
+  --color-neutral-700: var(--ice-dim);
+  --color-neutral-800: var(--white);
+  --color-neutral-900: var(--white);
+  --color-brand-300: var(--ice-dim);
+  --color-brand-500: var(--flame);
+  --color-brand-600: var(--ice);
+  --color-brand-700: var(--ice);
+  --type-base-font-family: var(--font-body);
+}
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void) !important;
+  color: var(--white) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 300;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.45;
+}
+
+/* Background glows */
+.arctis-bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 12%, rgba(100, 180, 230, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 8% 80%, rgba(100, 160, 210, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 35% at 50% 50%, rgba(232, 98, 42, 0.025) 0%, transparent 65%);
+}
+
+/* Cursor */
+#arctis-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: var(--flame);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s;
+}
+
+#arctis-ring {
+  position: fixed;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(184, 223, 240, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, border-color 0.25s;
+}
+
+body:has(a:hover) #arctis-ring,
+body:has(button:hover) #arctis-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--flame);
+}
+
+/* ─── Header (ARCTIS nav style) ─── */
+header .nav-wrapper {
+  background: rgba(7, 13, 24, 0.85) !important;
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border-bottom: 1px solid var(--rim) !important;
+}
+
+header nav {
+  font-family: var(--font-body) !important;
+  color: var(--white);
+}
+
+header nav .nav-brand a,
+header nav .nav-sections a {
+  color: var(--muted) !important;
+}
+
+header nav .nav-brand a:hover,
+header nav .nav-sections a:hover {
+  color: var(--white) !important;
+}
+
+header nav .nav-hamburger button {
+  background: transparent !important;
+  color: var(--white) !important;
+}
+
+header nav .nav-tools button {
+  color: var(--muted) !important;
+}
+
+header nav .nav-tools button:hover {
+  color: var(--white) !important;
+}
+
+/* Nav link underline on hover (ARCTIS style) */
+header nav .nav-sections .default-content-wrapper > ul > li > a {
+  position: relative;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--ice);
+  transition: width 0.3s ease;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > a:hover::after,
+header nav .nav-sections .default-content-wrapper > ul > li.active > a::after {
+  width: 100%;
+}
+
+/* ─── Main ─── */
+main {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* ─── Promotional hero (glass accent) ─── */
+.promotional-hero-card {
+  border: 1px solid var(--rim);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.promotional-hero-card:hover {
+  border-color: rgba(184, 223, 240, 0.2);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
+}
+
+.promotional-hero-whitebox {
+  background: rgba(7, 13, 24, 0.9) !important;
+  border: 1px solid var(--rim);
+  color: var(--white) !important;
+}
+
+/* ─── Circular cards (glass + flame accent) ─── */
+.cards-circular > ul > li a {
+  color: var(--muted);
+}
+
+.cards-circular > ul > li a:hover {
+  color: var(--white);
+}
+
+.cards-circular .cards-circular-item-image {
+  border: 1px solid var(--rim);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cards-circular > ul > li:hover .cards-circular-item-image {
+  border-color: rgba(184, 223, 240, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+/* Section headings / text on dark */
+.section h2,
+.section h3,
+.cards-circular .cards-circular-item-body h3,
+.cards-circular .cards-circular-item-body h4,
+.cards-circular .cards-circular-item-body h5,
+.cards-circular .cards-circular-item-body h6 {
+  color: var(--white) !important;
+}
+
+.section p,
+.promotional-hero-description {
+  color: var(--muted) !important;
+}
+
+/* Footer */
+footer .footer {
+  background: rgba(7, 13, 24, 0.9) !important;
+  border-top: 1px solid var(--rim) !important;
+  color: var(--muted);
+}
+
+footer .footer a {
+  color: var(--muted) !important;
+}
+
+footer .footer a:hover {
+  color: var(--white) !important;
+}
+
+footer .footer h4 {
+  color: var(--ice) !important;
+}
+
+/* Focus visible for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ice);
+  outline-offset: 2px;
+}

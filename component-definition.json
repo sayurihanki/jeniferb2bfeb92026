@@ -241,6 +241,16 @@
           }
         },
         {
+          "title": "Hero 4",
+          "id": "hero-4",
+          "model": "hero-4",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"hero-4\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div><p>Precision HVAC Manufacturing</p></div><div><p>MASTER\\nTHE CLIMATE.\\nOWN THE SPACE.</p></div><div><p>Description</p></div></div><div><div><p><a href=\"/apparel\">Explore Systems</a></p></div><div><p><a href=\"/support\">How It Works</a></p></div><div><p>68.4 °F</p></div><div><p>Online</p></div></div><div><div><p>Cooling</p></div><div><p>87%</p></div><div><p>cooling</p></div></div><div><div><p>Heat Reject</p></div><div><p>31%</p></div><div><p>heat</p></div></div><div><div><p>Airflow</p></div><div><p>74%</p></div><div><p>airflow</p></div></div><div><div><p>Compressor</p></div><div><p>56%</p></div><div><p>compressor</p></div></div><div><div><p>1400</p></div><div><p>+</p></div><div><p>Installations Worldwide</p></div></div><div><div><p>98</p></div><div><p>%</p></div><div><p>System Efficiency Rating</p></div></div><div><div><p>39</p></div><div><p>yr</p></div><div><p>Industry Experience</p></div></div><div><div><p>640</p></div><div><p>K</p></div><div><p>Tons Cooling Capacity</p></div></div></div>"
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "model": "targeted-block",

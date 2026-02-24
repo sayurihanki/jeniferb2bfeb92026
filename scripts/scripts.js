@@ -54,6 +54,9 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
+    const pathname = window.location.pathname || '/';
+    const isHome = pathname === '/' || pathname === '/index' || pathname === '/index.html';
+    if (isHome) return;
     buildHeroBlock(main);
   } catch (error) {
     console.error('Auto Blocking failed', error);
@@ -61,10 +64,29 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Removes the legacy homepage hero section so hero-4 can replace it.
+ * @param {Element} main The container element
+ */
+function removeLegacyHomepageHero(main) {
+  const pathname = window.location.pathname || '/';
+  const isHome = pathname === '/' || pathname === '/index' || pathname === '/index.html';
+  if (!isHome) return;
+
+  const firstSection = main.querySelector(':scope > div:first-child');
+  if (!firstSection) return;
+
+  const legacyHero = firstSection.querySelector(':scope > .hero');
+  if (!legacyHero) return;
+
+  firstSection.remove();
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
+  removeLegacyHomepageHero(main);
   decorateLinks(main);
   decorateButtons(main);
   decorateIcons(main);

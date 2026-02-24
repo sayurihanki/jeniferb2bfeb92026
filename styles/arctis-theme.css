@@ -87,10 +87,14 @@ body::after {
 }
 
 main,
-header,
 footer {
   position: relative;
   z-index: 2;
+}
+
+header {
+  position: relative;
+  z-index: 1000;
 }
 
 h1,

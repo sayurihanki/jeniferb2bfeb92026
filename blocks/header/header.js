@@ -493,10 +493,19 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
 
+  let closeTimeout = null;
   navWrapper.addEventListener('mouseout', (e) => {
-    if (isDesktop.matches && !nav.contains(e.relatedTarget)) {
+    if (!isDesktop.matches || nav.contains(e.relatedTarget)) return;
+    closeTimeout = setTimeout(() => {
       toggleAllNavSections(navSections);
       overlay.classList.remove('show');
+      closeTimeout = null;
+    }, 180);
+  });
+  navWrapper.addEventListener('mouseenter', () => {
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      closeTimeout = null;
     }
   });
 

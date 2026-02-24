@@ -78,24 +78,28 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  /* Show body first so nothing can leave the page stuck hidden (body:not(.appear){display:none}) */
+  document.body.classList.add('appear');
+
   // #region agent log
   fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:entry', message: 'loadEager started', data: { hasMain: !!doc.querySelector('main'), bodyAppearBefore: document.body.classList.contains('appear') }, timestamp: Date.now(), hypothesisId: 'H1' }) }).catch(() => {});
   // #endregion
-  document.documentElement.lang = 'en';
-  decorateTemplateAndTheme();
 
-  /* Show body immediately so content is never stuck hidden (body:not(.appear){display:none}) */
-  document.body.classList.add('appear');
-  // #region agent log
-  fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:afterAppear', message: 'appear added to body', data: { bodyAppearAfter: document.body.classList.contains('appear') }, timestamp: Date.now(), hypothesisId: 'H1' }) }).catch(() => {});
-  // #endregion
+  try {
+    document.documentElement.lang = 'en';
+    decorateTemplateAndTheme();
+  } catch (e) {
+    console.error('[ARCTIS] decorateTemplateAndTheme failed:', e);
+  }
 
   /* ARCTIS: inject background glow */
-  if (!document.querySelector('.bg-glow')) {
-    const bgGlow = document.createElement('div');
-    bgGlow.className = 'bg-glow';
-    document.body.prepend(bgGlow);
-  }
+  try {
+    if (!document.querySelector('.bg-glow')) {
+      const bgGlow = document.createElement('div');
+      bgGlow.className = 'bg-glow';
+      document.body.prepend(bgGlow);
+    }
+  } catch (e) { console.error('[ARCTIS] bg-glow failed:', e); }
 
   /* ARCTIS: custom cursor (only when fine pointer and no reduce-motion) */
   try {
@@ -151,12 +155,14 @@ async function loadEager(doc) {
         console.error('Fallback decoration failed:', e2);
       }
     }
-    document.body.classList.add('appear');
-    await loadSection(main.querySelector('.section'), waitForFirstImage);
+    try {
+      await loadSection(main.querySelector('.section'), waitForFirstImage);
+    } catch (e) {
+      console.error('[ARCTIS] loadSection failed:', e);
+    }
   }
 
   try {
-    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
       loadFonts();
     }
@@ -225,12 +231,20 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
-  loadDelayed();
+  try {
+    await loadEager(document);
+    await loadLazy(document);
+    loadDelayed();
+  } catch (e) {
+    console.error('[ARCTIS] loadPage failed:', e);
+    document.body.classList.add('appear');
+  }
 }
 
-loadPage();
+loadPage().catch((e) => {
+  console.error('[ARCTIS] loadPage top-level:', e);
+  document.body.classList.add('appear');
+});
 
 (async function loadDa() {
   const usp = new URL(window.location.href).searchParams;

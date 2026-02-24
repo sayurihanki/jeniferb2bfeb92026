@@ -5,6 +5,7 @@ import {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateBlock,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForFirstImage,
@@ -82,6 +83,20 @@ function removeLegacyHomepageHero(main) {
 }
 
 /**
+ * Ensures hero-4 blocks are decorated even when section wrappers are atypical.
+ * @param {Element} main The main element
+ */
+function ensureHero4Blocks(main) {
+  const hero4Blocks = main.querySelectorAll('.hero-4');
+  hero4Blocks.forEach((block) => {
+    if (block.classList.contains('block')) return;
+    const hasBlockRows = !!block.querySelector(':scope > div > div');
+    if (!hasBlockRows) return;
+    decorateBlock(block);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -93,6 +108,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  ensureHero4Blocks(main);
 }
 
 /**

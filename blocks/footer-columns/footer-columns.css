@@ -1,6 +1,5 @@
-/* Footer Columns Block - ARCTIS */
+/* Footer Columns Block */
 
-/* Block-specific design tokens */
 .footer-columns {
   --footer-columns-desktop: 4;
   --footer-columns-tablet: 3;
@@ -15,26 +14,24 @@
 
 .footer-columns-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 60px;
-  max-width: 1380px;
+  grid-template-columns: repeat(var(--footer-columns-desktop), 1fr);
+  gap: var(--spacing-medium);
+  max-width: 1200px;
   margin: 0 auto;
+  padding: var(--spacing-medium) var(--spacing-small);
 }
 
-/* Individual Column */
 .footer-column {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-/* Column Header — ARCTIS */
 .footer-column-header {
-  margin-bottom: 18px;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  color: var(--ice);
+  margin-bottom: var(--spacing-small);
+  font: var(--type-body-1-strong-font);
+  letter-spacing: var(--type-body-1-strong-letter-spacing);
+  color: var(--color-neutral-900);
   line-height: 1.2;
 }
 
@@ -42,110 +39,51 @@
   display: none;
 }
 
-/* First column as logo/description */
 .footer-column:first-child .footer-column-header {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  letter-spacing: 0.15em;
-  color: var(--white);
+  font: var(--type-heading-4-font);
+  letter-spacing: var(--type-heading-4-letter-spacing);
+  color: var(--color-neutral-900);
 }
 
-.footer-column:first-child .footer-column-header span {
-  color: var(--flame);
-}
-
-.footer-column:first-child .footer-column-links {
-  font-size: 0.78rem;
-  line-height: 1.78;
-  color: var(--muted);
-  max-width: 260px;
-}
-
-/* ARCTIS badges */
-.ft-badge,
-.footer-column-links .ft-badge {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.48rem;
-  letter-spacing: 0.14em;
-  color: var(--ice-dim);
-  padding: 3px 9px;
-  border: 1px solid rgba(184, 223, 240, 0.12);
-  border-radius: 2px;
-  margin: 4px 4px 4px 0;
-}
-
-/* Column Links List */
 .footer-column-links {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  font-size: 0.75rem;
-  color: var(--muted);
+  gap: var(--spacing-xsmall);
+  font: var(--type-body-2-default-font);
+  letter-spacing: var(--type-body-2-default-letter-spacing);
+  color: var(--color-neutral-800);
 }
 
 .footer-column-links li {
-  margin-bottom: 9px;
+  margin: 0;
 }
 
-/* Link Styling — ARCTIS */
 .footer-column-links a {
   text-decoration: none;
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  transition: color 0.25s, gap 0.25s;
+  color: var(--color-neutral-800);
+  transition: color 0.2s ease;
 }
 
 .footer-column-links a:hover {
-  color: var(--white);
-  gap: 8px;
+  color: var(--color-brand-700);
 }
 
-.footer-column-links a:hover::before {
-  content: "→ ";
-  color: var(--flame);
-  font-size: 0.7rem;
-}
-
-/* Social Media Icons Support */
 .footer-column-links a img {
   width: var(--icon-size-small, 20px);
   height: var(--icon-size-small, 20px);
   vertical-align: middle;
 }
 
-/* Tablet: 3 columns × 2 rows */
 @media (max-width: 1024px) {
   .footer-columns-grid {
     grid-template-columns: repeat(var(--footer-columns-tablet), 1fr);
-    gap: calc(var(--spacing-medium) / 2) var(--spacing-xsmall);
+    gap: var(--spacing-small);
   }
 }
 
-/* Footer bottom bar */
-.ft-bottom {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 22px;
-  margin-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.ft-copy {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.1em;
-  color: rgba(184, 210, 228, 0.2);
-}
-
-/* Mobile: Accordion layout */
 @media (max-width: 768px) {
   .footer-columns-grid {
     grid-template-columns: repeat(var(--footer-columns-mobile), 1fr);
@@ -153,14 +91,13 @@
   }
 
   .footer-column {
-    border-bottom: 1px solid var(--rim);
+    border-bottom: 1px solid var(--color-neutral-200);
   }
 
   .footer-column:last-child {
     border-bottom: none;
   }
 
-  /* Accordion header styling */
   .footer-column-header {
     display: flex;
     justify-content: space-between;
@@ -189,7 +126,6 @@
     transform: rotate(var(--footer-chevron-rotation-expanded));
   }
 
-  /* Collapsible content - collapsed by default */
   .footer-column-links {
     max-height: 0 !important;
     overflow: hidden !important;
@@ -205,9 +141,5 @@
 
   .footer-column-links li {
     padding: 0;
-  }
-
-  .footer-column-links li:first-child {
-    padding-top: 0;
   }
 }

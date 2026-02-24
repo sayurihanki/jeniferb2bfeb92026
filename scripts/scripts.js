@@ -78,64 +78,10 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  /* Show body first so nothing can leave the page stuck hidden (body:not(.appear){display:none}) */
-  document.body.classList.add('appear');
-
-  // #region agent log
-  fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:entry', message: 'loadEager started', data: { hasMain: !!doc.querySelector('main'), bodyAppearBefore: document.body.classList.contains('appear') }, timestamp: Date.now(), hypothesisId: 'H1' }) }).catch(() => {});
-  // #endregion
-
-  try {
-    document.documentElement.lang = 'en';
-    decorateTemplateAndTheme();
-  } catch (e) {
-    console.error('[ARCTIS] decorateTemplateAndTheme failed:', e);
-  }
-
-  /* ARCTIS: inject background glow */
-  try {
-    if (!document.querySelector('.bg-glow')) {
-      const bgGlow = document.createElement('div');
-      bgGlow.className = 'bg-glow';
-      document.body.prepend(bgGlow);
-    }
-  } catch (e) { console.error('[ARCTIS] bg-glow failed:', e); }
-
-  /* ARCTIS: custom cursor (only when fine pointer and no reduce-motion) */
-  try {
-    const useCursor = window.matchMedia('(pointer: fine)').matches
-      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (useCursor && !document.getElementById('dot')) {
-      const dot = document.createElement('div');
-      dot.id = 'dot';
-      const ring = document.createElement('div');
-      ring.id = 'ring';
-      document.body.appendChild(dot);
-      document.body.appendChild(ring);
-      let mx = 0; let my = 0; let rx = 0; let ry = 0;
-      document.addEventListener('mousemove', (e) => {
-        mx = e.clientX;
-        my = e.clientY;
-        dot.style.left = `${mx}px`;
-        dot.style.top = `${my}px`;
-      });
-      (function anim() {
-        rx += (mx - rx) * 0.1;
-        ry += (my - ry) * 0.1;
-        ring.style.left = `${rx}px`;
-        ring.style.top = `${ry}px`;
-        requestAnimationFrame(anim);
-      }());
-      document.body.style.cursor = 'none';
-    }
-  } catch (e) {
-    // Cursor must not block page display
-  }
+  document.documentElement.lang = 'en';
+  decorateTemplateAndTheme();
 
   const main = doc.querySelector('main');
-  // #region agent log
-  fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:mainCheck', message: 'main element check', data: { mainExists: !!main, firstSectionExists: !!(main && main.querySelector('.section')), sectionCount: main ? main.querySelectorAll('.section').length : 0 }, timestamp: Date.now(), hypothesisId: 'H2' }) }).catch(() => {});
-  // #endregion
   if (main) {
     try {
       await initializeCommerce();
@@ -143,26 +89,15 @@ async function loadEager(doc) {
       applyTemplates(doc);
       await loadCommerceEager();
     } catch (e) {
-      // #region agent log
-      fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadEager:catch', message: 'commerce/decoration threw', data: { err: String(e && e.message) }, timestamp: Date.now(), hypothesisId: 'H3' }) }).catch(() => {});
-      // #endregion
       console.error('Error initializing commerce configuration:', e);
-      /* Do not replace page with 418.html — show content anyway so the site is not blank */
-      try {
-        decorateMain(main);
-        applyTemplates(doc);
-      } catch (e2) {
-        console.error('Fallback decoration failed:', e2);
-      }
+      loadErrorPage(418);
     }
-    try {
-      await loadSection(main.querySelector('.section'), waitForFirstImage);
-    } catch (e) {
-      console.error('[ARCTIS] loadSection failed:', e);
-    }
+    document.body.classList.add('appear');
+    await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
 
   try {
+    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
       loadFonts();
     }
@@ -177,10 +112,7 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
-  // #region agent log
-  fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadLazy:entry', message: 'loadLazy started', data: { mainExists: !!main, headerExists: !!doc.querySelector('header'), footerExists: !!doc.querySelector('footer') }, timestamp: Date.now(), hypothesisId: 'H4' }) }).catch(() => {});
-  // #endregion
-  if (main) await loadSections(main);
+  await loadSections(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -188,37 +120,11 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-  // #region agent log
-  fetch('http://127.0.0.1:7280/ingest/bbb10b0a-be90-44c9-b1bc-39270d124459', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '7da593' }, body: JSON.stringify({ sessionId: '7da593', location: 'scripts.js:loadLazy:afterSections', message: 'after loadSections', data: { sectionCount: main ? main.querySelectorAll('.section').length : 0 } }, timestamp: Date.now(), hypothesisId: 'H5' }) }).catch(() => {});
-  // #endregion
 
   loadCommerceLazy();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-
-  /* ARCTIS scroll reveal */
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('on');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  function observeReveal(container) {
-    (container || doc).querySelectorAll('.r').forEach((el) => {
-      if (!el.dataset.revealObserved) {
-        el.dataset.revealObserved = '1';
-        revealObs.observe(el);
-      }
-    });
-  }
-  observeReveal(doc);
-  if (main) {
-    const mo = new MutationObserver(() => observeReveal(main));
-    mo.observe(main, { childList: true, subtree: true });
-  }
 }
 
 /**
@@ -231,20 +137,12 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  try {
-    await loadEager(document);
-    await loadLazy(document);
-    loadDelayed();
-  } catch (e) {
-    console.error('[ARCTIS] loadPage failed:', e);
-    document.body.classList.add('appear');
-  }
+  await loadEager(document);
+  await loadLazy(document);
+  loadDelayed();
 }
 
-loadPage().catch((e) => {
-  console.error('[ARCTIS] loadPage top-level:', e);
-  document.body.classList.add('appear');
-});
+loadPage();
 
 (async function loadDa() {
   const usp = new URL(window.location.href).searchParams;

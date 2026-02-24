@@ -126,46 +126,8 @@
 
   /* Additional tokens */
   --type-fixed-font-family: adobe-clean, "Roboto Mono", menlo, consolas, "Liberation Mono", monospace, system-ui, sans-serif;
+  --background-color: var(--color-neutral-50);
   --nav-height: 6.4rem;
-
-  /* ARCTIS theme tokens */
-  --void: #070d18;
-  --deep: #0a1322;
-  --navy: #0f1e34;
-  --steel: #162840;
-  --ice: #b8dff0;
-  --ice-dim: rgba(184, 223, 240, 0.5);
-  --ice-faint: rgba(184, 223, 240, 0.08);
-  --flame: #e8622a;
-  --flame-lo: rgba(232, 98, 42, 0.15);
-  --flame-mid: rgba(232, 98, 42, 0.28);
-  --white: #eaf4fa;
-  --muted: rgba(184, 210, 228, 0.48);
-  --glass: rgba(255, 255, 255, 0.055);
-  --glass-hi: rgba(255, 255, 255, 0.1);
-  --rim: rgba(255, 255, 255, 0.08);
-  --rim-hi: rgba(255, 255, 255, 0.18);
-  --font-display: "Bebas Neue", sans-serif;
-  --font-body: "DM Sans", sans-serif;
-  --font-mono: "DM Mono", monospace;
-  --nav-height: 68px;
-
-  /* ARCTIS remap for drop-ins (dark storefront) */
-  --background-color: var(--void);
-  --color-brand-300: var(--ice-dim);
-  --color-brand-500: var(--flame);
-  --color-brand-600: var(--ice);
-  --color-brand-700: var(--navy);
-  --color-neutral-50: var(--white);
-  --color-neutral-100: var(--deep);
-  --color-neutral-200: var(--navy);
-  --color-neutral-300: var(--steel);
-  --color-neutral-400: var(--ice-dim);
-  --color-neutral-500: var(--muted);
-  --color-neutral-600: var(--ice);
-  --color-neutral-700: var(--ice-dim);
-  --color-neutral-800: var(--white);
-  --color-neutral-900: var(--white);
 }
 
 /* fallback font */
@@ -181,136 +143,18 @@ html, body {
 
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  letter-spacing: 0.04em;
+  font: var(--type-body-1-default-font);
+  letter-spacing: var(--type-body-1-default-letter-spacing);
   margin: 0;
-  color: var(--white);
-  background-color: var(--void);
+  color: var(--color-neutral-800);
+  background-color: var(--background-color);
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ARCTIS grain overlay */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity: 0.45;
-}
-
-/* ARCTIS background glows */
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 60% 55% at 85% 12%, rgba(100, 180, 230, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 45% at 8% 80%, rgba(100, 160, 210, 0.05) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 35% at 50% 50%, rgba(232, 98, 42, 0.025) 0%, transparent 65%);
-}
-
-/* ARCTIS section utilities */
-.wrap {
-  max-width: 1380px;
-  margin: 0 auto;
-  padding: 0 52px;
-}
-
-.sec-tag {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.3em;
-  color: var(--flame);
-  text-transform: uppercase;
-}
-
-.sec-tag::before {
-  content: "//";
-  color: var(--ice-dim);
-  opacity: 0.5;
-}
-
-.sec-h {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 5.5vw, 78px);
-  line-height: 0.93;
-  letter-spacing: 0.02em;
-}
-
-.sec-h .hl { color: var(--ice); }
-.sec-h .hf { color: var(--flame); }
-
-/* ARCTIS scroll reveal */
-.r {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.r.on {
-  opacity: 1;
-  transform: none;
-}
-
-.d1 { transition-delay: 0.1s; }
-.d2 { transition-delay: 0.2s; }
-.d3 { transition-delay: 0.3s; }
-.d4 { transition-delay: 0.4s; }
-
-/* ARCTIS custom cursor (only shown when #dot exists) */
-#dot {
-  position: fixed;
-  width: 7px;
-  height: 7px;
-  background: var(--flame);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s;
-}
-
-#ring {
-  position: fixed;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(184, 223, 240, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s, height 0.25s, border-color 0.25s;
-}
-
-body:has(a:hover) #ring,
-body:has(button:hover) #ring {
-  width: 48px;
-  height: 48px;
-  border-color: var(--flame);
-}
-
-body:has(.cards > ul > li:hover) #ring {
-  width: 56px;
-  height: 56px;
-  border-color: var(--ice);
 }
 
 body:not(.appear) {
@@ -328,10 +172,6 @@ main {
 
 footer {
   grid-row: 3;
-  border-top: 1px solid var(--rim);
-  background: rgba(7, 13, 24, 0.6);
-  backdrop-filter: blur(16px);
-  padding: 70px 52px 44px;
 }
 
 header .header,
@@ -445,12 +285,6 @@ a:not(.dropin-design a) {
 a:not(.dropin-design a):hover {
   color: var(--color-brand-600);
   text-decoration: underline;
-}
-
-a:not(.dropin-design a):focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--flame);
-  outline-offset: 2px;
 }
 
 /* buttons */

@@ -6,38 +6,35 @@
   --desktop-panel-max-height: 600px;
 }
 
-/* ARCTIS nav */
+/* header and nav layout */
 header .nav-wrapper {
-  background: rgba(7, 13, 24, 0.75);
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
-  border-bottom: 1px solid var(--rim);
+  background-color: var(--background-color);
   width: 100%;
-  z-index: 200;
+  z-index: 3;
   position: fixed;
-  height: 68px;
+  border-bottom: 1px solid var(--color-neutral-300);
 }
 
 header nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
-  'hamburger brand tools wrapperPopUpButton' 68px
+  'hamburger brand tools wrapperPopUpButton' var(--nav-height)
   'sections sections sections ...' 1fr / auto 1fr auto auto;
   align-items: center;
   gap: 0 16px;
   margin: auto;
   max-width: 1248px;
-  height: 68px;
-  padding: 0 52px;
-  font-family: var(--font-body);
+  height: var(--nav-height);
+  padding: 0 24px;
+  font-family: var(--type-base-font-family);
 }
 
 header nav[aria-expanded='true'] {
   grid-template:
-    'hamburger brand' 68px
+    'hamburger brand' var(--nav-height)
     'sections sections' 1fr
-    'tools tools' 68px / auto 1fr;
+    'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
 }
@@ -77,8 +74,8 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background: transparent;
-  color: var(--white);
+  background-color: var(--color-neutral-50);
+  color: inherit;
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
@@ -144,28 +141,20 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   }
 }
 
-/* brand — ARCTIS */
+/* brand */
 header nav .nav-brand {
   min-width: 80px;
-  max-width: 240px;
+  max-width: 120px;
 }
 
 header nav .nav-brand a {
   grid-area: brand;
   flex-basis: 80px;
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  letter-spacing: 0.15em;
-  font-weight: 400;
+  font: var(--type-headline-1-font);
+  letter-spacing: var(--type-headline-1-letter-spacing);
+  font-weight: bold;
   display: flex;
   align-items: center;
-  color: var(--white);
-  text-decoration: none;
-}
-
-header nav .nav-brand a span.logo-accent,
-header nav .nav-brand a .logo-accent {
-  color: var(--flame);
 }
 
 li.nav-drop img {
@@ -254,38 +243,30 @@ header nav .nav-sections ul > li:empty {
 
   header nav .nav-sections .default-content-wrapper > ul > li a {
     text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
+    font-family: var(--type-serif-font-family);
+    font-size: 1.8rem;
+    font-weight: 500;
     padding: 16px;
     display: inline-block;
     position: relative;
-    transition: color 0.25s;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li a::after {
     content: '';
     position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
+    bottom: 10px;
+    left: 16px;
+    right: 16px;
     height: 1px;
-    background: var(--ice);
-    transition: width 0.3s ease;
+    background-color: var(--color-brand-700);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li a:hover {
-    color: var(--white);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li a:hover::after {
-    width: 100%;
-  }
-
+  header nav .nav-sections .default-content-wrapper > ul > li > a:hover::after,
   header nav .nav-sections .default-content-wrapper > ul > li.active > a::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   header nav .nav-sections ul {
@@ -310,8 +291,7 @@ header nav .nav-sections ul > li:empty {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper {
-    background: rgba(7, 13, 24, 0.95);
-    backdrop-filter: blur(20px);
+    background-color: var(--color-neutral-50);
     box-sizing: border-box;
     left: 0;
     padding: var(--spacing-small);
@@ -320,7 +300,7 @@ header nav .nav-sections ul > li:empty {
     width: max-content;
     min-width: 220px;
     max-width: 320px;
-    border: 1px solid var(--rim);
+    border: 1px solid var(--color-neutral-200);
     border-radius: var(--shape-border-radius-2);
     box-shadow: var(--shape-shadow-2);
     z-index: 5;
@@ -353,7 +333,7 @@ header nav .nav-sections ul > li:empty {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li ul > li a {
-    color: var(--muted);
+    color: var(--color-neutral-800);
     text-decoration: none;
     display: block;
     padding: 8px 12px;
@@ -363,8 +343,8 @@ header nav .nav-sections ul > li:empty {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li ul > li a:hover {
-    color: var(--white);
-    background: var(--ice-faint);
+    color: var(--color-brand-700);
+    background-color: var(--color-neutral-100);
   }
 }
 
@@ -391,40 +371,18 @@ header nav .nav-tools {
   height: 100%;
   gap: var(--spacing-small);
   align-items: center;
-  background: transparent;
+  background: var(--background-color);
   z-index: 3;
 }
 
 header nav .nav-tools-wrapper > button {
-  color: var(--white);
+  color: var(--color-brand-700);
   background: transparent;
   padding: 10px;
   border: unset;
   cursor: pointer;
   height: 40px;
   width: 40px;
-}
-
-/* ARCTIS CTA-style link in nav (last section link or .nav-btn) */
-header nav .nav-sections .default-content-wrapper > ul > li a.nav-btn {
-  padding: 8px 20px;
-  border: 1px solid rgba(232, 98, 42, 0.4);
-  background: rgba(232, 98, 42, 0.1);
-  color: var(--flame);
-  border-radius: 2px;
-  backdrop-filter: blur(8px);
-  transition: all 0.25s;
-}
-
-header nav .nav-sections .default-content-wrapper > ul > li a.nav-btn::after {
-  display: none;
-}
-
-header nav .nav-sections .default-content-wrapper > ul > li a.nav-btn:hover {
-  background: rgba(232, 98, 42, 0.22);
-  border-color: rgba(232, 98, 42, 0.7);
-  color: var(--white);
-  box-shadow: 0 0 18px rgba(232, 98, 42, 0.18);
 }
 
 header nav .nav-tools button.nav-cart-button {
@@ -439,8 +397,8 @@ header nav .nav-tools button.nav-cart-button[data-count]::after {
   position: absolute;
   top: 0;
   right: -2px;
-  background-color: var(--flame);
-  color: var(--white);
+  background-color: var(--color-brand-700);
+  color: var(--color-neutral-100);
   border-radius: 50%;
   width: 1.75em;
   height: 1.75em;

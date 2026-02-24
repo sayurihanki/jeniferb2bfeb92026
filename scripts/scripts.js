@@ -210,14 +210,18 @@ async function loadEager(doc) {
 
   const main = doc.querySelector('main');
   if (main) {
+    // Always decorate CMS content first (hero-4 normalization, block decoration, etc.).
+    // Commerce bootstrapping can fail (e.g. missing config) and should not prevent the page from rendering.
+    decorateMain(main);
+    applyTemplates(doc);
+
     try {
       await initializeCommerce();
-      decorateMain(main);
-      applyTemplates(doc);
       await loadCommerceEager();
     } catch (e) {
-      console.error('Error initializing commerce configuration:', e);
-      loadErrorPage(418);
+      // Keep the page usable even if commerce config is incomplete.
+      // eslint-disable-next-line no-console
+      console.warn('Commerce initialization failed:', e);
     }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

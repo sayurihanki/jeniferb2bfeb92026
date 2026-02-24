@@ -1,0 +1,192 @@
+@use '../tokens' as *;
+@use '../mixins' as *;
+
+/* Shared section utils */
+.wrap { max-width: 1380px; margin: 0 auto; padding: 0 52px; }
+
+.sec-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: var(--flame);
+  text-transform: uppercase;
+}
+.sec-tag::before { content: '//'; color: var(--ice-dim); opacity: 0.5; }
+
+.sec-h {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: 0.93;
+  letter-spacing: 0.02em;
+}
+.sec-h .hl { color: var(--ice); }
+.sec-h .hf { color: var(--flame); }
+
+/* Reveal */
+.r {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.r.on { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+
+/* ═══ PRODUCTS / CARDS ═══ */
+#products {
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.prod-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 60px;
+}
+.prod-intro p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.pcard {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(145deg,
+    rgba(255,255,255,0.07) 0%,
+    rgba(255,255,255,0.025) 100%);
+  border: 1px solid var(--rim);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  min-height: 260px;
+  cursor: none;
+  transition:
+    transform $hover-duration cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s,
+    box-shadow 0.4s;
+}
+.pcard:first-child { grid-row: span 2; min-height: auto; }
+
+.pcard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.pcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 35% at 50% 0%, rgba(184,223,240,0.07), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.pcard:hover {
+  transform: translateY($hover-translate) scale($hover-scale);
+  border-color: rgba(184,223,240,0.22);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.4), 0 0 0 1px rgba(184,223,240,0.07);
+}
+.pcard:hover::before { opacity: 1; }
+.pcard:hover::after { opacity: 1; }
+
+.pcard-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.13;
+  transition: opacity 0.45s;
+}
+.pcard:hover .pcard-visual { opacity: 0.28; }
+
+/* SVG anims — cap pulse opacity */
+.sp-cw  { animation: spCw 10s linear infinite; transform-origin: center; }
+.sp-ccw { animation: spCcw 8s linear infinite; transform-origin: center; }
+.sp-cw2 { animation: spCw 14s linear infinite; transform-origin: center; }
+.pulse  { animation: svgPulse 3s ease-in-out infinite; }
+.dash   { stroke-dasharray: 6 4; animation: dashFlow 1.8s linear infinite; }
+.dashr  { stroke-dasharray: 6 4; animation: dashFlow 1.8s linear infinite reverse; }
+@keyframes spCw   { to { transform: rotate(360deg); } }
+@keyframes spCcw  { to { transform: rotate(-360deg); } }
+@keyframes svgPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes dashFlow { to { stroke-dashoffset: -20; } }
+
+.pcard-foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 26px 22px;
+  background: linear-gradient(to top, rgba(7,13,24,0.97) 0%, rgba(7,13,24,0.65) 55%, transparent 100%);
+}
+.pcard-cat {
+  font-family: var(--font-mono);
+  font-size: 0.53rem;
+  letter-spacing: 0.25em;
+  color: var(--flame);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.pcard-name {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+.pcard-desc {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease, opacity 0.35s;
+  opacity: 0;
+}
+.pcard:hover .pcard-desc { max-height: 80px; opacity: 1; }
+
+.pcard-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--rim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--muted);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s;
+  @include focus-visible-flame;
+}
+.pcard:hover .pcard-btn {
+  border-color: rgba(232,98,42,0.55);
+  color: var(--flame);
+  transform: rotate(45deg);
+  box-shadow: 0 0 16px rgba(232,98,42,0.2);
+}

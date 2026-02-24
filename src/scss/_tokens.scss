@@ -1,0 +1,42 @@
+/* ARCTIS theme — design tokens (CSS vars + SCSS fallbacks) */
+:root {
+  --void:     #070d18;
+  --deep:     #0a1322;
+  --navy:     #0f1e34;
+  --steel:    #162840;
+  --ice:      #b8dff0;
+  --ice-dim:  rgba(184,223,240,0.5);
+  --ice-faint: rgba(184,223,240,0.08);
+  --flame:    #e8622a;
+  --flame-lo: rgba(232,98,42,0.15);
+  --flame-mid: rgba(232,98,42,0.28);
+  --white:    #eaf4fa;
+  --muted:    rgba(184,210,228,0.48);
+  --glass:    rgba(255,255,255,0.055);
+  --glass-hi: rgba(255,255,255,0.1);
+  --rim:      rgba(255,255,255,0.08);
+  --rim-hi:   rgba(255,255,255,0.18);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+$void:     #070d18;
+$deep:     #0a1322;
+$navy:     #0f1e34;
+$steel:    #162840;
+$ice:      #b8dff0;
+$ice-dim:  rgba(184,223,240,0.5);
+$ice-faint: rgba(184,223,240,0.08);
+$flame:    #e8622a;
+$flame-lo: rgba(232,98,42,0.15);
+$flame-mid: rgba(232,98,42,0.28);
+$white:    #eaf4fa;
+$muted:    rgba(184,210,228,0.48);
+$glass:    rgba(255,255,255,0.055);
+$glass-hi: rgba(255,255,255,0.1);
+$rim:      rgba(255,255,255,0.08);
+$rim-hi:   rgba(255,255,255,0.18);
+$font-display: 'Bebas Neue', sans-serif;
+$font-body:    'DM Sans', sans-serif;
+$font-mono:    'DM Mono', monospace;

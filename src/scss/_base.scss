@@ -1,0 +1,72 @@
+@use 'tokens' as *;
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.45;
+}
+
+/* ═══ CURSOR (CSS) ═══ */
+#dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: var(--flame);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s;
+}
+#ring {
+  position: fixed;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(184,223,240,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, border-color 0.25s;
+}
+body:has(a:hover) #ring,
+body:has(button:hover) #ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--flame);
+}
+body:has(.pcard:hover) #ring {
+  width: 56px;
+  height: 56px;
+  border-color: var(--ice);
+}
+
+/* ═══ BACKGROUND GLOWS ═══ */
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 12%, rgba(100,180,230,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 8% 80%, rgba(100,160,210,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 35% at 50% 50%, rgba(232,98,42,0.025) 0%, transparent 65%);
+}

@@ -1,0 +1,27 @@
+@use '../tokens' as *;
+
+.marquee-strip {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: rgba(232,98,42,0.08);
+  border-top: 1px solid rgba(232,98,42,0.18);
+  border-bottom: 1px solid rgba(232,98,42,0.18);
+  padding: 12px 0;
+}
+.marquee-inner {
+  display: inline-flex;
+  animation: mRoll 28s linear infinite;
+  white-space: nowrap;
+}
+.m-seg {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: rgba(232,98,42,0.7);
+  text-transform: uppercase;
+  padding: 0 28px;
+}
+.m-dot { color: var(--ice-dim); opacity: 0.6; margin: 0 4px; }
+@keyframes mRoll { to { transform: translateX(-50%); } }

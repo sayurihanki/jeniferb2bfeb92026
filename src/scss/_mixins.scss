@@ -1,0 +1,38 @@
+@use 'tokens' as *;
+@use 'sass:math';
+
+@mixin glass($blur: 20px, $alpha: 0.06, $border: rgba(255,255,255,0.06), $radius: 12px) {
+  background: linear-gradient(145deg, rgba(255,255,255,$alpha), rgba(184,223,240,math.div($alpha, 2)));
+  border: 1px solid $border;
+  backdrop-filter: blur($blur) saturate(1.2);
+  -webkit-backdrop-filter: blur($blur) saturate(1.2);
+  border-radius: $radius;
+}
+
+$hover-scale: 1.015;
+$hover-duration: 240ms;
+$hover-translate: -4px;
+
+.reduced-hover {
+  transition: transform $hover-duration ease, box-shadow $hover-duration ease;
+}
+.reduced-hover:hover {
+  transform: translateY($hover-translate) scale($hover-scale);
+}
+
+/* Keyboard focus — 2px subtle outline */
+@mixin focus-visible {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid var(--ice);
+    outline-offset: 2px;
+  }
+}
+
+@mixin focus-visible-flame {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid var(--flame);
+    outline-offset: 2px;
+  }
+}

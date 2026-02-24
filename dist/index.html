@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCTIS — Industrial HVAC Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <!-- CSS injected by main.js (Vite compiles SCSS in dev and extracts to dist/css/styles.css on build) -->
+  <script type="module" crossorigin src="/js/main.js"></script>
+  <link rel="stylesheet" crossorigin href="/css/styles.css">
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div id="dot"></div>
+<div id="ring"></div>
+
+<nav>
+  <a href="#" class="logo">ARC<span class="logo-accent">TIS</span>
+    <span class="logo-sub">Industrial HVAC · Est. 1987</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Systems</a></li>
+    <li><a href="#features">Technology</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#cta" class="nav-btn">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="tag-dash"></span>
+        <span class="tag-text">Precision HVAC Manufacturing</span>
+      </div>
+      <h1 class="hero-h1">
+        <span class="h1-line"><span class="h1-inner">MASTER</span></span>
+        <span class="h1-line"><span class="h1-inner"><span class="h1-ice">THE</span> CLIMATE.</span></span>
+        <span class="h1-line"><span class="h1-inner"><span class="h1-flame">OWN</span> THE SPACE.</span></span>
+      </h1>
+      <p class="hero-sub">ARCTIS manufactures ultra-precision HVAC systems for data centers, industrial plants, and mission-critical facilities. Built for the environments others abandon.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Explore Systems <span>→</span></a>
+        <a href="#features" class="btn-text">How it works <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-glass">
+      <div class="glass-header">
+        <span class="glass-title">Zone Alpha · Live</span>
+        <span class="badge-live"><span class="live-dot"></span> Online</span>
+      </div>
+      <div class="glass-temp">
+        <span class="temp-n" id="heroTemp">68.4</span>
+        <span class="temp-u">°F</span>
+      </div>
+      <div class="glass-zone">Supply Air Temperature · Zone A</div>
+      <div class="glass-divider"></div>
+      <div class="glass-bars">
+        <div class="bar-row">
+          <span class="bar-label">Cooling</span>
+          <div class="bar-track"><div class="bar-fill bf-1" style="width:87%"></div></div>
+          <span class="bar-val">87%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Heat reject</span>
+          <div class="bar-track"><div class="bar-fill bf-2" style="width:31%"></div></div>
+          <span class="bar-val">31%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Airflow</span>
+          <div class="bar-track"><div class="bar-fill bf-3" style="width:74%"></div></div>
+          <span class="bar-val">74%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Compressor</span>
+          <div class="bar-track"><div class="bar-fill bf-4" style="width:56%"></div></div>
+          <span class="bar-val">56%</span>
+        </div>
+      </div>
+      <div class="glass-footer">
+        <span class="sys-ok"><span class="live-dot"></span> All systems nominal</span>
+        <span class="zone-count">12 active zones</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n"><span id="s1">0</span><span class="hstat-u">+</span></div><div class="hstat-l">Installations worldwide</div></div>
+    <div class="hstat"><div class="hstat-n"><span id="s2">0</span><span class="hstat-u">%</span></div><div class="hstat-l">Efficiency rating</div></div>
+    <div class="hstat"><div class="hstat-n"><span id="s3">0</span><span class="hstat-u"> yr</span></div><div class="hstat-l">Industry experience</div></div>
+    <div class="hstat"><div class="hstat-n"><span id="s4">0</span><span class="hstat-u">K</span></div><div class="hstat-l">Tons cooling capacity</div></div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="m-seg">Industrial HVAC<span class="m-dot">·</span>Precision Cooling<span class="m-dot">·</span>Magnetic Bearing Chillers<span class="m-dot">·</span>Air Handling Units<span class="m-dot">·</span>Heat Exchangers<span class="m-dot">·</span>Ductwork Systems<span class="m-dot">·</span>BMS Integration<span class="m-dot">·</span>ISO 9001 Certified<span class="m-dot">·</span></span>
+    <span class="m-seg">Industrial HVAC<span class="m-dot">·</span>Precision Cooling<span class="m-dot">·</span>Magnetic Bearing Chillers<span class="m-dot">·</span>Air Handling Units<span class="m-dot">·</span>Heat Exchangers<span class="m-dot">·</span>Ductwork Systems<span class="m-dot">·</span>BMS Integration<span class="m-dot">·</span>ISO 9001 Certified<span class="m-dot">·</span></span>
+    <span class="m-seg">Industrial HVAC<span class="m-dot">·</span>Precision Cooling<span class="m-dot">·</span>Magnetic Bearing Chillers<span class="m-dot">·</span>Air Handling Units<span class="m-dot">·</span>Heat Exchangers<span class="m-dot">·</span>Ductwork Systems<span class="m-dot">·</span>BMS Integration<span class="m-dot">·</span>ISO 9001 Certified<span class="m-dot">·</span></span>
+    <span class="m-seg">Industrial HVAC<span class="m-dot">·</span>Precision Cooling<span class="m-dot">·</span>Magnetic Bearing Chillers<span class="m-dot">·</span>Air Handling Units<span class="m-dot">·</span>Heat Exchangers<span class="m-dot">·</span>Ductwork Systems<span class="m-dot">·</span>BMS Integration<span class="m-dot">·</span>ISO 9001 Certified<span class="m-dot">·</span></span>
+  </div>
+</div>
+
+<section id="products">
+  <div class="wrap">
+    <div class="prod-intro">
+      <div>
+        <div class="sec-tag r">Product Systems</div>
+        <h2 class="sec-h r">ENGINEERED<br><span class="hl">FOR THE</span> <span class="hf">EXTREME</span></h2>
+      </div>
+      <p class="r d1">Every Arctis system is designed from first principles for the application. No off-the-shelf compromises — each unit custom-configured, pressure-tested, and run-tested before leaving the facility.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="pcard r">
+        <div class="pcard-visual">
+          <svg width="310" height="420" viewBox="0 0 310 420" fill="none">
+            <rect x="55" y="80" width="200" height="130" rx="5" stroke="#b8dff0" stroke-width="1.4"/>
+            <g class="sp-cw" style="transform-origin:108px 145px">
+              <circle cx="108" cy="145" r="30" stroke="#b8dff0" stroke-width="1.1"/>
+              <path d="M108 115 Q118 130 108 145 Q98 130 108 115Z" fill="#b8dff0" opacity="0.45"/>
+              <path d="M138 145 Q123 155 108 145 Q123 135 138 145Z" fill="#b8dff0" opacity="0.45"/>
+              <path d="M108 175 Q98 160 108 145 Q118 160 108 175Z" fill="#b8dff0" opacity="0.45"/>
+              <path d="M78 145 Q93 135 108 145 Q93 155 78 145Z" fill="#b8dff0" opacity="0.45"/>
+              <circle cx="108" cy="145" r="9" fill="#b8dff0" opacity="0.4"/>
+            </g>
+            <rect x="160" y="93" width="80" height="67" rx="4" stroke="#e8622a" stroke-width="1.1"/>
+            <g class="sp-ccw" style="transform-origin:200px 127px">
+              <circle cx="200" cy="127" r="20" stroke="#e8622a" stroke-width="1"/>
+              <path d="M200 107 L207 120 L200 127 L193 120Z" fill="#e8622a" opacity="0.4"/>
+              <path d="M220 127 L207 134 L200 127 L207 120Z" fill="#e8622a" opacity="0.4"/>
+              <path d="M200 147 L193 134 L200 127 L207 134Z" fill="#e8622a" opacity="0.4"/>
+              <path d="M180 127 L193 120 L200 127 L193 134Z" fill="#e8622a" opacity="0.4"/>
+              <circle cx="200" cy="127" r="7" fill="#e8622a" opacity="0.4"/>
+            </g>
+            <rect x="55" y="210" width="90" height="22" rx="3" stroke="#b8dff0" stroke-width="1"/>
+            <rect x="165" y="210" width="90" height="22" rx="3" stroke="#b8dff0" stroke-width="1"/>
+            <line x1="55" y1="175" x2="55" y2="210" stroke="#b8dff0" stroke-width="1" class="dash"/>
+            <line x1="255" y1="175" x2="255" y2="210" stroke="#e8622a" stroke-width="1" class="dashr"/>
+            <path d="M100 232 Q155 262 210 232" stroke="#b8dff0" stroke-width="0.75" fill="none" stroke-dasharray="4,3" class="pulse"/>
+            <rect x="120" y="280" width="70" height="46" rx="4" stroke="#b8dff0" stroke-width="1"/>
+            <circle cx="140" cy="296" r="5" fill="#66ccaa" opacity="0.55" class="pulse"/>
+            <circle cx="155" cy="296" r="5" fill="#e8622a" opacity="0.5"/>
+            <circle cx="170" cy="296" r="5" fill="#b8dff0" opacity="0.35"/>
+            <line x1="130" y1="310" x2="180" y2="310" stroke="#b8dff0" stroke-width="0.7" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="pcard-btn">+</div>
+        <div class="pcard-foot">
+          <div class="pcard-cat">Flagship Series</div>
+          <div class="pcard-name">Rooftop Central Units</div>
+          <div class="pcard-desc">Handles 5–100+ tons. Redundant systems, AI diagnostics, built for 24/7 operation.</div>
+        </div>
+      </div>
+      <div class="pcard r d1">
+        <div class="pcard-visual">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <g class="sp-cw"><circle cx="100" cy="100" r="72" stroke="#b8dff0" stroke-width="1.1" stroke-dasharray="7 5"/></g>
+            <circle cx="100" cy="100" r="50" stroke="#b8dff0" stroke-width="0.7" opacity="0.5"/>
+            <g class="sp-ccw"><circle cx="100" cy="100" r="30" stroke="#e8622a" stroke-width="1" stroke-dasharray="4 4"/></g>
+            <circle cx="100" cy="100" r="14" fill="rgba(184,223,240,0.1)" stroke="#b8dff0" stroke-width="1.3"/>
+            <circle cx="100" cy="100" r="5" fill="#b8dff0" class="pulse"/>
+            <line x1="100" y1="28" x2="100" y2="52" stroke="#b8dff0" stroke-width="1" class="dash"/>
+            <line x1="100" y1="148" x2="100" y2="172" stroke="#b8dff0" stroke-width="1" class="dash"/>
+            <line x1="28" y1="100" x2="52" y2="100" stroke="#e8622a" stroke-width="1" class="dashr"/>
+            <line x1="148" y1="100" x2="172" y2="100" stroke="#e8622a" stroke-width="1" class="dashr"/>
+          </svg>
+        </div>
+        <div class="pcard-btn">+</div>
+        <div class="pcard-foot">
+          <div class="pcard-cat">Cooling Series</div>
+          <div class="pcard-name">Magnetic Bearing Chillers</div>
+          <div class="pcard-desc">COP up to 6.8. Frictionless. Near-zero maintenance.</div>
+        </div>
+      </div>
+      <div class="pcard r d2">
+        <div class="pcard-visual">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <rect x="18" y="68" width="164" height="64" rx="4" stroke="#b8dff0" stroke-width="1.3"/>
+            <rect x="34" y="80" width="40" height="40" rx="2" stroke="#b8dff0" stroke-width="1"/>
+            <rect x="126" y="80" width="40" height="40" rx="2" stroke="#e8622a" stroke-width="1"/>
+            <path d="M38 88 L45 96 L52 88 L59 96 L66 88" stroke="#b8dff0" stroke-width="1.4" fill="none"/>
+            <path d="M38 102 L45 110 L52 102 L59 110 L66 102" stroke="#b8dff0" stroke-width="1.4" fill="none"/>
+            <path d="M130 88 L137 96 L144 88 L151 96 L158 88" stroke="#e8622a" stroke-width="1.4" fill="none"/>
+            <path d="M130 102 L137 110 L144 102 L151 110 L158 102" stroke="#e8622a" stroke-width="1.4" fill="none"/>
+            <line x1="0" y1="82" x2="18" y2="82" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <line x1="0" y1="100" x2="18" y2="100" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <line x1="0" y1="118" x2="18" y2="118" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <line x1="182" y1="82" x2="200" y2="82" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <line x1="182" y1="100" x2="200" y2="100" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <line x1="182" y1="118" x2="200" y2="118" stroke="#b8dff0" stroke-width="0.8" class="dash"/>
+            <g class="sp-cw" style="transform-origin:100px 100px">
+              <circle cx="100" cy="100" r="14" stroke="#b8dff0" stroke-width="0.8" opacity="0.6"/>
+              <line x1="100" y1="86" x2="100" y2="114" stroke="#b8dff0" stroke-width="0.8" opacity="0.5"/>
+              <line x1="86" y1="100" x2="114" y2="100" stroke="#b8dff0" stroke-width="0.8" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="pcard-btn">+</div>
+        <div class="pcard-foot">
+          <div class="pcard-cat">Ventilation Series</div>
+          <div class="pcard-name">Air Handling Units</div>
+          <div class="pcard-desc">Precision humidity control, HEPA filtration, custom configs.</div>
+        </div>
+      </div>
+      <div class="pcard r d1" style="background:linear-gradient(145deg,rgba(184,223,240,0.06),rgba(255,255,255,0.02))">
+        <div class="pcard-visual">
+          <svg width="180" height="180" viewBox="0 0 180 180" fill="none">
+            <rect x="28" y="28" width="124" height="124" rx="10" stroke="#b8dff0" stroke-width="1.3"/>
+            <g class="sp-cw" style="transform-origin:90px 90px">
+              <circle cx="90" cy="90" r="36" stroke="#b8dff0" stroke-width="1" stroke-dasharray="5 5"/>
+            </g>
+            <circle cx="90" cy="90" r="20" fill="rgba(184,223,240,0.06)" stroke="#b8dff0" stroke-width="1.1"/>
+            <circle cx="90" cy="90" r="7" fill="#b8dff0" opacity="0.45" class="pulse"/>
+            <circle cx="90" cy="54" r="4" fill="#e8622a" opacity="0.65" class="pulse"/>
+            <circle cx="90" cy="126" r="4" fill="#e8622a" opacity="0.65" class="pulse"/>
+            <circle cx="54" cy="90" r="4" fill="#e8622a" opacity="0.65" class="pulse"/>
+            <circle cx="126" cy="90" r="4" fill="#e8622a" opacity="0.65" class="pulse"/>
+            <line x1="44" y1="44" x2="60" y2="62" stroke="#b8dff0" stroke-width="0.7" opacity="0.25"/>
+            <line x1="136" y1="44" x2="120" y2="62" stroke="#b8dff0" stroke-width="0.7" opacity="0.25"/>
+            <line x1="44" y1="136" x2="60" y2="118" stroke="#b8dff0" stroke-width="0.7" opacity="0.25"/>
+            <line x1="136" y1="136" x2="120" y2="118" stroke="#b8dff0" stroke-width="0.7" opacity="0.25"/>
+          </svg>
+        </div>
+        <div class="pcard-btn">+</div>
+        <div class="pcard-foot">
+          <div class="pcard-cat">Smart Controls</div>
+          <div class="pcard-name">BMS Integration</div>
+          <div class="pcard-desc">BACnet/IP cloud-connected with AI load scheduling.</div>
+        </div>
+      </div>
+      <div class="pcard r d2">
+        <div class="pcard-visual">
+          <svg width="190" height="190" viewBox="0 0 190 190" fill="none">
+            <path d="M18 95 H88 V48 H172" stroke="#b8dff0" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M88 95 V148 H172" stroke="#e8622a" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <circle cx="18" cy="95" r="10" fill="rgba(184,223,240,0.15)" stroke="#b8dff0" stroke-width="1" class="pulse"/>
+            <circle cx="172" cy="48" r="9" fill="rgba(184,223,240,0.12)" stroke="#b8dff0" stroke-width="1" class="pulse"/>
+            <circle cx="172" cy="148" r="9" fill="rgba(232,98,42,0.15)" stroke="#e8622a" stroke-width="1" class="pulse"/>
+            <rect x="114" y="42" width="22" height="12" rx="2" stroke="#b8dff0" stroke-width="0.9" opacity="0.55"/>
+            <line x1="119" y1="42" x2="119" y2="54" stroke="#b8dff0" stroke-width="1.4"/>
+            <line x1="125" y1="42" x2="125" y2="54" stroke="#b8dff0" stroke-width="1.4"/>
+            <line x1="131" y1="42" x2="131" y2="54" stroke="#b8dff0" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="pcard-btn">+</div>
+        <div class="pcard-foot">
+          <div class="pcard-cat">Distribution</div>
+          <div class="pcard-name">Ductwork Systems</div>
+          <div class="pcard-desc">Stainless and galvanized for any facility layout.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="feat-layout">
+      <div class="r">
+        <div class="sec-tag" style="margin-bottom:18px">System Technology</div>
+        <h2 class="sec-h" style="margin-bottom:48px">PRECISION IS<br>NOT <span class="hf">OPTIONAL</span></h2>
+        <div class="monitor-glass">
+          <div class="mg-bar">
+            <div class="mg-dot"></div><div class="mg-dot"></div><div class="mg-dot"></div>
+            <span class="mg-label">Live System Monitor — Zone Alpha</span>
+          </div>
+          <div class="mg-body">
+            <div class="mg-readout">
+              <span class="mg-temp-n" id="featTemp">68.4</span>
+              <span class="mg-temp-u">°F</span>
+            </div>
+            <div class="mg-zone">Supply Air Temperature · Zone Alpha</div>
+            <div class="mg-split"></div>
+            <div class="mg-metrics">
+              <div class="mg-metric">
+                <div class="mg-mh"><span class="mg-mn">Cooling load</span><span class="mg-mv">87%</span></div>
+                <div class="mg-bg"><div class="mg-fill mgf-a" style="width:87%"></div></div>
+              </div>
+              <div class="mg-metric">
+                <div class="mg-mh"><span class="mg-mn">Heat rejection</span><span class="mg-mv">31%</span></div>
+                <div class="mg-bg"><div class="mg-fill mgf-b" style="width:31%"></div></div>
+              </div>
+              <div class="mg-metric">
+                <div class="mg-mh"><span class="mg-mn">Airflow CFM</span><span class="mg-mv">74%</span></div>
+                <div class="mg-bg"><div class="mg-fill mgf-c" style="width:74%"></div></div>
+              </div>
+              <div class="mg-metric">
+                <div class="mg-mh"><span class="mg-mn">Compressor</span><span class="mg-mv">56%</span></div>
+                <div class="mg-bg"><div class="mg-fill mgf-d" style="width:56%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="mg-footer">
+            <span class="mg-ok"><span class="live-dot"></span> All systems nominal</span>
+            <span class="mg-zones">12 active zones</span>
+          </div>
+        </div>
+      </div>
+      <div class="feat-list r d2">
+        <div class="feat-item">
+          <div class="feat-num">01</div>
+          <div>
+            <div class="feat-title">AI Load Prediction</div>
+            <div class="feat-body">Machine learning analyses 200+ real-time variables to pre-condition spaces before demand peaks — cutting energy costs by up to 34%.</div>
+            <span class="feat-tag">Predictive Analytics</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num">02</div>
+          <div>
+            <div class="feat-title">Magnetic Bearing Compressors</div>
+            <div class="feat-body">Frictionless levitation eliminates wear parts entirely. Vibration near zero. Full-load efficiencies no conventional compressor can match.</div>
+            <span class="feat-tag">MagLev Technology</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num">03</div>
+          <div>
+            <div class="feat-title">Remote Diagnostics 24/7</div>
+            <div class="feat-body">1,400+ data points per second streamed to our NOC. Fault prediction 72 hours before failure. Guaranteed response time.</div>
+            <span class="feat-tag">IoT · Cloud Connected</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num">04</div>
+          <div>
+            <div class="feat-title">Modular Architecture</div>
+            <div class="feat-body">Field-upgradeable modules. Scale from 5 to 500 tons without replacing core infrastructure. Future-proof by design.</div>
+            <span class="feat-tag">Scalable Platform</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-num">05</div>
+          <div>
+            <div class="feat-title">Military-Grade Build</div>
+            <div class="feat-body">G90 galvanized steel. NEMA 4X rated controls. Proven from −40°F to +140°F. Built for environments others abandon.</div>
+            <span class="feat-tag">MIL-SPEC Materials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="proc-intro">
+      <div>
+        <div class="sec-tag r">How We Work</div>
+        <h2 class="sec-h r">BLUEPRINT<br>TO <span class="hl">BREATHABLE</span></h2>
+      </div>
+      <p class="r d1">Every Arctis project follows a proven five-phase methodology. Our engineers stay with you from site assessment through lifetime support — no handoffs.</p>
+    </div>
+    <div class="proc-steps r">
+      <div class="proc-step">
+        <div class="ps-n">01</div>
+        <div class="ps-title">Site Assessment</div>
+        <div class="ps-body">Thermal imaging, load calculations, infrastructure audit by certified ASHRAE engineers.</div>
+        <span class="ps-icon">↗</span>
+      </div>
+      <div class="proc-step">
+        <div class="ps-n">02</div>
+        <div class="ps-title">Custom Design</div>
+        <div class="ps-body">Full BIM integration and CFD computational airflow simulation for every project.</div>
+        <span class="ps-icon">↗</span>
+      </div>
+      <div class="proc-step">
+        <div class="ps-n">03</div>
+        <div class="ps-title">Manufacturing</div>
+        <div class="ps-body">ISO 9001 facility. Every unit pressure-tested and run-tested before shipping.</div>
+        <span class="ps-icon">↗</span>
+      </div>
+      <div class="proc-step">
+        <div class="ps-n">04</div>
+        <div class="ps-title">Installation</div>
+        <div class="ps-body">Factory-trained crews. Zero-interference commissioning. On-time guarantee.</div>
+        <span class="ps-icon">↗</span>
+      </div>
+      <div class="proc-step">
+        <div class="ps-n">05</div>
+        <div class="ps-title">Lifetime Support</div>
+        <div class="ps-body">Preventive maintenance with guaranteed response and 20-year parts availability.</div>
+        <span class="ps-icon">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-glass r">
+      <div class="cta-bg">ARCTIS</div>
+      <div>
+        <div class="cta-eye">// Ready to build?</div>
+        <h2 class="cta-h">LET'S BUILD<br>YOUR <span class="chl">SYSTEM</span></h2>
+        <p class="cta-p">Speak with an Arctis engineer. We'll spec your entire project — no commitment required. Most proposals delivered within 48 hours.</p>
+      </div>
+      <div class="cta-side">
+        <a href="#" class="btn-cta">Request a Quote</a>
+        <span class="cta-sub">or call 1-800-ARCTIS-1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="#" class="ft-logo">ARC<span>TIS</span></a>
+    <div class="ft-desc">Industrial HVAC systems engineered to survive the environments others abandon. Precision manufactured since 1987.</div>
+    <div class="ft-badges">
+      <span class="ft-badge">ISO 9001</span>
+      <span class="ft-badge">AHRI Certified</span>
+      <span class="ft-badge">ASHRAE</span>
+      <span class="ft-badge">NEMA 4X</span>
+    </div>
+  </div>
+  <div>
+    <h4>Systems</h4>
+    <ul>
+      <li><a href="#">Rooftop Units</a></li>
+      <li><a href="#">Chillers</a></li>
+      <li><a href="#">Air Handlers</a></li>
+      <li><a href="#">Ductwork</a></li>
+      <li><a href="#">Controls</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">About Arctis</a></li>
+      <li><a href="#">Manufacturing</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Case Studies</a></li>
+      <li><a href="#">Careers</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="#">1-800-ARCTIS-1</a></li>
+      <li><a href="#">engineering@arctis.com</a></li>
+      <li><a href="#">Dealer Portal</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2026 ARCTIS Industrial HVAC Systems Corp. All rights reserved.</span>
+    <span class="ft-copy">ISO 9001 · AHRI Certified · ASHRAE Member · NEMA 4X</span>
+  </div>
+</footer>
+
+</body>
+</html>

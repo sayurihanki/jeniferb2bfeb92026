@@ -1,0 +1,46 @@
+@use '../tokens' as *;
+@use '../mixins' as *;
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rim);
+  background: rgba(7,13,24,0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.hstat {
+  padding: 26px 44px;
+  border-right: 1px solid var(--rim);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.3s;
+}
+.hstat:last-child { border-right: none; }
+.hstat::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--flame), rgba(232,98,42,0));
+  transition: width 0.5s ease;
+}
+.hstat:hover { background: rgba(184,223,240,0.025); }
+.hstat:hover::after { width: 100%; }
+.hstat-n {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--white);
+}
+.hstat-u { font-size: 1.3rem; color: var(--flame); }
+.hstat-l {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 4px;
+}

@@ -33,8 +33,23 @@ function getCellText(cell, fallback = '') {
 }
 
 function getCellLines(cell, fallback = []) {
-  const raw = cell?.innerText || '';
-  const lines = raw.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (!cell) return fallback;
+
+  const html = cell.innerHTML || '';
+  const text = cell.textContent || '';
+
+  // Support authored line breaks as <br>, escaped <br>, or real line breaks.
+  const normalized = html
+    ? html
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/&lt;br\s*\/?&gt;/gi, '\n')
+      .replace(/<\/p>\s*<p>/gi, '\n')
+    : text.replace(/<br\s*\/?>/gi, '\n');
+
+  const parser = document.createElement('div');
+  parser.innerHTML = normalized;
+  const plain = (parser.textContent || '').replace(/\r\n/g, '\n');
+  const lines = plain.split('\n').map((line) => line.trim()).filter(Boolean);
   return lines.length ? lines : fallback;
 }
 
@@ -90,7 +105,7 @@ function sanitizeHref(href, fallbackHref) {
   try {
     const parsed = new URL(raw, window.location.origin);
     return SAFE_PROTOCOLS.has(parsed.protocol) ? raw : fallbackHref;
-  } catch {
+  } catch (e) {
     return fallbackHref;
   }
 }
@@ -183,7 +198,7 @@ export default function decorate(block) {
   shell.setAttribute('data-arctis-stagger', '1');
 
   const media = createElement('div', 'hero-4-media');
-  const image = backgroundCell?.querySelector('picture img');
+  const image = backgroundCell?.querySelector('picture img, img');
   if (image) {
     media.append(createOptimizedPicture(image.src, image.alt || '', false, [{ width: '2000' }, { width: '750' }]));
   }

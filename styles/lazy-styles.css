@@ -50,3 +50,24 @@ footer .footer {
   backdrop-filter: blur(24px) saturate(1.2) !important;
   -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
 }
+
+/* Nav dropdown + tools panels — glass (arctis-v4 style) */
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper {
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 40%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  backdrop-filter: blur(32px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+header nav .nav-tools-panel {
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 40%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  backdrop-filter: blur(32px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}

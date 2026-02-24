@@ -19,6 +19,19 @@
     document.body.appendChild(ring);
   }
 
+  function injectSkipLink() {
+    const main = document.querySelector('main');
+    if (main && !main.id) main.id = 'main-content';
+
+    if (document.querySelector('a[href="#main-content"]')) return;
+
+    const skip = document.createElement('a');
+    skip.href = '#main-content';
+    skip.textContent = 'Skip to main content';
+    skip.className = 'arctis-skip-link';
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
+
   function initCursor() {
     const dot = document.getElementById('arctis-dot');
     const ring = document.getElementById('arctis-ring');
@@ -73,11 +86,13 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       injectElements();
+      injectSkipLink();
       initCursor();
       initScrollReveal();
     });
   } else {
     injectElements();
+    injectSkipLink();
     initCursor();
     initScrollReveal();
   }

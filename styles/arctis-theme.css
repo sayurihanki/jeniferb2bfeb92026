@@ -15,7 +15,7 @@
   --flame-lo: rgba(232, 98, 42, 0.15);
   --flame-mid: rgba(232, 98, 42, 0.28);
   --white: #eaf4fa;
-  --muted: rgba(184, 210, 228, 0.48);
+  --muted: rgba(184, 210, 228, 0.65);
   --glass: rgba(255, 255, 255, 0.055);
   --glass-hi: rgba(255, 255, 255, 0.1);
   --rim: rgba(255, 255, 255, 0.08);
@@ -202,6 +202,86 @@ header nav .nav-sections .default-content-wrapper > ul > li > a::after {
 header nav .nav-sections .default-content-wrapper > ul > li > a:hover::after,
 header nav .nav-sections .default-content-wrapper > ul > li.active > a::after {
   width: 100%;
+}
+
+/* ─── Nav dropdown — glass (like arctis-v4 hero-glass) ─── */
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper {
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 40%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(32px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 var(--rim-hi),
+    inset 0 0 40px rgba(184, 223, 240, 0.02) !important;
+  isolation: isolate;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.5), transparent);
+  pointer-events: none;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li ul > li a {
+  color: var(--muted) !important;
+  transition: color 0.25s, background-color 0.2s !important;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li ul > li a:hover {
+  color: var(--white) !important;
+  background-color: rgba(184, 223, 240, 0.08) !important;
+}
+
+/* ─── Nav tools panels (search, cart, auth) — glass ─── */
+header nav .nav-tools-panel {
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 40%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(32px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 var(--rim-hi) !important;
+  isolation: isolate;
+}
+
+header nav .nav-tools {
+  background: transparent !important;
+}
+
+/* Nav panel content — dark theme */
+header .nav-search-panel input,
+header .nav-search-panel .dropin-input-container input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--rim) !important;
+  color: var(--white) !important;
+}
+
+header .nav-search-panel input::placeholder {
+  color: var(--muted);
+}
+
+/* Minicart / panels — overscroll per Web Interface Guidelines */
+header nav .nav-tools-panel {
+  overscroll-behavior: contain;
+}
+
+/* Overlay — glassy dark ─── */
+.overlay {
+  background: rgba(7, 13, 24, 0.5) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* ─── Main ─── */
@@ -570,12 +650,36 @@ a.button:hover,
   box-shadow: 0 0 24px rgba(232, 98, 42, 0.25) !important;
 }
 
-/* Focus visible — soft glow */
+/* Focus visible — WCAG 2.4.7, high-contrast ring */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+[tabindex="0"]:focus-visible {
   outline: 2px solid var(--ice);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(184, 223, 240, 0.3);
+  box-shadow: 0 0 0 4px rgba(184, 223, 240, 0.35);
+}
+
+/* Skip link for accessibility (WCAG 2.4.1) */
+a.arctis-skip-link,
+a[href="#main-content"] {
+  position: absolute;
+  left: -9999px;
+  z-index: 99999;
+  padding: 0.75rem 1.25rem;
+  background: var(--flame);
+  color: var(--void);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+a.arctis-skip-link:focus,
+a[href="#main-content"]:focus {
+  left: 1rem;
+  top: 1rem;
+  outline: 2px solid var(--ice);
+  outline-offset: 2px;
 }
 
 /* ─── Keyframes ─── */

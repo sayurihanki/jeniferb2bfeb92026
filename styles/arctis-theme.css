@@ -49,8 +49,10 @@
 }
 
 /* ─── Base ─── */
+/* Dark theme per Web Interface Guidelines */
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -60,6 +62,8 @@ body {
   font-weight: 300;
   cursor: none;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(184, 223, 240, 0.2);
+  touch-action: manipulation;
 }
 
 body::after {
@@ -124,13 +128,15 @@ body:has(.cards-circular > ul > li:hover) #arctis-ring {
 }
 
 /* ─── Header — layered glass with top-edge highlight ─── */
+/* More transparent (0.55) so backdrop-filter blur is visible; isolation for stacking context */
 header .nav-wrapper {
   position: relative;
-  background: rgba(7, 13, 24, 0.75) !important;
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  background: rgba(7, 13, 24, 0.55) !important;
+  backdrop-filter: blur(32px) saturate(1.5) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.5) !important;
   border-bottom: 1px solid var(--rim) !important;
   box-shadow: inset 0 1px 0 var(--rim-subtle);
+  isolation: isolate;
 }
 
 header .nav-wrapper::before {
@@ -211,18 +217,19 @@ main > .section:has(.cards-circular),
 main > .section:has(.luxury-events),
 main > .section:has(.newsletter) {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.02) 0%,
-    transparent 30%,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(184, 223, 240, 0.02) 30%,
     transparent 70%,
-    rgba(184, 223, 240, 0.02) 100%);
-  border: 1px solid var(--rim-subtle);
+    rgba(184, 223, 240, 0.03) 100%) !important;
+  border: 1px solid var(--rim-subtle) !important;
   border-radius: 20px;
   padding: var(--spacing-big, 32px) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 80px rgba(184, 223, 240, 0.015);
+  backdrop-filter: blur(16px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.2) !important;
+  box-shadow: inset 0 0 80px rgba(184, 223, 240, 0.02), 0 4px 24px rgba(0, 0, 0, 0.2);
+  isolation: isolate;
 }
 
 /* ─── Promotional hero — layered glass + depth ─── */
@@ -231,18 +238,19 @@ main > .section:has(.newsletter) {
   overflow: hidden;
   border-radius: 18px;
   background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.075) 0%,
-    rgba(184, 223, 240, 0.04) 40%,
-    rgba(255, 255, 255, 0.025) 100%) !important;
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(184, 223, 240, 0.05) 40%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(40px) saturate(1.3);
-  -webkit-backdrop-filter: blur(40px) saturate(1.3);
+  backdrop-filter: blur(40px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(1.3) !important;
   box-shadow:
     0 36px 72px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 var(--rim-hi),
     inset 0 0 60px rgba(184, 223, 240, 0.015),
     inset 0 0 40px rgba(184, 223, 240, 0.02);
   transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+  isolation: isolate;
 }
 
 .promotional-hero-card::before {
@@ -311,17 +319,18 @@ main > .section:has(.newsletter) {
 /* Whitebox — glass panel with hover lift ─── */
 .promotional-hero-whitebox {
   background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(184, 223, 240, 0.04) 50%,
-    rgba(255, 255, 255, 0.02) 100%) !important;
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(184, 223, 240, 0.06) 50%,
+    rgba(255, 255, 255, 0.04) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  backdrop-filter: blur(24px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.3) !important;
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 var(--rim-hi);
   color: var(--white) !important;
   transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+  isolation: isolate;
 }
 
 .promotional-hero-card:hover .promotional-hero-whitebox {
@@ -337,15 +346,17 @@ main > .section:has(.newsletter) {
   position: relative;
 }
 
+/* Glass frame around circular image; image fills center, glass visible at edges/overlay */
 .cards-circular .cards-circular-item-image {
   position: relative;
   overflow: hidden;
   background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 255, 255, 0.025) 100%) !important;
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 50%,
+    rgba(255, 255, 255, 0.03) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(28px) saturate(1.2);
-  -webkit-backdrop-filter: blur(28px) saturate(1.2);
+  backdrop-filter: blur(28px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
   box-shadow:
     0 20px 48px rgba(0, 0, 0, 0.35),
     inset 0 0 60px rgba(184, 223, 240, 0.015);
@@ -353,6 +364,20 @@ main > .section:has(.newsletter) {
     transform 0.35s var(--ease-out-expo),
     border-color 0.35s,
     box-shadow 0.4s;
+  isolation: isolate;
+}
+
+/* Glass overlay on top of image — always visible, stronger on hover */
+.cards-circular .cards-circular-item-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184, 223, 240, 0.12), transparent 70%);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  transition: opacity 0.35s 0.05s;
+  z-index: 1;
 }
 
 .cards-circular .cards-circular-item-image::before {
@@ -365,17 +390,7 @@ main > .section:has(.newsletter) {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
   opacity: 0;
   transition: opacity 0.25s;
-  z-index: 1;
-}
-
-.cards-circular .cards-circular-item-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 35% at 50% 0%, rgba(184, 223, 240, 0.07), transparent);
-  opacity: 0;
-  transition: opacity 0.35s 0.05s;
-  pointer-events: none;
+  z-index: 2;
 }
 
 .cards-circular > ul > li:hover .cards-circular-item-image {
@@ -393,6 +408,7 @@ main > .section:has(.newsletter) {
 
 .cards-circular > ul > li:hover .cards-circular-item-image::after {
   opacity: 1;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184, 223, 240, 0.2), transparent 70%);
 }
 
 /* Shimmer on circular cards */
@@ -428,6 +444,19 @@ main > .section:has(.newsletter) {
 .cards-circular .cards-circular-item-body h5,
 .cards-circular .cards-circular-item-body h6 {
   color: var(--white) !important;
+  text-wrap: balance;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+/* Scroll margin for anchor links (Web Interface Guidelines) */
+.section h2,
+.section h3,
+.section h4 {
+  scroll-margin-top: 7rem;
 }
 
 .section p,
@@ -437,12 +466,13 @@ main > .section:has(.newsletter) {
 
 /* ─── Footer — hero-stats style glass ─── */
 footer .footer {
-  background: rgba(7, 13, 24, 0.65) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(7, 13, 24, 0.6) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
   border-top: 1px solid var(--rim) !important;
   box-shadow: inset 0 1px 0 var(--rim-subtle);
   color: var(--muted);
+  isolation: isolate;
 }
 
 footer .footer a {
@@ -469,22 +499,27 @@ footer .footer h4 {
   letter-spacing: 0.08em;
 }
 
-/* ─── Luxury events cards — glass ─── */
+/* ─── Luxury events — dark section + glass cards ─── */
+.luxury-events {
+  background: linear-gradient(180deg, var(--deep) 0%, var(--void) 100%) !important;
+}
+
 .luxury-events-card {
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(184, 223, 240, 0.03) 50%,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(184, 223, 240, 0.04) 50%,
     rgba(255, 255, 255, 0.02) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(24px) saturate(1.2);
-  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
   box-shadow:
     0 24px 48px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 var(--rim-hi),
     inset 0 0 40px rgba(184, 223, 240, 0.015);
   transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+  isolation: isolate;
 }
 
 .luxury-events-card:hover {
@@ -495,16 +530,26 @@ footer .footer h4 {
     0 0 24px rgba(184, 223, 240, 0.08);
 }
 
+.luxury-events-title h2,
+.luxury-events-title h3 {
+  color: var(--white) !important;
+}
+
+.luxury-events-subtitle {
+  color: var(--muted) !important;
+}
+
 /* ─── Newsletter — glass ─── */
 .newsletter {
   background: linear-gradient(135deg,
-    rgba(232, 98, 42, 0.12) 0%,
-    rgba(184, 223, 240, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 100%) !important;
-  border: 1px solid rgba(232, 98, 42, 0.2) !important;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: inset 0 1px 0 var(--rim-hi);
+    rgba(232, 98, 42, 0.15) 0%,
+    rgba(184, 223, 240, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%) !important;
+  border: 1px solid rgba(232, 98, 42, 0.25) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+  box-shadow: inset 0 1px 0 var(--rim-hi), 0 4px 24px rgba(0, 0, 0, 0.2);
+  isolation: isolate;
 }
 
 /* ─── Buttons — flame glow on hover ─── */
@@ -639,6 +684,15 @@ button:focus-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+
+  #arctis-dot,
+  #arctis-ring {
+    display: none;
   }
 }
 

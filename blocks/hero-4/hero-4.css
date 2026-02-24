@@ -1,0 +1,343 @@
+main .hero-4 {
+  position: relative;
+}
+
+main .hero-4 .hero-4-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  min-height: clamp(620px, 88vh, 900px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(6, 14, 26, 0.94) 0%, rgba(4, 10, 18, 0.98) 100%);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.42);
+}
+
+main .hero-4 .hero-4-media,
+main .hero-4 .hero-4-media picture,
+main .hero-4 .hero-4-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main .hero-4 .hero-4-media img {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.62) brightness(0.36) contrast(1.05);
+}
+
+main .hero-4 .hero-4-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 74% 34%, rgba(106, 170, 223, 0.2), transparent 58%),
+    linear-gradient(102deg, rgba(5, 12, 20, 0.94) 20%, rgba(5, 12, 20, 0.66) 52%, rgba(5, 12, 20, 0.92) 100%);
+}
+
+main .hero-4 .hero-4-ring,
+main .hero-4 .hero-4-ring::before,
+main .hero-4 .hero-4-ring::after {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(169, 216, 235, 0.09);
+}
+
+main .hero-4 .hero-4-ring {
+  width: 980px;
+  height: 980px;
+  right: -280px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+main .hero-4 .hero-4-ring::before,
+main .hero-4 .hero-4-ring::after {
+  content: '';
+  inset: 90px;
+}
+
+main .hero-4 .hero-4-ring::after {
+  inset: 220px;
+}
+
+main .hero-4 .hero-4-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: clamp(20px, 3vw, 54px);
+  padding: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+main .hero-4 .hero-4-kicker {
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 1.1rem;
+  color: rgba(215, 93, 43, 0.9);
+}
+
+main .hero-4 .hero-4-title {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 10vw, 154px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+main .hero-4 .hero-4-title-line {
+  display: block;
+  color: rgba(240, 247, 255, 0.97);
+}
+
+main .hero-4 .hero-4-accent-ice {
+  color: rgba(169, 216, 235, 0.98);
+}
+
+main .hero-4 .hero-4-accent-flame {
+  color: rgba(215, 93, 43, 0.98);
+}
+
+main .hero-4 .hero-4-description {
+  margin: 28px 0;
+  max-width: 56ch;
+  font-size: clamp(1.8rem, 2.1vw, 2.6rem);
+  line-height: 1.55;
+  color: rgba(212, 227, 240, 0.76);
+}
+
+main .hero-4 .hero-4-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+main .hero-4 .hero-4-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(215, 93, 43, 0.44);
+  border-radius: 999px;
+  padding: 12px 22px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s, background-color 0.3s, color 0.3s;
+}
+
+main .hero-4 .hero-4-button-primary {
+  background: rgba(215, 93, 43, 0.92);
+  color: #111;
+}
+
+main .hero-4 .hero-4-button-secondary {
+  background: transparent;
+  border-color: transparent;
+  color: rgba(215, 93, 43, 0.92);
+  padding-left: 0;
+}
+
+main .hero-4 .hero-4-button-secondary::after {
+  content: ' \2192';
+}
+
+main .hero-4 .hero-4-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(215, 93, 43, 0.28);
+}
+
+main .hero-4 .hero-4-panel {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.1) 0%, rgba(169, 216, 235, 0.06) 44%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: clamp(16px, 2vw, 30px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+}
+
+main .hero-4 .hero-4-panel-header,
+main .hero-4 .hero-4-panel-footer,
+main .hero-4 .hero-4-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+main .hero-4 .hero-4-panel-header {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1.1rem;
+  color: rgba(212, 227, 240, 0.7);
+}
+
+main .hero-4 .hero-4-panel-badge {
+  border: 1px solid rgba(113, 201, 171, 0.45);
+  background: rgba(113, 201, 171, 0.15);
+  color: rgba(168, 248, 219, 0.88);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+main .hero-4 .hero-4-temperature {
+  margin: 18px 0 8px;
+}
+
+main .hero-4 .hero-4-temperature-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 7vw, 102px);
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+  color: rgba(242, 248, 255, 0.98);
+}
+
+main .hero-4 .hero-4-temperature-unit {
+  margin-left: 8px;
+  font-size: clamp(24px, 2.5vw, 40px);
+  color: rgba(215, 93, 43, 0.95);
+}
+
+main .hero-4 .hero-4-temperature-label {
+  margin: 0 0 18px;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(212, 227, 240, 0.72);
+}
+
+main .hero-4 .hero-4-metric-list {
+  display: grid;
+  gap: 8px;
+}
+
+main .hero-4 .hero-4-metric-row {
+  color: rgba(212, 227, 240, 0.72);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+main .hero-4 .hero-4-metric-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+main .hero-4 .hero-4-metric-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+main .hero-4 .hero-4-metric-row.is-cooling .hero-4-metric-fill {
+  background: linear-gradient(90deg, rgba(123, 188, 239, 0.58) 0%, rgba(169, 216, 235, 1) 100%);
+}
+
+main .hero-4 .hero-4-metric-row.is-heat .hero-4-metric-fill {
+  background: linear-gradient(90deg, rgba(215, 93, 43, 0.52) 0%, rgba(245, 146, 104, 0.94) 100%);
+}
+
+main .hero-4 .hero-4-metric-row.is-airflow .hero-4-metric-fill {
+  background: linear-gradient(90deg, rgba(106, 212, 168, 0.58) 0%, rgba(138, 241, 202, 0.96) 100%);
+}
+
+main .hero-4 .hero-4-metric-row.is-compressor .hero-4-metric-fill {
+  background: linear-gradient(90deg, rgba(133, 126, 214, 0.62) 0%, rgba(188, 178, 245, 0.95) 100%);
+}
+
+main .hero-4 .hero-4-panel-footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(212, 227, 240, 0.72);
+}
+
+main .hero-4 .hero-4-stats {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 16px clamp(16px, 5vw, 72px) clamp(20px, 2.5vw, 28px);
+}
+
+main .hero-4 .hero-4-stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+main .hero-4 .hero-4-stat-value {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1;
+  color: rgba(240, 247, 255, 0.97);
+}
+
+main .hero-4 .hero-4-stat-suffix {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.43em;
+  margin-left: 4px;
+  letter-spacing: 0.06em;
+}
+
+main .hero-4 .hero-4-stat-label {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(212, 227, 240, 0.72);
+}
+
+@media (width < 1100px) {
+  main .hero-4 .hero-4-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  main .hero-4 .hero-4-title {
+    font-size: clamp(62px, 14vw, 118px);
+  }
+
+  main .hero-4 .hero-4-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width < 768px) {
+  main .hero-4 .hero-4-shell {
+    min-height: auto;
+  }
+
+  main .hero-4 .hero-4-overlay {
+    background: linear-gradient(180deg, rgba(5, 11, 20, 0.84) 0%, rgba(5, 11, 20, 0.9) 100%);
+  }
+
+  main .hero-4 .hero-4-ring {
+    width: 620px;
+    height: 620px;
+    right: -220px;
+  }
+
+  main .hero-4 .hero-4-title {
+    font-size: clamp(56px, 16vw, 94px);
+  }
+
+  main .hero-4 .hero-4-description {
+    font-size: 1.8rem;
+  }
+
+  main .hero-4 .hero-4-stats {
+    grid-template-columns: 1fr;
+  }
+}

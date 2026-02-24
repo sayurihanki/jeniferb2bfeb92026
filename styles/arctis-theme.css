@@ -1,8 +1,8 @@
 /*
- * ARCTIS theme overlay for EDS — styling matches reference exactly (glassmorphic).
+ * ARCTIS theme overlay for EDS — ultra glassmorphic with animations and polish.
  */
 
-/* ─── ARCTIS tokens (same as reference) ─── */
+/* ─── ARCTIS tokens ─── */
 :root {
   --void: #070d18;
   --deep: #0a1322;
@@ -20,6 +20,8 @@
   --glass-hi: rgba(255, 255, 255, 0.1);
   --rim: rgba(255, 255, 255, 0.08);
   --rim-hi: rgba(255, 255, 255, 0.18);
+  --rim-subtle: rgba(255, 255, 255, 0.04);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --font-display: 'Bebas Neue', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
@@ -121,12 +123,25 @@ body:has(.cards-circular > ul > li:hover) #arctis-ring {
   border-color: var(--ice);
 }
 
-/* ─── Header — exact reference nav glass ─── */
+/* ─── Header — layered glass with top-edge highlight ─── */
 header .nav-wrapper {
+  position: relative;
   background: rgba(7, 13, 24, 0.75) !important;
   backdrop-filter: blur(28px) saturate(1.4);
   -webkit-backdrop-filter: blur(28px) saturate(1.4);
   border-bottom: 1px solid var(--rim) !important;
+  box-shadow: inset 0 1px 0 var(--rim-subtle);
+}
+
+header .nav-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.4), transparent);
+  pointer-events: none;
 }
 
 header nav {
@@ -159,6 +174,11 @@ header nav .nav-tools button:hover {
 
 header nav .nav-sections .default-content-wrapper > ul > li > a {
   position: relative;
+  transition: color 0.25s, letter-spacing 0.25s;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > a:hover {
+  letter-spacing: 0.14em;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > a::after {
@@ -169,6 +189,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > a::after {
   width: 0;
   height: 1px;
   background: var(--ice);
+  box-shadow: 0 2px 8px rgba(184, 223, 240, 0.2);
   transition: width 0.3s ease;
 }
 
@@ -184,7 +205,27 @@ main {
   background: transparent;
 }
 
-/* ─── Promotional hero — hero-glass styling (reference) ─── */
+/* ─── Section-level glass ─── */
+main > .section:has(.promotional-hero),
+main > .section:has(.cards-circular),
+main > .section:has(.luxury-events),
+main > .section:has(.newsletter) {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(184, 223, 240, 0.02) 100%);
+  border: 1px solid var(--rim-subtle);
+  border-radius: 20px;
+  padding: var(--spacing-big, 32px) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 80px rgba(184, 223, 240, 0.015);
+}
+
+/* ─── Promotional hero — layered glass + depth ─── */
 .promotional-hero-card {
   position: relative;
   overflow: hidden;
@@ -194,12 +235,14 @@ main {
     rgba(184, 223, 240, 0.04) 40%,
     rgba(255, 255, 255, 0.025) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(36px) saturate(1.3);
-  -webkit-backdrop-filter: blur(36px) saturate(1.3);
+  backdrop-filter: blur(40px) saturate(1.3);
+  -webkit-backdrop-filter: blur(40px) saturate(1.3);
   box-shadow:
     0 36px 72px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 var(--rim-hi),
+    inset 0 0 60px rgba(184, 223, 240, 0.015),
     inset 0 0 40px rgba(184, 223, 240, 0.02);
+  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
 }
 
 .promotional-hero-card::before {
@@ -227,14 +270,45 @@ main {
 }
 
 .promotional-hero-card:hover {
-  border-color: rgba(184, 223, 240, 0.2) !important;
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(184, 223, 240, 0.3) !important;
   box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.45),
+    0 48px 96px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(184, 223, 240, 0.12),
     inset 0 1px 0 var(--rim-hi),
-    inset 0 0 40px rgba(184, 223, 240, 0.03);
+    inset 0 0 60px rgba(184, 223, 240, 0.02);
 }
 
-/* Whitebox — glass panel (reference hero-glass feel) ─── */
+.promotional-hero-card:hover .promotional-hero-image img {
+  transform: scale(1.04);
+}
+
+.promotional-hero-image {
+  position: relative;
+}
+
+.promotional-hero-image img {
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+/* Shimmer on hover */
+.promotional-hero-card .promotional-hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.promotional-hero-card:hover .promotional-hero-image::before {
+  opacity: 1;
+  animation: arctisShimmer 0.6s ease-out forwards;
+}
+
+/* Whitebox — glass panel with hover lift ─── */
 .promotional-hero-whitebox {
   background: linear-gradient(145deg,
     rgba(255, 255, 255, 0.08) 0%,
@@ -247,9 +321,22 @@ main {
     0 16px 40px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 var(--rim-hi);
   color: var(--white) !important;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
 }
 
-/* ─── Circular cards — pcard glass (reference) ─── */
+.promotional-hero-card:hover .promotional-hero-whitebox {
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 var(--rim-hi),
+    inset 0 0 24px rgba(184, 223, 240, 0.03);
+}
+
+/* ─── Circular cards — layered glass + hover ─── */
+.cards-circular > ul > li {
+  position: relative;
+}
+
 .cards-circular .cards-circular-item-image {
   position: relative;
   overflow: hidden;
@@ -257,11 +344,13 @@ main {
     rgba(255, 255, 255, 0.07) 0%,
     rgba(255, 255, 255, 0.025) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(22px) saturate(1.2);
-  -webkit-backdrop-filter: blur(22px) saturate(1.2);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(28px) saturate(1.2);
+  -webkit-backdrop-filter: blur(28px) saturate(1.2);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.35),
+    inset 0 0 60px rgba(184, 223, 240, 0.015);
   transition:
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s var(--ease-out-expo),
     border-color 0.35s,
     box-shadow 0.4s;
 }
@@ -275,7 +364,7 @@ main {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.25s;
   z-index: 1;
 }
 
@@ -285,20 +374,42 @@ main {
   inset: 0;
   background: radial-gradient(ellipse 60% 35% at 50% 0%, rgba(184, 223, 240, 0.07), transparent);
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.35s 0.05s;
   pointer-events: none;
 }
 
 .cards-circular > ul > li:hover .cards-circular-item-image {
+  transform: translateY(-4px) scale(1.03);
   border-color: rgba(184, 223, 240, 0.22) !important;
   box-shadow:
     0 28px 56px rgba(0, 0, 0, 0.4),
+    0 0 32px rgba(184, 223, 240, 0.1),
     0 0 0 1px rgba(184, 223, 240, 0.07);
 }
 
-.cards-circular > ul > li:hover .cards-circular-item-image::before,
+.cards-circular > ul > li:hover .cards-circular-item-image::before {
+  opacity: 1;
+}
+
 .cards-circular > ul > li:hover .cards-circular-item-image::after {
   opacity: 1;
+}
+
+/* Shimmer on circular cards */
+.cards-circular > ul > li::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cards-circular > ul > li:hover::before {
+  opacity: 1;
+  animation: arctisShimmer 0.6s ease-out forwards;
 }
 
 .cards-circular > ul > li a {
@@ -324,17 +435,19 @@ main {
   color: var(--muted) !important;
 }
 
-/* ─── Footer — exact reference footer glass ─── */
+/* ─── Footer — hero-stats style glass ─── */
 footer .footer {
-  background: rgba(7, 13, 24, 0.6) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(7, 13, 24, 0.65) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--rim) !important;
+  box-shadow: inset 0 1px 0 var(--rim-subtle);
   color: var(--muted);
 }
 
 footer .footer a {
   color: var(--muted) !important;
+  transition: color 0.25s, gap 0.25s;
 }
 
 footer .footer a:hover {
@@ -345,6 +458,9 @@ footer .footer a:hover::before {
   content: '→ ';
   color: var(--flame);
   font-size: 0.7rem;
+  transform: translateX(2px);
+  display: inline-block;
+  transition: transform 0.25s;
 }
 
 footer .footer h4 {
@@ -353,9 +469,186 @@ footer .footer h4 {
   letter-spacing: 0.08em;
 }
 
-/* Focus visible */
+/* ─── Luxury events cards — glass ─── */
+.luxury-events-card {
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(184, 223, 240, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 var(--rim-hi),
+    inset 0 0 40px rgba(184, 223, 240, 0.015);
+  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+}
+
+.luxury-events-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(184, 223, 240, 0.2) !important;
+  box-shadow:
+    0 32px 64px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(184, 223, 240, 0.08);
+}
+
+/* ─── Newsletter — glass ─── */
+.newsletter {
+  background: linear-gradient(135deg,
+    rgba(232, 98, 42, 0.12) 0%,
+    rgba(184, 223, 240, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 100%) !important;
+  border: 1px solid rgba(232, 98, 42, 0.2) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 0 var(--rim-hi);
+}
+
+/* ─── Buttons — flame glow on hover ─── */
+.button,
+.btn-cta,
+button[type='submit'],
+a.button,
+.dropin-button--primary {
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s !important;
+}
+
+.button:hover,
+.btn-cta:hover,
+button[type='submit']:hover,
+a.button:hover,
+.dropin-button--primary:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 0 24px rgba(232, 98, 42, 0.25) !important;
+}
+
+/* Focus visible — soft glow */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--ice);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(184, 223, 240, 0.3);
+}
+
+/* ─── Keyframes ─── */
+@keyframes arctisShimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes arctisGlowPulse {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes arctisRingPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes arctisReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Entry animations (staggered) ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .promotional-hero-card {
+    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+  }
+
+  .promotional-hero-card:nth-child(1) { animation-delay: 0.1s; }
+  .promotional-hero-card:nth-child(2) { animation-delay: 0.18s; }
+  .promotional-hero-card:nth-child(3) { animation-delay: 0.26s; }
+
+  .cards-circular > ul > li {
+    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+  }
+
+  .cards-circular > ul > li:nth-child(1) { animation-delay: 0.05s; }
+  .cards-circular > ul > li:nth-child(2) { animation-delay: 0.13s; }
+  .cards-circular > ul > li:nth-child(3) { animation-delay: 0.21s; }
+  .cards-circular > ul > li:nth-child(4) { animation-delay: 0.29s; }
+  .cards-circular > ul > li:nth-child(5) { animation-delay: 0.37s; }
+  .cards-circular > ul > li:nth-child(6) { animation-delay: 0.45s; }
+  .cards-circular > ul > li:nth-child(7) { animation-delay: 0.53s; }
+  .cards-circular > ul > li:nth-child(8) { animation-delay: 0.61s; }
+  .cards-circular > ul > li:nth-child(9) { animation-delay: 0.69s; }
+  .cards-circular > ul > li:nth-child(n+10) { animation-delay: 0.77s; }
+
+  .luxury-events-card {
+    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+  }
+
+  .luxury-events-card:nth-child(1) { animation-delay: 0.1s; }
+  .luxury-events-card:nth-child(2) { animation-delay: 0.2s; }
+  .luxury-events-card:nth-child(3) { animation-delay: 0.3s; }
+
+  /* Ambient glow pulse */
+  .arctis-bg-glow {
+    animation: arctisGlowPulse 8s ease-in-out infinite;
+  }
+
+  /* Scroll reveal — applied via JS */
+  .arctis-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+  }
+
+  .arctis-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promotional-hero-card,
+  .cards-circular > ul > li,
+  .luxury-events-card {
+    animation: none;
+  }
+
+  .arctis-bg-glow {
+    animation: none;
+  }
+
+  #arctis-ring {
+    animation: none;
+  }
+
+  .arctis-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Cursor dot glow */
+#arctis-dot {
+  box-shadow: 0 0 12px var(--flame);
+}
+
+/* Ring pulse on link/button hover */
+body:has(a:hover) #arctis-ring,
+body:has(button:hover) #arctis-ring {
+  animation: arctisRingPulse 0.5s ease-out;
 }

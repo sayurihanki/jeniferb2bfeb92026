@@ -82,6 +82,58 @@ function removeLegacyHomepageHero(main) {
   firstSection.remove();
 }
 
+function normalizeAuthorHref(href) {
+  if (!href) return href;
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.hostname === 'file+.vscode-resource.vscode-cdn.net') {
+      return url.pathname.startsWith('/') ? url.pathname : `/${url.pathname}`;
+    }
+    return href;
+  } catch {
+    return href;
+  }
+}
+
+/**
+ * Rebuilds hero-4 as a proper block when homepage content is flattened into paragraphs.
+ * @param {Element} main The main element
+ */
+function normalizeHomepageHero4(main) {
+  const pathname = window.location.pathname || '/';
+  const isHome = pathname === '/' || pathname === '/index' || pathname === '/index.html';
+  if (!isHome) return;
+
+  // If a real hero-4 block is already authored, don’t interfere.
+  if (main.querySelector('.hero-4')) return;
+
+  const firstSection = main.querySelector(':scope > div:first-child');
+  if (!firstSection) return;
+
+  const cells = [...firstSection.children].filter((el) => el.tagName === 'P');
+  if (cells.length < 9) return;
+  if (!cells[0].querySelector('picture, img')) return;
+
+  const primaryLink = cells[4]?.querySelector('a');
+  const secondaryLink = cells[5]?.querySelector('a');
+  if (primaryLink) primaryLink.href = normalizeAuthorHref(primaryLink.getAttribute('href'));
+  if (secondaryLink) secondaryLink.href = normalizeAuthorHref(secondaryLink.getAttribute('href'));
+
+  const getCell = (index) => cells[index]?.innerHTML || '';
+  const rows = [
+    [getCell(0), getCell(1), getCell(2), getCell(3)],
+    [getCell(4), getCell(5), getCell(6), getCell(7)],
+  ];
+
+  let cursor = 8;
+  while (cursor + 2 < cells.length) {
+    rows.push([getCell(cursor), getCell(cursor + 1), getCell(cursor + 2)]);
+    cursor += 3;
+  }
+
+  firstSection.replaceChildren(buildBlock('hero-4', rows));
+}
+
 /**
  * Rebuilds hero-4 as a proper block when DA block preview flattens it into paragraphs.
  * @param {Element} main The main element
@@ -137,6 +189,7 @@ function ensureHero4Blocks(main) {
  */
 export function decorateMain(main) {
   removeLegacyHomepageHero(main);
+  normalizeHomepageHero4(main);
   decorateLinks(main);
   decorateButtons(main);
   decorateIcons(main);

@@ -15,6 +15,7 @@ const DEFAULT_STATS = [
 ];
 
 const SAFE_PROTOCOLS = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+const UNSAFE_HOSTS = new Set(['file+.vscode-resource.vscode-cdn.net']);
 
 function createElement(tag, className, text) {
   const element = document.createElement(tag);
@@ -104,6 +105,7 @@ function sanitizeHref(href, fallbackHref) {
 
   try {
     const parsed = new URL(raw, window.location.origin);
+    if (UNSAFE_HOSTS.has(parsed.hostname)) return fallbackHref;
     return SAFE_PROTOCOLS.has(parsed.protocol) ? raw : fallbackHref;
   } catch (e) {
     return fallbackHref;

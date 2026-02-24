@@ -42,6 +42,35 @@ export const SALES_ORDER_VIEW_PATH = '/sales/order/view/';
 export const UPS_TRACKING_URL = 'https://www.ups.com/track';
 
 /**
+ * Sanitizes the given string by:
+ * - convert to lower case
+ * - normalize all unicode characters
+ * - replace all non-alphanumeric characters with a dash
+ * - remove all consecutive dashes
+ * - remove all leading and trailing dashes
+ *
+ * @param {string} name
+ * @returns {string} sanitized name
+ */
+function sanitizeName(name) {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * Encodes a SKU for use in product URL paths (e.g. replaces / with __).
+ * @param {string} sku - Product SKU
+ * @returns {string} URL-safe SKU
+ */
+export function encodeSkuForUrl(sku) {
+  return sku?.replace(/\//g, '__') || '';
+}
+
+/**
  * Auth Privacy Policy Consent Slot
  * @param {Object} ctx - The context object
  * @param {Object} ctx.appendChild - The appendChild function
@@ -295,6 +324,24 @@ export function rootLink(link) {
   // If the link is already localized, do nothing
   if (link.startsWith(root)) return link;
   return `${root}${link}`;
+}
+
+/**
+ * Returns the product URL for a given urlKey and sku.
+ * @param {string} urlKey - Product URL key
+ * @param {string} sku - Product SKU
+ * @returns {string} Localized product URL
+ */
+export function getProductLink(urlKey, sku) {
+  if (!urlKey) {
+    console.warn('getProductLink: urlKey is missing or empty', { urlKey, sku });
+  }
+  if (!sku) {
+    console.warn('getProductLink: sku is missing or empty', { urlKey, sku });
+  }
+  const sanitizedUrlKey = urlKey ? sanitizeName(urlKey) : '';
+  const sanitizedSku = sku ? sanitizeName(sku) : '';
+  return rootLink(`/products/${sanitizedUrlKey}/${sanitizedSku}`);
 }
 
 /**

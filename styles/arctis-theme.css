@@ -1,19 +1,23 @@
 /*
- * ARCTIS theme overlay for EDS / Fortnum & Mason
- * Load after styles.css to apply dark palette, glass accents, and cursor.
+ * ARCTIS theme overlay for EDS — styling matches reference exactly (glassmorphic).
  */
 
-/* ─── ARCTIS tokens ─── */
+/* ─── ARCTIS tokens (same as reference) ─── */
 :root {
   --void: #070d18;
   --deep: #0a1322;
   --navy: #0f1e34;
+  --steel: #162840;
   --ice: #b8dff0;
   --ice-dim: rgba(184, 223, 240, 0.5);
+  --ice-faint: rgba(184, 223, 240, 0.08);
   --flame: #e8622a;
   --flame-lo: rgba(232, 98, 42, 0.15);
+  --flame-mid: rgba(232, 98, 42, 0.28);
   --white: #eaf4fa;
   --muted: rgba(184, 210, 228, 0.48);
+  --glass: rgba(255, 255, 255, 0.055);
+  --glass-hi: rgba(255, 255, 255, 0.1);
   --rim: rgba(255, 255, 255, 0.08);
   --rim-hi: rgba(255, 255, 255, 0.18);
   --font-display: 'Bebas Neue', sans-serif;
@@ -22,7 +26,8 @@
 }
 
 /* Map Commerce/EDS design tokens to ARCTIS */
-:root, .dropin-design {
+:root,
+.dropin-design {
   --background-color: var(--void);
   --color-neutral-50: var(--white);
   --color-neutral-100: var(--void);
@@ -65,7 +70,7 @@ body::after {
   opacity: 0.45;
 }
 
-/* Background glows */
+/* Background glows — same as reference */
 .arctis-bg-glow {
   position: fixed;
   inset: 0;
@@ -77,7 +82,7 @@ body::after {
     radial-gradient(ellipse 35% 35% at 50% 50%, rgba(232, 98, 42, 0.025) 0%, transparent 65%);
 }
 
-/* Cursor */
+/* Cursor — same as reference */
 #arctis-dot {
   position: fixed;
   width: 7px;
@@ -109,9 +114,16 @@ body:has(button:hover) #arctis-ring {
   border-color: var(--flame);
 }
 
-/* ─── Header (ARCTIS nav style) ─── */
+body:has(.promotional-hero-card:hover) #arctis-ring,
+body:has(.cards-circular > ul > li:hover) #arctis-ring {
+  width: 56px;
+  height: 56px;
+  border-color: var(--ice);
+}
+
+/* ─── Header — exact reference nav glass ─── */
 header .nav-wrapper {
-  background: rgba(7, 13, 24, 0.85) !important;
+  background: rgba(7, 13, 24, 0.75) !important;
   backdrop-filter: blur(28px) saturate(1.4);
   -webkit-backdrop-filter: blur(28px) saturate(1.4);
   border-bottom: 1px solid var(--rim) !important;
@@ -145,7 +157,6 @@ header nav .nav-tools button:hover {
   color: var(--white) !important;
 }
 
-/* Nav link underline on hover (ARCTIS style) */
 header nav .nav-sections .default-content-wrapper > ul > li > a {
   position: relative;
 }
@@ -173,26 +184,123 @@ main {
   background: transparent;
 }
 
-/* ─── Promotional hero (glass accent) ─── */
+/* ─── Promotional hero — hero-glass styling (reference) ─── */
 .promotional-hero-card {
-  border: 1px solid var(--rim);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.075) 0%,
+    rgba(184, 223, 240, 0.04) 40%,
+    rgba(255, 255, 255, 0.025) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(36px) saturate(1.3);
+  -webkit-backdrop-filter: blur(36px) saturate(1.3);
+  box-shadow:
+    0 36px 72px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 var(--rim-hi),
+    inset 0 0 40px rgba(184, 223, 240, 0.02);
+}
+
+.promotional-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.55), transparent);
+  z-index: 2;
+}
+
+.promotional-hero-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.04), transparent);
+  pointer-events: none;
+  border-radius: 18px 18px 0 0;
+  z-index: 1;
 }
 
 .promotional-hero-card:hover {
-  border-color: rgba(184, 223, 240, 0.2);
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
+  border-color: rgba(184, 223, 240, 0.2) !important;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 var(--rim-hi),
+    inset 0 0 40px rgba(184, 223, 240, 0.03);
 }
 
+/* Whitebox — glass panel (reference hero-glass feel) ─── */
 .promotional-hero-whitebox {
-  background: rgba(7, 13, 24, 0.9) !important;
-  border: 1px solid var(--rim);
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(184, 223, 240, 0.04) 50%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 var(--rim-hi);
   color: var(--white) !important;
 }
 
-/* ─── Circular cards (glass + flame accent) ─── */
+/* ─── Circular cards — pcard glass (reference) ─── */
+.cards-circular .cards-circular-item-image {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.025) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s,
+    box-shadow 0.4s;
+}
+
+.cards-circular .cards-circular-item-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.cards-circular .cards-circular-item-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 35% at 50% 0%, rgba(184, 223, 240, 0.07), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.cards-circular > ul > li:hover .cards-circular-item-image {
+  border-color: rgba(184, 223, 240, 0.22) !important;
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(184, 223, 240, 0.07);
+}
+
+.cards-circular > ul > li:hover .cards-circular-item-image::before,
+.cards-circular > ul > li:hover .cards-circular-item-image::after {
+  opacity: 1;
+}
+
 .cards-circular > ul > li a {
   color: var(--muted);
 }
@@ -201,17 +309,7 @@ main {
   color: var(--white);
 }
 
-.cards-circular .cards-circular-item-image {
-  border: 1px solid var(--rim);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-}
-
-.cards-circular > ul > li:hover .cards-circular-item-image {
-  border-color: rgba(184, 223, 240, 0.25);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
-}
-
-/* Section headings / text on dark */
+/* Section headings / text ─── */
 .section h2,
 .section h3,
 .cards-circular .cards-circular-item-body h3,
@@ -226,9 +324,11 @@ main {
   color: var(--muted) !important;
 }
 
-/* Footer */
+/* ─── Footer — exact reference footer glass ─── */
 footer .footer {
-  background: rgba(7, 13, 24, 0.9) !important;
+  background: rgba(7, 13, 24, 0.6) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--rim) !important;
   color: var(--muted);
 }
@@ -241,11 +341,19 @@ footer .footer a:hover {
   color: var(--white) !important;
 }
 
-footer .footer h4 {
-  color: var(--ice) !important;
+footer .footer a:hover::before {
+  content: '→ ';
+  color: var(--flame);
+  font-size: 0.7rem;
 }
 
-/* Focus visible for accessibility */
+footer .footer h4 {
+  color: var(--ice) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+/* Focus visible */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--ice);

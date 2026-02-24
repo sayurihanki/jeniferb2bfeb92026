@@ -81,6 +81,40 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 
+  /* ARCTIS: inject background glow */
+  if (!document.querySelector('.bg-glow')) {
+    const bgGlow = document.createElement('div');
+    bgGlow.className = 'bg-glow';
+    document.body.prepend(bgGlow);
+  }
+
+  /* ARCTIS: custom cursor (only when fine pointer and no reduce-motion) */
+  const useCursor = window.matchMedia('(pointer: fine)').matches
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (useCursor && !document.getElementById('dot')) {
+    const dot = document.createElement('div');
+    dot.id = 'dot';
+    const ring = document.createElement('div');
+    ring.id = 'ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    let mx = 0; let my = 0; let rx = 0; let ry = 0;
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = `${mx}px`;
+      dot.style.top = `${my}px`;
+    });
+    (function anim() {
+      rx += (mx - rx) * 0.1;
+      ry += (my - ry) * 0.1;
+      ring.style.left = `${rx}px`;
+      ring.style.top = `${ry}px`;
+      requestAnimationFrame(anim);
+    }());
+    document.body.style.cursor = 'none';
+  }
+
   const main = doc.querySelector('main');
   if (main) {
     try {
@@ -125,6 +159,30 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  /* ARCTIS scroll reveal */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  function observeReveal(container) {
+    (container || doc).querySelectorAll('.r').forEach((el) => {
+      if (!el.dataset.revealObserved) {
+        el.dataset.revealObserved = '1';
+        revealObs.observe(el);
+      }
+    });
+  }
+  observeReveal(doc);
+  const main = doc.querySelector('main');
+  if (main) {
+    const mo = new MutationObserver(() => observeReveal(main));
+    mo.observe(main, { childList: true, subtree: true });
+  }
 }
 
 /**

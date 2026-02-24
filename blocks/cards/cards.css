@@ -11,17 +11,89 @@
   grid-gap: var(--spacing-medium);
 }
 
+/* ARCTIS pcard style */
 .cards > ul > li {
-  border: var(--shape-border-width-1) solid var(--color-neutral-500);
-  background-color: var(--background-color);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.025) 100%);
+  border: 1px solid var(--rim);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  min-height: 260px;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s,
+    box-shadow 0.4s;
+}
+
+.cards > ul > li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.cards > ul > li:hover {
+  transform: translateY(-6px);
+  border-color: rgba(184, 223, 240, 0.22);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(184, 223, 240, 0.07);
+}
+
+.cards > ul > li:hover::before {
+  opacity: 1;
 }
 
 .cards .cards-card-body {
-  margin: var(--spacing-small);
+  margin: 0;
+  padding: 26px 22px;
+  background: linear-gradient(to top, rgba(7, 13, 24, 0.97) 0%, rgba(7, 13, 24, 0.65) 55%, transparent 100%);
+}
+
+.cards .cards-card-body p:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.53rem;
+  letter-spacing: 0.25em;
+  color: var(--flame);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.cards .cards-card-body p:nth-child(2),
+.cards .cards-card-body strong {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+
+.cards .cards-card-body p {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 0.5em 0;
 }
 
 .cards .cards-card-image {
   line-height: 0;
+  position: relative;
+  opacity: 0.13;
+  transition: opacity 0.45s;
+}
+
+.cards > ul > li:hover .cards-card-image {
+  opacity: 0.28;
 }
 
 .cards > ul > li img {

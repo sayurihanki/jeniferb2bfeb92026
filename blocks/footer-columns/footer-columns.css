@@ -1,8 +1,8 @@
-/* Footer Columns Block - Uses AEM's native centering */
+/* Footer Columns Block - ARCTIS */
 
 /* Block-specific design tokens */
 .footer-columns {
-  --footer-columns-desktop: 6;
+  --footer-columns-desktop: 4;
   --footer-columns-tablet: 3;
   --footer-columns-mobile: 1;
   --footer-breakpoint-tablet: 1024px;
@@ -15,9 +15,10 @@
 
 .footer-columns-grid {
   display: grid;
-  grid-template-columns: repeat(var(--footer-columns-desktop), 1fr);
-  gap: 0 var(--spacing-xsmall);
-  column-gap: var(--spacing-xsmall);
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1380px;
+  margin: 0 auto;
 }
 
 /* Individual Column */
@@ -27,16 +28,51 @@
   gap: 0;
 }
 
-/* Column Header - inherits default heading styles from DA.live */
+/* Column Header — ARCTIS */
 .footer-column-header {
-  margin-bottom: 0;
-  font: var(--type-body-2-default-font);
-  letter-spacing: var(--type-body-2-default-letter-spacing);
-  line-height: calc(var(--spacing-xxsmall) + var(--shape-border-width-1));
+  margin-bottom: 18px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--ice);
+  line-height: 1.2;
 }
 
 .footer-column-header::after {
   display: none;
+}
+
+/* First column as logo/description */
+.footer-column:first-child .footer-column-header {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  color: var(--white);
+}
+
+.footer-column:first-child .footer-column-header span {
+  color: var(--flame);
+}
+
+.footer-column:first-child .footer-column-links {
+  font-size: 0.78rem;
+  line-height: 1.78;
+  color: var(--muted);
+  max-width: 260px;
+}
+
+/* ARCTIS badges */
+.ft-badge,
+.footer-column-links .ft-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.14em;
+  color: var(--ice-dim);
+  padding: 3px 9px;
+  border: 1px solid rgba(184, 223, 240, 0.12);
+  border-radius: 2px;
+  margin: 4px 4px 4px 0;
 }
 
 /* Column Links List */
@@ -47,28 +83,33 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  font: var(--type-body-2-default-font);
-  letter-spacing: var(--type-body-2-default-letter-spacing);
-  line-height: calc(var(--spacing-xxsmall) + var(--shape-border-width-1));
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 .footer-column-links li {
-  margin: 0;
-  padding: 0;
+  margin-bottom: 9px;
 }
 
-/* Link Styling - inherits default link styles */
+/* Link Styling — ARCTIS */
 .footer-column-links a {
   text-decoration: none;
-  color: inherit;
+  color: var(--muted);
   display: inline-flex;
   align-items: center;
-  transition: opacity var(--duration-200, 0.2s) ease;
+  gap: 0;
+  transition: color 0.25s, gap 0.25s;
 }
 
 .footer-column-links a:hover {
-  opacity: var(--hover-opacity, 0.7);
-  text-decoration: underline;
+  color: var(--white);
+  gap: 8px;
+}
+
+.footer-column-links a:hover::before {
+  content: "→ ";
+  color: var(--flame);
+  font-size: 0.7rem;
 }
 
 /* Social Media Icons Support */
@@ -86,6 +127,24 @@
   }
 }
 
+/* Footer bottom bar */
+.ft-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 22px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ft-copy {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: rgba(184, 210, 228, 0.2);
+}
+
 /* Mobile: Accordion layout */
 @media (max-width: 768px) {
   .footer-columns-grid {
@@ -94,7 +153,7 @@
   }
 
   .footer-column {
-    border-bottom: var(--shape-border-width-1) solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--rim);
   }
 
   .footer-column:last-child {

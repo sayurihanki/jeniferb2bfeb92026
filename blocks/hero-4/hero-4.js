@@ -14,6 +14,8 @@ const DEFAULT_STATS = [
   { value: '640', suffix: 'K', label: 'Tons Cooling Capacity' },
 ];
 
+const SAFE_PROTOCOLS = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+
 function createElement(tag, className, text) {
   const element = document.createElement(tag);
   if (className) element.className = className;
@@ -39,17 +41,17 @@ function getCellLines(cell, fallback = []) {
 function getLinkData(cell, fallbackLabel, fallbackHref) {
   const link = cell?.querySelector('a');
   if (link) {
-    const href = link.getAttribute('href') || fallbackHref;
+    const href = sanitizeHref(link.getAttribute('href'), fallbackHref);
     const label = link.textContent?.trim() || fallbackLabel;
     return { href, label };
   }
 
   const text = getCellText(cell);
   if (text) {
-    return { href: fallbackHref, label: text };
+    return { href: sanitizeHref(text, fallbackHref), label: text };
   }
 
-  return { href: fallbackHref, label: fallbackLabel };
+  return { href: sanitizeHref(fallbackHref, '/'), label: fallbackLabel };
 }
 
 function toneClass(tone) {
@@ -66,16 +68,44 @@ function decorateTitleLines(titleEl, lines) {
 
     if (index === 1 && line.toUpperCase().startsWith('THE ')) {
       const accent = createElement('span', 'hero-4-accent-ice', 'THE');
-      lineEl.append(accent, document.createTextNode(line.slice(3)));
+      lineEl.append(accent, document.createTextNode(` ${line.slice(4)}`));
     } else if (index === 2 && line.toUpperCase().startsWith('OWN ')) {
       const accent = createElement('span', 'hero-4-accent-flame', 'OWN');
-      lineEl.append(accent, document.createTextNode(line.slice(3)));
+      lineEl.append(accent, document.createTextNode(` ${line.slice(4)}`));
     } else {
       lineEl.textContent = line;
     }
 
     titleEl.append(lineEl);
   });
+}
+
+function sanitizeHref(href, fallbackHref) {
+  const raw = (href || '').trim();
+  if (!raw) return fallbackHref;
+  if (raw.startsWith('/') || raw.startsWith('./') || raw.startsWith('../') || raw.startsWith('#') || raw.startsWith('?')) {
+    return raw;
+  }
+
+  try {
+    const parsed = new URL(raw, window.location.origin);
+    return SAFE_PROTOCOLS.has(parsed.protocol) ? raw : fallbackHref;
+  } catch {
+    return fallbackHref;
+  }
+}
+
+function parseTemperature(input, fallbackValue = '68.4', fallbackUnit = '°F') {
+  const raw = (input || '').trim();
+  if (!raw) return { value: fallbackValue, unit: fallbackUnit };
+
+  const match = raw.match(/^([+-]?\d+(?:\.\d+)?)\s*(.*)$/);
+  if (!match) return { value: raw, unit: fallbackUnit };
+
+  return {
+    value: match[1] || fallbackValue,
+    unit: match[2]?.trim() || fallbackUnit,
+  };
 }
 
 function buildMetricRow(metric) {
@@ -192,7 +222,7 @@ export default function decorate(block) {
   );
 
   const tempWrap = createElement('p', 'hero-4-temperature');
-  const [tempValue = '68.4', tempUnit = '°F'] = temperature.split(' ');
+  const { value: tempValue, unit: tempUnit } = parseTemperature(temperature);
   tempWrap.append(createElement('span', 'hero-4-temperature-value', tempValue), createElement('span', 'hero-4-temperature-unit', tempUnit));
 
   const tempLabel = createElement('p', 'hero-4-temperature-label', 'Supply Air Temperature - Zone A');

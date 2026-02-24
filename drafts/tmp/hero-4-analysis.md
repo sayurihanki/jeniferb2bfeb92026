@@ -5,9 +5,9 @@
 2. [x] Analyze & plan
 3. [x] Design content model
 4. [x] Identify/create test content
-5. [ ] Implement
-6. [ ] Lint & test
-7. [ ] Final validation
+5. [x] Implement
+6. [x] Lint & test
+7. [x] Final validation
 8. [ ] Ship it
 
 ## Goal

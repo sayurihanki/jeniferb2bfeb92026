@@ -341,3 +341,14 @@ main .hero-4 .hero-4-stat-label {
     grid-template-columns: 1fr;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  main .hero-4 .hero-4-button {
+    transition: none;
+  }
+
+  main .hero-4 .hero-4-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

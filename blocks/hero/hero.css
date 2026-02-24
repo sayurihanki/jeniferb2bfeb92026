@@ -1,62 +1,328 @@
 .hero-container .hero-wrapper {
-  max-width: 1200px;
+  max-width: min(1400px, 95vw);
   margin: 0 auto;
-  padding: var(--spacing-medium) var(--spacing-small);
+  padding: 0;
 }
 
 .hero {
   position: relative;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--spacing-xbig) 0;
 }
 
-.hero picture {
+.arctis-hero-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  min-height: clamp(620px, 88vh, 920px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(6, 15, 28, 0.92) 0%, rgba(4, 10, 18, 0.98) 100%);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.42);
+}
+
+.arctis-hero-media,
+.arctis-hero-media picture,
+.arctis-hero-media img {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  box-sizing: border-box;
-}
-
-.hero picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
-}
-
-.hero img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.hero h1 {
-  font-family: var(--type-serif-font-family);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-neutral-900);
-  margin: 0 0 var(--spacing-medium) 0;
+.arctis-hero-media img {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.6) brightness(0.36) contrast(1.05);
 }
 
-.hero .default-content-wrapper > div p {
-  font: var(--type-body-1-default-font);
-  letter-spacing: var(--type-body-1-default-letter-spacing);
-  color: var(--color-neutral-800);
-  max-width: 36em;
-  margin-bottom: var(--spacing-medium);
+.arctis-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 74% 34%, rgba(108, 168, 220, 0.2), transparent 58%),
+    linear-gradient(100deg, rgba(5, 12, 20, 0.92) 22%, rgba(5, 12, 20, 0.65) 54%, rgba(5, 12, 20, 0.9) 100%);
 }
 
-.hero .button-container {
+.arctis-hero-ring,
+.arctis-hero-ring::before,
+.arctis-hero-ring::after {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(169, 216, 235, 0.08);
+}
+
+.arctis-hero-ring {
+  width: 950px;
+  height: 950px;
+  right: -280px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arctis-hero-ring::before,
+.arctis-hero-ring::after {
+  content: '';
+  inset: 90px;
+}
+
+.arctis-hero-ring::after {
+  inset: 210px;
+}
+
+.arctis-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: clamp(20px, 3vw, 54px);
+  padding: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.arctis-hero-kicker {
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 1.1rem;
+  color: rgba(215, 93, 43, 0.9);
+}
+
+.arctis-hero-title {
+  margin: 0;
+  font-size: clamp(72px, 10vw, 156px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.arctis-hero-title > span {
+  display: block;
+}
+
+.arctis-hero-title em {
+  font-style: normal;
+  color: rgba(169, 216, 235, 0.95);
+}
+
+.arctis-hero-title strong {
+  font-weight: 400;
+  color: rgba(215, 93, 43, 0.98);
+}
+
+.arctis-hero-subtitle {
+  margin: 28px 0;
+  max-width: 56ch;
+  font-size: clamp(1.8rem, 2.1vw, 2.6rem);
+  line-height: 1.55;
+  color: rgba(212, 227, 240, 0.74);
+}
+
+.arctis-hero-actions {
   display: flex;
+  align-items: center;
+  gap: 18px;
   flex-wrap: wrap;
-  gap: var(--spacing-small);
 }
 
-.hero .button-container a {
-  font: var(--type-body-1-strong-font);
-  letter-spacing: var(--type-body-1-strong-letter-spacing);
+.arctis-hero-actions .arctis-primary {
+  padding: 14px 30px;
+}
+
+.arctis-text-link {
+  color: rgba(169, 216, 235, 0.82);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.2rem;
+}
+
+.arctis-text-link::after {
+  content: ' \2192';
+}
+
+.arctis-hero-glass {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.1) 0%, rgba(169, 216, 235, 0.06) 44%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: clamp(16px, 2vw, 30px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+}
+
+.arctis-glass-head,
+.arctis-glass-foot,
+.arctis-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.arctis-glass-head {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.1rem;
+  color: rgba(212, 227, 240, 0.7);
+}
+
+.arctis-live {
+  border: 1px solid rgba(113, 201, 171, 0.45);
+  background: rgba(113, 201, 171, 0.15);
+  color: rgba(168, 248, 219, 0.88);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.arctis-temp-wrap {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.arctis-temp-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 7vw, 104px);
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+  color: #f2f8ff;
+}
+
+.arctis-temp-unit {
+  margin-left: 8px;
+  font-size: clamp(24px, 2.5vw, 40px);
+  color: rgba(215, 93, 43, 0.95);
+}
+
+.arctis-temp-label {
+  margin: 0 0 18px;
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.arctis-metric-list {
+  display: grid;
+  gap: 8px;
+}
+
+.arctis-metric-row {
+  color: rgba(212, 227, 240, 0.72);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.arctis-metric-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.arctis-metric-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.arctis-metric-row.is-cooling .arctis-metric-fill {
+  background: linear-gradient(90deg, rgba(123, 188, 239, 0.58) 0%, rgba(169, 216, 235, 1) 100%);
+}
+
+.arctis-metric-row.is-heat .arctis-metric-fill {
+  background: linear-gradient(90deg, rgba(215, 93, 43, 0.52) 0%, rgba(245, 146, 104, 0.94) 100%);
+}
+
+.arctis-metric-row.is-airflow .arctis-metric-fill {
+  background: linear-gradient(90deg, rgba(106, 212, 168, 0.58) 0%, rgba(138, 241, 202, 0.96) 100%);
+}
+
+.arctis-metric-row.is-compressor .arctis-metric-fill {
+  background: linear-gradient(90deg, rgba(133, 126, 214, 0.62) 0%, rgba(188, 178, 245, 0.95) 100%);
+}
+
+.arctis-glass-foot {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.arctis-hero-stats {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 16px clamp(16px, 5vw, 72px) clamp(20px, 2.5vw, 28px);
+}
+
+.arctis-stat {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.arctis-stat-value {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1;
+  color: rgba(240, 247, 255, 0.97);
+}
+
+.arctis-stat-value small {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.43em;
+  margin-left: 4px;
+  letter-spacing: 0.06em;
+}
+
+.arctis-stat-label {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1080px) {
+  .arctis-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .arctis-hero-title {
+    font-size: clamp(62px, 14vw, 118px);
+  }
+
+  .arctis-hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .arctis-hero-shell {
+    min-height: auto;
+  }
+
+  .arctis-hero-overlay {
+    background: linear-gradient(180deg, rgba(5, 11, 20, 0.82) 0%, rgba(5, 11, 20, 0.9) 100%);
+  }
+
+  .arctis-hero-ring {
+    width: 600px;
+    height: 600px;
+    right: -220px;
+  }
+
+  .arctis-hero-title {
+    font-size: clamp(56px, 16vw, 94px);
+  }
+
+  .arctis-hero-subtitle {
+    font-size: 1.8rem;
+  }
+
+  .arctis-hero-stats {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,18 +1,36 @@
+.commerce-mini-cart {
+  color: rgba(239, 246, 255, 0.95);
+}
+
 .commerce-mini-cart__update-message {
-    display: none;
-    font: var(--type-body-2-default-font);
-    letter-spacing: var(--type-body-2-default-letter-spacing);
+  display: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .commerce-mini-cart__message-wrapper {
-    background-color: var(--color-positive-200);
-    border-radius: var(--shape-border-radius-1);
-    padding: var(--spacing-xsmall);
-    display: none;
-    margin-bottom: var(--spacing-small);
+  background: rgba(113, 201, 171, 0.16);
+  border: 1px solid rgba(113, 201, 171, 0.42);
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  margin-bottom: var(--spacing-small);
 }
 
 .commerce-mini-cart__message-wrapper--visible,
 .commerce-mini-cart__update-message--visible {
-    display: block;
+  display: block;
+}
+
+.commerce-mini-cart .cart-mini-cart__products,
+.commerce-mini-cart .dropin-card,
+.commerce-mini-cart .cart-mini-cart,
+.minicart-panel {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.07) 0%, rgba(169, 216, 235, 0.04) 46%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.commerce-mini-cart .cart-item-edit-container button {
+  font-size: 1.1rem;
 }

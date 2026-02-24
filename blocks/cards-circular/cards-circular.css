@@ -2,231 +2,188 @@
   margin-top: var(--spacing-xbig);
 }
 
-.cards-circular > ul {
+.cards-circular > .arctis-systems-grid,
+.cards-circular > ul.arctis-systems-grid {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: var(--spacing-small);
-  place-items: center;
-  max-width: 1000px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.arctis-system-card {
   position: relative;
-}
-
-.cards-circular > ul > li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 180px;
-  position: relative;
-}
-
-/* First row - 5 items evenly spaced */
-.cards-circular > ul > li:nth-child(1) {
-  grid-column: 1 / 3;
-  grid-row: 1;
-}
-
-.cards-circular > ul > li:nth-child(2) {
-  grid-column: 3 / 5;
-  grid-row: 1;
-}
-
-.cards-circular > ul > li:nth-child(3) {
-  grid-column: 5 / 7;
-  grid-row: 1;
-}
-
-.cards-circular > ul > li:nth-child(4) {
-  grid-column: 7 / 9;
-  grid-row: 1;
-}
-
-.cards-circular > ul > li:nth-child(5) {
-  grid-column: 9 / 11;
-  grid-row: 1;
-}
-
-/* Second row - 4 items offset for honeycomb effect */
-.cards-circular > ul > li:nth-child(6) {
-  grid-column: 2 / 4;
-  grid-row: 2;
-  transform: translateY(-30px);
-}
-
-.cards-circular > ul > li:nth-child(7) {
-  grid-column: 4 / 6;
-  grid-row: 2;
-  transform: translateY(-30px);
-}
-
-.cards-circular > ul > li:nth-child(8) {
-  grid-column: 6 / 8;
-  grid-row: 2;
-  transform: translateY(-30px);
-}
-
-.cards-circular > ul > li:nth-child(9) {
-  grid-column: 8 / 10;
-  grid-row: 2;
-  transform: translateY(-30px);
-}
-
-/* Additional items beyond 9 continue the honeycomb pattern */
-.cards-circular > ul > li:nth-child(10) {
-  grid-column: 1 / 3;
-  grid-row: 3;
-}
-
-.cards-circular > ul > li:nth-child(11) {
-  grid-column: 3 / 5;
-  grid-row: 3;
-}
-
-.cards-circular > ul > li:nth-child(12) {
-  grid-column: 5 / 7;
-  grid-row: 3;
-}
-
-.cards-circular > ul > li:nth-child(13) {
-  grid-column: 7 / 9;
-  grid-row: 3;
-}
-
-.cards-circular > ul > li:nth-child(14) {
-  grid-column: 9 / 11;
-  grid-row: 3;
-}
-
-.cards-circular > ul > li:nth-child(15) {
-  grid-column: 2 / 4;
-  grid-row: 4;
-  transform: translateY(-30px);
-}
-
-.cards-circular > ul > li:nth-child(n+16) {
-  grid-column: auto;
-  grid-row: auto;
-  transform: none;
-}
-
-.cards-circular .cards-circular-item-image {
-  margin-bottom: 4px;
-  width: 156px;
-  height: 156px;
-  border-radius: 50%;
+  grid-column: span 4;
+  min-height: 300px;
   overflow: hidden;
-  position: relative;
-  background-color: var(--color-neutral-100);
-  transition: transform 0.3s ease;
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.07) 0%, rgba(169, 216, 235, 0.04) 48%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cards-circular .cards-circular-item-image:hover {
-  transform: scale(1.05);
+.arctis-system-card:nth-child(1) {
+  grid-column: span 6;
+  grid-row: span 2;
+  min-height: 100%;
 }
 
-.cards-circular .cards-circular-item-image img {
+.arctis-system-card::before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 120%;
+  inset: 0;
+  background: linear-gradient(125deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  transform: translateX(-110%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.arctis-system-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(169, 216, 235, 0.34);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.45), 0 0 30px rgba(169, 216, 235, 0.12);
+}
+
+.arctis-system-card:hover::before {
+  opacity: 1;
+  animation: arctisSystemShimmer 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.arctis-system-visual {
+  position: absolute;
+  inset: 0;
+}
+
+.arctis-system-visual picture,
+.arctis-system-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.arctis-system-visual img {
   object-fit: cover;
   object-position: center;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
+  filter: saturate(0.7) brightness(0.5);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
 }
 
-.cards-circular .cards-circular-item-body {
-  margin-top: 0;
+.arctis-system-card:hover .arctis-system-visual img {
+  transform: scale(1.06);
+  filter: saturate(0.84) brightness(0.62);
 }
 
-.cards-circular .cards-circular-item-body h3,
-.cards-circular .cards-circular-item-body h4,
-.cards-circular .cards-circular-item-body h5,
-.cards-circular .cards-circular-item-body h6 {
+.arctis-system-body {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: clamp(16px, 2vw, 24px);
+  background: linear-gradient(180deg, rgba(4, 10, 18, 0.08) 0%, rgba(4, 10, 18, 0.74) 45%, rgba(4, 10, 18, 0.92) 100%);
+}
+
+.arctis-system-category {
   margin: 0;
-  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.1rem;
+  color: rgba(169, 216, 235, 0.86);
 }
 
-.cards-circular .cards-circular-item-link a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  width: 100%;
+.arctis-system-title {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 3.2vw, 4.8rem);
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  color: rgba(243, 249, 255, 0.96);
 }
 
-.cards-circular .cards-circular-item-link a:hover {
-  text-decoration: underline;
+.arctis-system-description {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  color: rgba(212, 227, 240, 0.78);
 }
 
-/* Tablet and Mobile responsive - 3x3 grid */
-@media (max-width: 1024px) {
-  .cards-circular > ul {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    gap: var(--spacing-small);
-    max-width: 450px;
-    align-items: start;
-  }
+.arctis-system-card:hover .arctis-system-description,
+.arctis-system-card:focus-within .arctis-system-description {
+  max-height: 140px;
+  opacity: 1;
+}
 
-  .cards-circular > ul > li {
-    max-width: 140px;
-    align-self: start;
-  }
+.arctis-system-link {
+  width: max-content;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 1.1rem;
+  color: rgba(169, 216, 235, 0.94);
+}
 
-  /* Reset ALL desktop positioning - unified behavior for all items */
-  .cards-circular > ul > li:nth-child(n) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    transform: none !important;
-    justify-self: center !important;
-  }
+.arctis-system-link::after {
+  content: ' \2192';
+}
 
-  .cards-circular .cards-circular-item-image {
-    width: 110px;
-    height: 110px;
-  }
+.arctis-system-plus {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  display: grid;
+  place-items: center;
+  font-family: 'DM Mono', monospace;
+  color: rgba(242, 248, 255, 0.84);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
-  .cards-circular .cards-circular-item-image img {
-    width: 120%;
-    height: 120%;
+.arctis-system-card:hover .arctis-system-plus {
+  transform: rotate(90deg);
+  background: rgba(215, 93, 43, 0.28);
+}
+
+@keyframes arctisSystemShimmer {
+  to {
+    transform: translateX(110%);
   }
 }
 
-/* Small mobile - 3x3 grid layout */
-@media (max-width: 480px) {
-  .cards-circular > ul {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    gap: var(--spacing-xs);
-    max-width: 300px;
-    align-items: start;
+@media (max-width: 1100px) {
+  .arctis-system-card,
+  .arctis-system-card:nth-child(1) {
+    grid-column: span 6;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-circular > .arctis-systems-grid,
+  .cards-circular > ul.arctis-systems-grid {
+    grid-template-columns: 1fr;
   }
 
-  .cards-circular > ul > li {
-    max-width: 100px;
-    align-self: start;
+  .arctis-system-card,
+  .arctis-system-card:nth-child(1) {
+    grid-column: span 1;
+    min-height: 280px;
   }
 
-  /* Reset ALL desktop positioning - unified behavior for all items */
-  .cards-circular > ul > li:nth-child(n) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    transform: none !important;
-    justify-self: center !important;
-  }
-
-  .cards-circular .cards-circular-item-image {
-    width: 70px;
-    height: 70px;
-  }
-
-  .cards-circular .cards-circular-item-image img {
-    width: 120%;
-    height: 120%;
+  .arctis-system-description {
+    max-height: 140px;
+    opacity: 1;
   }
 }

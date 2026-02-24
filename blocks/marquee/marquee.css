@@ -1,0 +1,15 @@
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid rgba(215, 93, 43, 0.22);
+  border-bottom: 1px solid rgba(215, 93, 43, 0.22);
+  background: linear-gradient(90deg, rgba(215, 93, 43, 0.1) 0%, rgba(169, 216, 235, 0.08) 50%, rgba(215, 93, 43, 0.1) 100%);
+}
+
+.marquee,
+.marquee p,
+.marquee li,
+.marquee span {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(240, 247, 255, 0.86);
+}

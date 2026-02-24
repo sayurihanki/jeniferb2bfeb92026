@@ -3,6 +3,10 @@
   grid-template-columns: repeat(var(--grid-1-columns), 1fr);
   grid-column-gap: var(--grid-1-gutters);
   margin-top: var(--spacing-medium);
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.06) 0%, rgba(169, 216, 235, 0.03) 48%, rgba(255, 255, 255, 0.02) 100%);
 }
 
 .product-details__left-column {
@@ -11,7 +15,7 @@
 
 .product-details__right-column {
   grid-column: 1 / span 4;
-  color: var(--color-neutral-800);
+  color: rgba(239, 246, 255, 0.95);
 }
 
 .product-details__alert {
@@ -40,11 +44,9 @@
 }
 
 .product-details__gallery .pdp-overlay__content .pdp-carousel,
-.product-details__gallery .pdp-overlay__content .pdp-carousel--thumbnailsRow
-{
-  max-height: unset;;
+.product-details__gallery .pdp-overlay__content .pdp-carousel--thumbnailsRow {
+  max-height: unset;
 }
-
 
 .product-details__configuration {
   grid-column: 1 / span 4;
@@ -87,7 +89,7 @@
     display: block;
     grid-column: 1 / span 6;
   }
-  
+
   .product-details__right-column {
     grid-column: 7 / span 5;
     padding-top: var(--spacing-medium);

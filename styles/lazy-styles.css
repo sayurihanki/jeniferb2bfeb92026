@@ -1,75 +1,41 @@
-/* ARCTIS theme overrides — loaded after block CSS (Web Interface Guidelines compliant) */
+/* ARCTIS lazy-only enhancements
+   Keep this file minimal: only late-load effects that are safe after block CSS loads. */
 
-header .nav-wrapper {
-  background: rgba(5, 10, 18, 0.5) !important;
-  backdrop-filter: blur(36px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
-}
-
-.promotional-hero-whitebox {
-  background: linear-gradient(155deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(168, 216, 234, 0.05) 50%,
-    rgba(255, 255, 255, 0.03) 100%) !important;
-  backdrop-filter: blur(28px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
-}
-
-.cards-circular .cards-circular-item-image {
-  background: linear-gradient(155deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(168, 216, 234, 0.03) 50%,
-    rgba(255, 255, 255, 0.02) 100%) !important;
-  backdrop-filter: blur(32px) saturate(1.15) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.15) !important;
-}
-
-.luxury-events {
-  background: linear-gradient(180deg, #080f1a 0%, #050a12 100%) !important;
-}
-
-.luxury-events-card {
-  background: linear-gradient(155deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(168, 216, 234, 0.03) 50%,
-    rgba(255, 255, 255, 0.015) 100%) !important;
-  backdrop-filter: blur(28px) saturate(1.15) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.15) !important;
-}
-
-.newsletter {
-  background: linear-gradient(140deg,
-    rgba(212, 93, 42, 0.12) 0%,
-    rgba(168, 216, 234, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 100%) !important;
-  backdrop-filter: blur(28px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
-}
-
-footer .footer {
-  background: rgba(5, 10, 18, 0.55) !important;
-  backdrop-filter: blur(28px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
-}
-
-/* Catalog dropdown — frosted glass (loaded after block CSS) */
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper {
-  background: linear-gradient(160deg,
-    rgba(5, 10, 18, 0.35) 0%,
-    rgba(8, 15, 26, 0.5) 50%,
-    rgba(5, 10, 18, 0.45) 100%) !important;
-  background-color: transparent !important;
-  backdrop-filter: blur(40px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(32px) saturate(1.2);
+  -webkit-backdrop-filter: blur(32px) saturate(1.2);
 }
 
 header nav .nav-tools-panel {
-  background: linear-gradient(160deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(168, 216, 234, 0.03) 50%,
-    rgba(255, 255, 255, 0.02) 100%) !important;
-  backdrop-filter: blur(36px) saturate(1.25) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(1.25) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(32px) saturate(1.2);
+  -webkit-backdrop-filter: blur(32px) saturate(1.2);
+}
+
+/* Late shimmer utility for hover-capable devices only */
+@media (hover: hover) and (pointer: fine) {
+  .arctis-lazy-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arctis-lazy-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.11) 50%, transparent 100%);
+    transform: translateX(-110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .arctis-lazy-shimmer:hover::after {
+    opacity: 1;
+    animation: arctisLazyShimmer 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes arctisLazyShimmer {
+  to {
+    transform: translateX(110%);
+  }
 }

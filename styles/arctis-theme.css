@@ -1,33 +1,45 @@
 /*
- * ARCTIS theme overlay for EDS — ultra glassmorphic with animations and polish.
+ * ARCTIS theme — luxury retail design system
+ * Aligned with Web Interface Guidelines (accessibility, focus, typography, animation)
  */
 
-/* ─── ARCTIS tokens ─── */
+/* ─── Design tokens ─── */
 :root {
-  --void: #070d18;
-  --deep: #0a1322;
-  --navy: #0f1e34;
-  --steel: #162840;
-  --ice: #b8dff0;
-  --ice-dim: rgba(184, 223, 240, 0.5);
-  --ice-faint: rgba(184, 223, 240, 0.08);
-  --flame: #e8622a;
-  --flame-lo: rgba(232, 98, 42, 0.15);
-  --flame-mid: rgba(232, 98, 42, 0.28);
-  --white: #eaf4fa;
-  --muted: rgba(184, 210, 228, 0.65);
-  --glass: rgba(255, 255, 255, 0.055);
-  --glass-hi: rgba(255, 255, 255, 0.1);
-  --rim: rgba(255, 255, 255, 0.08);
-  --rim-hi: rgba(255, 255, 255, 0.18);
-  --rim-subtle: rgba(255, 255, 255, 0.04);
+  --void: #050a12;
+  --deep: #080f1a;
+  --navy: #0d1628;
+  --steel: #141e32;
+  --ice: #a8d8ea;
+  --ice-dim: rgba(168, 216, 234, 0.55);
+  --ice-faint: rgba(168, 216, 234, 0.06);
+  --flame: #d45d2a;
+  --flame-lo: rgba(212, 93, 42, 0.12);
+  --flame-mid: rgba(212, 93, 42, 0.25);
+  --white: #f0f6fa;
+  --muted: rgba(200, 220, 235, 0.7);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-hi: rgba(255, 255, 255, 0.09);
+  --rim: rgba(255, 255, 255, 0.06);
+  --rim-hi: rgba(255, 255, 255, 0.14);
+  --rim-subtle: rgba(255, 255, 255, 0.03);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --font-display: 'Bebas Neue', sans-serif;
+  --font-elegant: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
 }
 
-/* Map Commerce/EDS design tokens to ARCTIS */
+/* Map Commerce/EDS tokens */
 :root,
 .dropin-design {
   --background-color: var(--void);
@@ -48,8 +60,7 @@
   --type-base-font-family: var(--font-body);
 }
 
-/* ─── Base ─── */
-/* Dark theme per Web Interface Guidelines */
+/* ─── Base (Web Interface Guidelines: color-scheme, dark theme) ─── */
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
@@ -60,80 +71,84 @@ body {
   color: var(--white) !important;
   font-family: var(--font-body) !important;
   font-weight: 300;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
   cursor: none;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(184, 223, 240, 0.2);
+  -webkit-tap-highlight-color: rgba(168, 216, 234, 0.15);
   touch-action: manipulation;
 }
 
+/* Subtle grain overlay */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity: 0.45;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 
-/* Background glows — same as reference */
+/* Atmospheric background glows */
 .arctis-bg-glow {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 55% at 85% 12%, rgba(100, 180, 230, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 45% at 8% 80%, rgba(100, 160, 210, 0.05) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 35% at 50% 50%, rgba(232, 98, 42, 0.025) 0%, transparent 65%);
+    radial-gradient(ellipse 70% 60% at 90% 5%, rgba(120, 180, 220, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 5% 85%, rgba(100, 150, 200, 0.035) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(212, 93, 42, 0.02) 0%, transparent 70%);
 }
 
-/* Cursor — same as reference */
+/* ─── Cursor ─── */
 #arctis-dot {
   position: fixed;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: var(--flame);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.12s;
+  transition: transform 0.15s var(--ease-out-expo);
+  box-shadow: 0 0 10px var(--flame);
 }
 
 #arctis-ring {
   position: fixed;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(184, 223, 240, 0.5);
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(168, 216, 234, 0.4);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: width 0.25s, height 0.25s, border-color 0.25s;
+  transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo), border-color 0.25s;
 }
 
 body:has(a:hover) #arctis-ring,
 body:has(button:hover) #arctis-ring {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-color: var(--flame);
 }
 
 body:has(.promotional-hero-card:hover) #arctis-ring,
 body:has(.cards-circular > ul > li:hover) #arctis-ring {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-color: var(--ice);
 }
 
-/* ─── Header — layered glass with top-edge highlight ─── */
-/* More transparent (0.55) so backdrop-filter blur is visible; isolation for stacking context */
+/* ─── Header — refined glass ─── */
 header .nav-wrapper {
   position: relative;
-  background: rgba(7, 13, 24, 0.55) !important;
-  backdrop-filter: blur(32px) saturate(1.5) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.5) !important;
+  background: rgba(5, 10, 18, 0.5) !important;
+  backdrop-filter: blur(36px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
   border-bottom: 1px solid var(--rim) !important;
   box-shadow: inset 0 1px 0 var(--rim-subtle);
   isolation: isolate;
@@ -143,10 +158,10 @@ header .nav-wrapper::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 10%;
-  right: 10%;
+  left: 15%;
+  right: 15%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 216, 234, 0.35), transparent);
   pointer-events: none;
 }
 
@@ -158,6 +173,7 @@ header nav {
 header nav .nav-brand a,
 header nav .nav-sections a {
   color: var(--muted) !important;
+  transition: color 0.25s, letter-spacing 0.25s;
 }
 
 header nav .nav-brand a:hover,
@@ -180,23 +196,22 @@ header nav .nav-tools button:hover {
 
 header nav .nav-sections .default-content-wrapper > ul > li > a {
   position: relative;
-  transition: color 0.25s, letter-spacing 0.25s;
+  letter-spacing: 0.06em;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > a:hover {
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > a::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--ice);
-  box-shadow: 0 2px 8px rgba(184, 223, 240, 0.2);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, var(--ice), transparent);
+  transition: width 0.35s var(--ease-out-expo);
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > a:hover::after,
@@ -204,19 +219,18 @@ header nav .nav-sections .default-content-wrapper > ul > li.active > a::after {
   width: 100%;
 }
 
-/* ─── Nav dropdown — glass (like arctis-v4 hero-glass) ─── */
+/* Nav dropdown — glass */
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-wrapper {
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(184, 223, 240, 0.04) 40%,
+  background: linear-gradient(160deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(168, 216, 234, 0.03) 50%,
     rgba(255, 255, 255, 0.02) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(32px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+  backdrop-filter: blur(36px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(1.25) !important;
   box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 var(--rim-hi),
-    inset 0 0 40px rgba(184, 223, 240, 0.02) !important;
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 var(--rim-hi) !important;
   isolation: isolate;
 }
 
@@ -224,35 +238,34 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   content: '';
   position: absolute;
   top: 0;
-  left: 12%;
-  right: 12%;
+  left: 15%;
+  right: 15%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 216, 234, 0.4), transparent);
   pointer-events: none;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li ul > li a {
   color: var(--muted) !important;
-  transition: color 0.25s, background-color 0.2s !important;
+  transition: color 0.2s, background-color 0.2s !important;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li ul > li a:hover {
   color: var(--white) !important;
-  background-color: rgba(184, 223, 240, 0.08) !important;
+  background-color: rgba(168, 216, 234, 0.06) !important;
 }
 
-/* ─── Nav tools panels (search, cart, auth) — glass ─── */
+/* Nav tools panels */
 header nav .nav-tools-panel {
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(184, 223, 240, 0.04) 40%,
+  background: linear-gradient(160deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(168, 216, 234, 0.03) 50%,
     rgba(255, 255, 255, 0.02) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(32px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
-  box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 var(--rim-hi) !important;
+  backdrop-filter: blur(36px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(1.25) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 var(--rim-hi) !important;
+  overscroll-behavior: contain;
   isolation: isolate;
 }
 
@@ -260,10 +273,9 @@ header nav .nav-tools {
   background: transparent !important;
 }
 
-/* Nav panel content — dark theme */
 header .nav-search-panel input,
 header .nav-search-panel .dropin-input-container input {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid var(--rim) !important;
   color: var(--white) !important;
 }
@@ -272,16 +284,10 @@ header .nav-search-panel input::placeholder {
   color: var(--muted);
 }
 
-/* Minicart / panels — overscroll per Web Interface Guidelines */
-header nav .nav-tools-panel {
-  overscroll-behavior: contain;
-}
-
-/* Overlay — glassy dark ─── */
 .overlay {
-  background: rgba(7, 13, 24, 0.5) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(5, 10, 18, 0.45) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* ─── Main ─── */
@@ -291,7 +297,7 @@ main {
   background: transparent;
 }
 
-/* ─── Section-level glass ─── */
+/* ─── Sections — refined glass containers ─── */
 main > .section:has(.promotional-hero),
 main > .section:has(.cards-circular),
 main > .section:has(.luxury-events),
@@ -299,37 +305,36 @@ main > .section:has(.newsletter) {
   position: relative;
   overflow: visible;
   background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(184, 223, 240, 0.02) 30%,
-    transparent 70%,
-    rgba(184, 223, 240, 0.03) 100%) !important;
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 25%,
+    transparent 75%,
+    rgba(168, 216, 234, 0.02) 100%) !important;
   border: 1px solid var(--rim-subtle) !important;
-  border-radius: 20px;
-  padding: var(--spacing-big, 32px) !important;
-  backdrop-filter: blur(16px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(1.2) !important;
-  box-shadow: inset 0 0 80px rgba(184, 223, 240, 0.02), 0 4px 24px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl, 48px) !important;
+  backdrop-filter: blur(20px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.15) !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
   isolation: isolate;
 }
 
-/* ─── Promotional hero — layered glass + depth ─── */
+/* ─── Promotional hero — elegant glass cards ─── */
 .promotional-hero-card {
   position: relative;
   overflow: hidden;
-  border-radius: 18px;
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(184, 223, 240, 0.05) 40%,
-    rgba(255, 255, 255, 0.02) 100%) !important;
+  border-radius: var(--radius-md);
+  background: linear-gradient(155deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(168, 216, 234, 0.03) 45%,
+    rgba(255, 255, 255, 0.015) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(40px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(1.3) !important;
+  backdrop-filter: blur(44px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(44px) saturate(1.2) !important;
   box-shadow:
-    0 36px 72px rgba(0, 0, 0, 0.45),
+    0 32px 64px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 var(--rim-hi),
-    inset 0 0 60px rgba(184, 223, 240, 0.015),
-    inset 0 0 40px rgba(184, 223, 240, 0.02);
-  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+    inset 0 0 80px rgba(168, 216, 234, 0.01);
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
   isolation: isolate;
 }
 
@@ -337,10 +342,10 @@ main > .section:has(.newsletter) {
   content: '';
   position: absolute;
   top: 0;
-  left: 12%;
-  right: 12%;
+  left: 15%;
+  right: 15%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 223, 240, 0.55), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 216, 234, 0.45), transparent);
   z-index: 2;
 }
 
@@ -350,41 +355,35 @@ main > .section:has(.newsletter) {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 50%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.04), transparent);
+  bottom: 45%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
   pointer-events: none;
-  border-radius: 18px 18px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   z-index: 1;
 }
 
 .promotional-hero-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: rgba(184, 223, 240, 0.3) !important;
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(168, 216, 234, 0.25) !important;
   box-shadow:
-    0 48px 96px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(184, 223, 240, 0.12),
-    inset 0 1px 0 var(--rim-hi),
-    inset 0 0 60px rgba(184, 223, 240, 0.02);
-}
-
-.promotional-hero-card:hover .promotional-hero-image img {
-  transform: scale(1.04);
-}
-
-.promotional-hero-image {
-  position: relative;
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    0 0 48px rgba(168, 216, 234, 0.08),
+    inset 0 1px 0 var(--rim-hi);
 }
 
 .promotional-hero-image img {
-  transition: transform 0.4s var(--ease-out-expo);
+  transition: transform 0.5s var(--ease-out-expo);
 }
 
-/* Shimmer on hover */
+.promotional-hero-card:hover .promotional-hero-image img {
+  transform: scale(1.05);
+}
+
 .promotional-hero-card .promotional-hero-image::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
   transform: translateX(-100%);
   opacity: 0;
   pointer-events: none;
@@ -393,70 +392,54 @@ main > .section:has(.newsletter) {
 
 .promotional-hero-card:hover .promotional-hero-image::before {
   opacity: 1;
-  animation: arctisShimmer 0.6s ease-out forwards;
+  animation: arctisShimmer 0.7s var(--ease-out-expo) forwards;
 }
 
-/* Whitebox — glass panel with hover lift ─── */
+/* Hero whitebox */
 .promotional-hero-whitebox {
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(184, 223, 240, 0.06) 50%,
-    rgba(255, 255, 255, 0.04) 100%) !important;
-  border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(24px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.3) !important;
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 var(--rim-hi);
-  color: var(--white) !important;
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
-  isolation: isolate;
-}
-
-.promotional-hero-card:hover .promotional-hero-whitebox {
-  transform: translateY(-2px);
-  box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 var(--rim-hi),
-    inset 0 0 24px rgba(184, 223, 240, 0.03);
-}
-
-/* ─── Circular cards — layered glass + hover ─── */
-.cards-circular > ul > li {
-  position: relative;
-}
-
-/* Glass frame around circular image; image fills center, glass visible at edges/overlay */
-.cards-circular .cards-circular-item-image {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(184, 223, 240, 0.04) 50%,
+  background: linear-gradient(155deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(168, 216, 234, 0.05) 50%,
     rgba(255, 255, 255, 0.03) 100%) !important;
   border: 1px solid var(--rim) !important;
   backdrop-filter: blur(28px) saturate(1.2) !important;
   -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
-  box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.35),
-    inset 0 0 60px rgba(184, 223, 240, 0.015);
-  transition:
-    transform 0.35s var(--ease-out-expo),
-    border-color 0.35s,
-    box-shadow 0.4s;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3), inset 0 1px 0 var(--rim-hi);
+  color: var(--white) !important;
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s;
   isolation: isolate;
 }
 
-/* Glass overlay on top of image — always visible, stronger on hover */
+.promotional-hero-card:hover .promotional-hero-whitebox {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.35), inset 0 1px 0 var(--rim-hi);
+}
+
+/* ─── Circular cards ─── */
+.cards-circular .cards-circular-item-image {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(155deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(168, 216, 234, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid var(--rim) !important;
+  backdrop-filter: blur(32px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.15) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), inset 0 0 48px rgba(168, 216, 234, 0.01);
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+  isolation: isolate;
+}
+
 .cards-circular .cards-circular-item-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184, 223, 240, 0.12), transparent 70%);
+  background: radial-gradient(ellipse 65% 45% at 50% 0%, rgba(168, 216, 234, 0.1), transparent 75%);
   pointer-events: none;
   mix-blend-mode: overlay;
-  opacity: 0.9;
-  transition: opacity 0.35s 0.05s;
+  opacity: 0.85;
+  transition: opacity 0.35s;
   z-index: 1;
 }
 
@@ -464,22 +447,21 @@ main > .section:has(.newsletter) {
   content: '';
   position: absolute;
   top: 0;
-  left: 15%;
-  right: 15%;
+  left: 20%;
+  right: 20%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   opacity: 0;
-  transition: opacity 0.25s;
+  transition: opacity 0.3s;
   z-index: 2;
 }
 
 .cards-circular > ul > li:hover .cards-circular-item-image {
-  transform: translateY(-4px) scale(1.03);
-  border-color: rgba(184, 223, 240, 0.22) !important;
+  transform: translateY(-6px) scale(1.04);
+  border-color: rgba(168, 216, 234, 0.2) !important;
   box-shadow:
-    0 28px 56px rgba(0, 0, 0, 0.4),
-    0 0 32px rgba(184, 223, 240, 0.1),
-    0 0 0 1px rgba(184, 223, 240, 0.07);
+    0 24px 48px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(168, 216, 234, 0.06);
 }
 
 .cards-circular > ul > li:hover .cards-circular-item-image::before {
@@ -488,15 +470,14 @@ main > .section:has(.newsletter) {
 
 .cards-circular > ul > li:hover .cards-circular-item-image::after {
   opacity: 1;
-  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184, 223, 240, 0.2), transparent 70%);
+  background: radial-gradient(ellipse 65% 45% at 50% 0%, rgba(168, 216, 234, 0.18), transparent 75%);
 }
 
-/* Shimmer on circular cards */
 .cards-circular > ul > li::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.06), transparent);
   transform: translateX(-100%);
   opacity: 0;
   pointer-events: none;
@@ -505,18 +486,19 @@ main > .section:has(.newsletter) {
 
 .cards-circular > ul > li:hover::before {
   opacity: 1;
-  animation: arctisShimmer 0.6s ease-out forwards;
+  animation: arctisShimmer 0.65s var(--ease-out-expo) forwards;
 }
 
 .cards-circular > ul > li a {
   color: var(--muted);
+  transition: color 0.25s;
 }
 
 .cards-circular > ul > li a:hover {
   color: var(--white);
 }
 
-/* Section headings / text ─── */
+/* ─── Typography (Web Interface Guidelines: text-wrap, hierarchy) ─── */
 .section h2,
 .section h3,
 .cards-circular .cards-circular-item-body h3,
@@ -528,11 +510,17 @@ main > .section:has(.newsletter) {
 }
 
 .section h2 {
+  font-family: var(--font-elegant);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.section h3 {
   font-family: var(--font-display);
   letter-spacing: 0.06em;
 }
 
-/* Scroll margin for anchor links (Web Interface Guidelines) */
 .section h2,
 .section h3,
 .section h4 {
@@ -542,13 +530,21 @@ main > .section:has(.newsletter) {
 .section p,
 .promotional-hero-description {
   color: var(--muted) !important;
+  line-height: 1.7;
 }
 
-/* ─── Footer — hero-stats style glass ─── */
+/* Numbers: tabular-nums per Web Interface Guidelines */
+.section [data-count],
+.hstat-n,
+.font-variant-numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Footer ─── */
 footer .footer {
-  background: rgba(7, 13, 24, 0.6) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+  background: rgba(5, 10, 18, 0.55) !important;
+  backdrop-filter: blur(28px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
   border-top: 1px solid var(--rim) !important;
   box-shadow: inset 0 1px 0 var(--rim-subtle);
   color: var(--muted);
@@ -567,47 +563,42 @@ footer .footer a:hover {
 footer .footer a:hover::before {
   content: '→ ';
   color: var(--flame);
-  font-size: 0.7rem;
-  transform: translateX(2px);
+  font-size: 0.75rem;
   display: inline-block;
   transition: transform 0.25s;
 }
 
 footer .footer h4 {
   color: var(--ice) !important;
-  font-family: var(--font-display);
-  letter-spacing: 0.08em;
+  font-family: var(--font-elegant);
+  font-weight: 400;
+  letter-spacing: 0.06em;
 }
 
-/* ─── Luxury events — dark section + glass cards ─── */
+/* ─── Luxury events ─── */
 .luxury-events {
   background: linear-gradient(180deg, var(--deep) 0%, var(--void) 100%) !important;
 }
 
 .luxury-events-card {
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: linear-gradient(145deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(184, 223, 240, 0.04) 50%,
-    rgba(255, 255, 255, 0.02) 100%) !important;
+  background: linear-gradient(155deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(168, 216, 234, 0.03) 50%,
+    rgba(255, 255, 255, 0.015) 100%) !important;
   border: 1px solid var(--rim) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
-  box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 var(--rim-hi),
-    inset 0 0 40px rgba(184, 223, 240, 0.015);
-  transition: transform 0.35s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
+  backdrop-filter: blur(28px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.15) !important;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35), inset 0 1px 0 var(--rim-hi);
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.35s, box-shadow 0.4s;
   isolation: isolate;
 }
 
 .luxury-events-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(184, 223, 240, 0.2) !important;
-  box-shadow:
-    0 32px 64px rgba(0, 0, 0, 0.4),
-    0 0 24px rgba(184, 223, 240, 0.08);
+  transform: translateY(-6px);
+  border-color: rgba(168, 216, 234, 0.18) !important;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 216, 234, 0.05);
 }
 
 .luxury-events-title h2,
@@ -619,26 +610,27 @@ footer .footer h4 {
   color: var(--muted) !important;
 }
 
-/* ─── Newsletter — glass ─── */
+/* ─── Newsletter ─── */
 .newsletter {
-  background: linear-gradient(135deg,
-    rgba(232, 98, 42, 0.15) 0%,
-    rgba(184, 223, 240, 0.08) 50%,
-    rgba(255, 255, 255, 0.04) 100%) !important;
-  border: 1px solid rgba(232, 98, 42, 0.25) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
-  box-shadow: inset 0 1px 0 var(--rim-hi), 0 4px 24px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(140deg,
+    rgba(212, 93, 42, 0.12) 0%,
+    rgba(168, 216, 234, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 100%) !important;
+  border: 1px solid rgba(212, 93, 42, 0.2) !important;
+  backdrop-filter: blur(28px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.2) !important;
+  box-shadow: inset 0 1px 0 var(--rim-hi), 0 4px 24px rgba(0, 0, 0, 0.15);
   isolation: isolate;
 }
 
-/* ─── Buttons — flame glow on hover ─── */
+/* ─── Buttons (explicit transitions per Web Interface Guidelines, no transition: all) ─── */
 .button,
 .btn-cta,
 button[type='submit'],
 a.button,
-.dropin-button--primary {
-  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s !important;
+.dropin-button--primary,
+.promotional-hero-button {
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s, border-color 0.3s, background-color 0.3s !important;
 }
 
 .button:hover,
@@ -646,43 +638,56 @@ a.button,
 button[type='submit']:hover,
 a.button:hover,
 .dropin-button--primary:hover {
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 0 24px rgba(232, 98, 42, 0.25) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 28px rgba(212, 93, 42, 0.22) !important;
 }
 
-/* Focus visible — WCAG 2.4.7, high-contrast ring */
+.promotional-hero-button {
+  background: linear-gradient(135deg, var(--flame) 0%, rgba(212, 93, 42, 0.9) 100%) !important;
+  color: var(--white) !important;
+  border: 1px solid rgba(212, 93, 42, 0.4) !important;
+  letter-spacing: 0.08em;
+}
+
+.promotional-hero-button:hover {
+  background: linear-gradient(135deg, rgba(212, 93, 42, 0.95) 0%, var(--flame) 100%) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 28px rgba(212, 93, 42, 0.3) !important;
+}
+
+/* ─── Focus (Web Interface Guidelines: focus-visible, never outline-none) ─── */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 [tabindex="0"]:focus-visible {
   outline: 2px solid var(--ice);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(184, 223, 240, 0.35);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(168, 216, 234, 0.25);
 }
 
-/* Skip link for accessibility (WCAG 2.4.1) */
+/* Skip link (WCAG 2.4.1) */
 a.arctis-skip-link,
 a[href="#main-content"] {
   position: absolute;
   left: -9999px;
   z-index: 99999;
-  padding: 0.75rem 1.25rem;
+  padding: 0.875rem 1.5rem;
   background: var(--flame);
   color: var(--void);
   font-weight: 500;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 a.arctis-skip-link:focus,
 a[href="#main-content"]:focus {
-  left: 1rem;
-  top: 1rem;
+  left: var(--space-md);
+  top: var(--space-md);
   outline: 2px solid var(--ice);
   outline-offset: 2px;
 }
 
-/* ─── Keyframes ─── */
+/* ─── Keyframes (transform/opacity only per Web Interface Guidelines) ─── */
 @keyframes arctisShimmer {
   to {
     transform: translateX(100%);
@@ -690,27 +695,19 @@ a[href="#main-content"]:focus {
 }
 
 @keyframes arctisGlowPulse {
-  0%, 100% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 1; }
 }
 
 @keyframes arctisRingPulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
 @keyframes arctisReveal {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -718,49 +715,47 @@ a[href="#main-content"]:focus {
   }
 }
 
-/* ─── Entry animations (staggered) ─── */
+/* ─── Animations (prefers-reduced-motion per Web Interface Guidelines) ─── */
 @media (prefers-reduced-motion: no-preference) {
   .promotional-hero-card {
-    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+    animation: arctisReveal 0.9s var(--ease-out-expo) backwards;
   }
 
-  .promotional-hero-card:nth-child(1) { animation-delay: 0.1s; }
-  .promotional-hero-card:nth-child(2) { animation-delay: 0.18s; }
-  .promotional-hero-card:nth-child(3) { animation-delay: 0.26s; }
+  .promotional-hero-card:nth-child(1) { animation-delay: 0.08s; }
+  .promotional-hero-card:nth-child(2) { animation-delay: 0.16s; }
+  .promotional-hero-card:nth-child(3) { animation-delay: 0.24s; }
 
   .cards-circular > ul > li {
-    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+    animation: arctisReveal 0.9s var(--ease-out-expo) backwards;
   }
 
-  .cards-circular > ul > li:nth-child(1) { animation-delay: 0.05s; }
-  .cards-circular > ul > li:nth-child(2) { animation-delay: 0.13s; }
-  .cards-circular > ul > li:nth-child(3) { animation-delay: 0.21s; }
-  .cards-circular > ul > li:nth-child(4) { animation-delay: 0.29s; }
-  .cards-circular > ul > li:nth-child(5) { animation-delay: 0.37s; }
-  .cards-circular > ul > li:nth-child(6) { animation-delay: 0.45s; }
-  .cards-circular > ul > li:nth-child(7) { animation-delay: 0.53s; }
-  .cards-circular > ul > li:nth-child(8) { animation-delay: 0.61s; }
-  .cards-circular > ul > li:nth-child(9) { animation-delay: 0.69s; }
-  .cards-circular > ul > li:nth-child(n+10) { animation-delay: 0.77s; }
+  .cards-circular > ul > li:nth-child(1) { animation-delay: 0.04s; }
+  .cards-circular > ul > li:nth-child(2) { animation-delay: 0.1s; }
+  .cards-circular > ul > li:nth-child(3) { animation-delay: 0.16s; }
+  .cards-circular > ul > li:nth-child(4) { animation-delay: 0.22s; }
+  .cards-circular > ul > li:nth-child(5) { animation-delay: 0.28s; }
+  .cards-circular > ul > li:nth-child(6) { animation-delay: 0.34s; }
+  .cards-circular > ul > li:nth-child(7) { animation-delay: 0.4s; }
+  .cards-circular > ul > li:nth-child(8) { animation-delay: 0.46s; }
+  .cards-circular > ul > li:nth-child(9) { animation-delay: 0.52s; }
+  .cards-circular > ul > li:nth-child(n+10) { animation-delay: 0.58s; }
 
   .luxury-events-card {
-    animation: arctisReveal 0.8s var(--ease-out-expo) backwards;
+    animation: arctisReveal 0.9s var(--ease-out-expo) backwards;
   }
 
-  .luxury-events-card:nth-child(1) { animation-delay: 0.1s; }
-  .luxury-events-card:nth-child(2) { animation-delay: 0.2s; }
-  .luxury-events-card:nth-child(3) { animation-delay: 0.3s; }
+  .luxury-events-card:nth-child(1) { animation-delay: 0.08s; }
+  .luxury-events-card:nth-child(2) { animation-delay: 0.18s; }
+  .luxury-events-card:nth-child(3) { animation-delay: 0.28s; }
 
-  /* Ambient glow pulse */
   .arctis-bg-glow {
-    animation: arctisGlowPulse 8s ease-in-out infinite;
+    animation: arctisGlowPulse 10s ease-in-out infinite;
   }
 
-  /* Scroll reveal — applied via JS */
   .arctis-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
   }
 
   .arctis-reveal.revealed {
@@ -800,13 +795,7 @@ a[href="#main-content"]:focus {
   }
 }
 
-/* Cursor dot glow */
-#arctis-dot {
-  box-shadow: 0 0 12px var(--flame);
-}
-
-/* Ring pulse on link/button hover */
 body:has(a:hover) #arctis-ring,
 body:has(button:hover) #arctis-ring {
-  animation: arctisRingPulse 0.5s ease-out;
+  animation: arctisRingPulse 0.5s var(--ease-out-expo);
 }

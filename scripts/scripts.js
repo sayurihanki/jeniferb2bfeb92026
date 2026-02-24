@@ -83,6 +83,41 @@ function removeLegacyHomepageHero(main) {
 }
 
 /**
+ * Rebuilds hero-4 as a proper block when DA block preview flattens it into paragraphs.
+ * @param {Element} main The main element
+ */
+function normalizeDaHero4Preview(main) {
+  const pathname = window.location.pathname || '';
+  if (!pathname.startsWith('/.da/blocks/hero-4')) return;
+
+  const section = main.querySelector(':scope > .section');
+  if (!section || section.querySelector('.hero-4')) return;
+
+  const contentWrapper = section.querySelector(':scope > .default-content-wrapper');
+  if (!contentWrapper) return;
+
+  const cells = [...contentWrapper.children].filter((el) => el.tagName === 'P');
+  if (!cells.length || !cells[0].querySelector('picture, img')) return;
+
+  const getCell = (index) => cells[index]?.innerHTML || '';
+  const rows = [
+    [getCell(0), getCell(1), getCell(2), getCell(3)],
+    [getCell(4), getCell(5), getCell(6), getCell(7)],
+  ];
+
+  let cursor = 8;
+  while (cursor + 2 < cells.length) {
+    rows.push([getCell(cursor), getCell(cursor + 1), getCell(cursor + 2)]);
+    cursor += 3;
+  }
+
+  const wrapper = document.createElement('div');
+  wrapper.append(buildBlock('hero-4', rows));
+  section.append(wrapper);
+  contentWrapper.remove();
+}
+
+/**
  * Ensures hero-4 blocks are decorated even when section wrappers are atypical.
  * @param {Element} main The main element
  */
@@ -107,6 +142,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  normalizeDaHero4Preview(main);
   decorateBlocks(main);
   ensureHero4Blocks(main);
 }

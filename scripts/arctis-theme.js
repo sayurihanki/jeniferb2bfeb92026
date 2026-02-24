@@ -203,7 +203,7 @@
 
   function addLazyShimmerClass() {
     const candidates = document.querySelectorAll(
-      '.cards > ul > li, .cards-list > ul > li, .cards-circular > ul > li, .product-recommendations .product-grid-item, .luxury-events-card, [class^="commerce-"] .dropin-card, [class*=" commerce-"] .dropin-card'
+      '.cards > ul > li, .cards-list > ul > li, .cards-circular > ul > li, .product-recommendations .product-grid-item, .luxury-events-card, [class^="commerce-"] .dropin-card, [class*=" commerce-"] .dropin-card',
     );
 
     candidates.forEach((item) => item.classList.add('arctis-lazy-shimmer'));
@@ -222,4 +222,4 @@
   } else {
     init();
   }
-})();
+}());

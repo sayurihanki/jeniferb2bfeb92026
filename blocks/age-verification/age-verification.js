@@ -16,7 +16,7 @@ export default function decorate(block) {
   // </div>
   const content = block.querySelector(':scope > div');
   const buttons = content ? content.querySelectorAll('div > p') : [];
-  
+
   // Clean up existing content to rebuild the modal structure
   block.textContent = '';
 
@@ -28,7 +28,7 @@ export default function decorate(block) {
 
   const title = document.createElement('h2');
   title.textContent = content ? content.querySelector('div').textContent : 'Are you over 18?';
-  
+
   const buttonGroup = document.createElement('div');
   buttonGroup.className = 'button-group';
 
@@ -46,9 +46,9 @@ export default function decorate(block) {
   noButton.textContent = buttons.length > 1 ? buttons[1].textContent : 'No';
   noButton.className = 'verify-btn no';
   noButton.onclick = () => {
-      // Handle rejection - for now, maybe just alert or redirect
-      // In a real scenario, this might act differently
-      window.location.href = 'https://www.google.com';
+    // Handle rejection - for now, maybe just alert or redirect
+    // In a real scenario, this might act differently
+    window.location.href = 'https://www.google.com';
   };
 
   buttonGroup.append(yesButton, noButton);

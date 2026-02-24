@@ -1,4 +1,3 @@
-
 // age-gate.js
 
 /**
@@ -216,10 +215,10 @@ export default async function decorate(block) {
 
     // Basic validation
     if (
-      Number.isInteger(month) && Number.isInteger(day) && Number.isInteger(year) &&
-      month >= 1 && month <= 12 &&
-      day >= 1 && day <= 31 &&
-      year > 1900 && year <= new Date().getFullYear()
+      Number.isInteger(month) && Number.isInteger(day) && Number.isInteger(year)
+      && month >= 1 && month <= 12
+      && day >= 1 && day <= 31
+      && year > 1900 && year <= new Date().getFullYear()
     ) {
       const dob = new Date(year, month - 1, day);
 
@@ -246,4 +245,4 @@ export default async function decorate(block) {
     }
   });
 }
-``
+``;

@@ -3,7 +3,7 @@ export function countUp(el, target, dur) {
   const t0 = performance.now();
   function step(t) {
     const p = Math.min((t - t0) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
+    const ease = 1 - (1 - p) ** 3;
     el.textContent = Math.round(ease * target).toLocaleString();
     if (p < 1) requestAnimationFrame(step);
   }
@@ -27,7 +27,7 @@ export function initLiveTemp() {
     base += (Math.random() - 0.5) * 0.2;
     base = Math.max(67.8, Math.min(69.2, base));
     const v = base.toFixed(1);
-    ids.forEach(id => {
+    ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.textContent = v;
     });

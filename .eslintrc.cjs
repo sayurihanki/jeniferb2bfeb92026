@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
+    'import/no-unresolved': ['error', { ignore: ['^@dropins/'] }], // @dropins are runtime deps
     'import/prefer-default-export': 'off', // allow named exports for single exports
     'import/no-cycle': 'off', // allow circular dependencies for browser code
     'import/no-relative-packages': 'off', // allow relative imports for browser code

@@ -1,6 +1,6 @@
 /* ===== Form-4 — Light Glassmorphic Multi-step ===== */
 
-.form-4 {
+main .form-4 {
   --f4-bg: #f7f6f4;
   --f4-surface: rgb(255 255 255 / 60%);
   --f4-glass: rgb(255 255 255 / 52%);
@@ -34,7 +34,7 @@
 
 /* ── BG layers ──────────────────────────────── */
 
-.form-4 .f4-pcanvas {
+main .form-4 .f4-pcanvas {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -43,7 +43,7 @@
   height: 100%;
 }
 
-.form-4 .f4-bg-canvas {
+main .form-4 .f4-bg-canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -51,7 +51,7 @@
   pointer-events: none;
 }
 
-.form-4 .f4-orb {
+main .form-4 .f4-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
@@ -59,7 +59,7 @@
   animation: f4-drift var(--d, 20s) ease-in-out infinite alternate;
 }
 
-.form-4 .f4-orb:nth-child(1) {
+main .form-4 .f4-orb:nth-child(1) {
   width: 700px;
   height: 700px;
   background: radial-gradient(#c4b5fd, transparent 70%);
@@ -69,7 +69,7 @@
   --d: 22s;
 }
 
-.form-4 .f4-orb:nth-child(2) {
+main .form-4 .f4-orb:nth-child(2) {
   width: 550px;
   height: 550px;
   background: radial-gradient(#a78bfa, transparent 70%);
@@ -81,7 +81,7 @@
   animation-delay: -9s;
 }
 
-.form-4 .f4-orb:nth-child(3) {
+main .form-4 .f4-orb:nth-child(3) {
   width: 450px;
   height: 450px;
   background: radial-gradient(#6ee7b7, transparent 70%);
@@ -93,7 +93,7 @@
   animation-delay: -5s;
 }
 
-.form-4 .f4-orb:nth-child(4) {
+main .form-4 .f4-orb:nth-child(4) {
   width: 350px;
   height: 350px;
   background: radial-gradient(#fde68a, transparent 70%);
@@ -113,7 +113,7 @@
   100% { transform: translate(25px, -30px) scale(1.05); }
 }
 
-.form-4 .f4-bg-grid {
+main .form-4 .f4-bg-grid {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -124,7 +124,7 @@
   background-size: 64px 64px;
 }
 
-.form-4 .f4-bg-noise {
+main .form-4 .f4-bg-noise {
   position: absolute;
   inset: -50%;
   z-index: 0;
@@ -146,19 +146,19 @@
 
 /* ── Outer ──────────────────────────────────── */
 
-.form-4 .f4-outer {
+main .form-4 .f4-outer {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 880px;
 }
 
-.form-4 .f4-badge {
+main .form-4 .f4-badge {
   text-align: center;
   margin-bottom: 2.4rem;
 }
 
-.form-4 .f4-badge > span {
+main .form-4 .f4-badge > span {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
@@ -172,7 +172,7 @@
   border-radius: 3.2rem;
 }
 
-.form-4 .f4-dot {
+main .form-4 .f4-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -195,7 +195,7 @@
 
 /* ── Card ───────────────────────────────────── */
 
-.form-4 .f4-card {
+main .form-4 .f4-card {
   background: rgb(255 255 255 / 55%);
   backdrop-filter: blur(var(--f4-blur)) saturate(160%);
   border: 1px solid rgb(255 255 255 / 70%);
@@ -209,7 +209,7 @@
   position: relative;
 }
 
-.form-4 .f4-card::before {
+main .form-4 .f4-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -229,13 +229,13 @@
 
 /* ── Hero ───────────────────────────────────── */
 
-.form-4 .f4-hero {
+main .form-4 .f4-hero {
   padding: 4rem 4.8rem 3.2rem;
   position: relative;
   border-bottom: 1px solid rgb(0 0 0 / 5%);
 }
 
-.form-4 .f4-eyebrow {
+main .form-4 .f4-eyebrow {
   font: var(--type-details-overline-font, 600 1.2rem/1.6rem 'adobe-clean', sans-serif);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -246,7 +246,7 @@
   gap: 0.8rem;
 }
 
-.form-4 .f4-eyebrow::before {
+main .form-4 .f4-eyebrow::before {
   content: '';
   display: block;
   width: 2.4rem;
@@ -254,14 +254,14 @@
   background: var(--f4-a2);
 }
 
-.form-4 .f4-h1 {
+main .form-4 .f4-h1 {
   font: var(--type-display-2-font, 300 4.8rem/5.6rem 'adobe-clean', sans-serif);
   letter-spacing: -0.03em;
   color: var(--f4-text);
   margin-bottom: 1.6rem;
 }
 
-.form-4 .f4-h1 em {
+main .form-4 .f4-h1 em {
   font-style: normal;
   font-weight: 700;
   background: linear-gradient(135deg, var(--f4-a) 0%, var(--f4-a2) 50%, var(--f4-a3) 100%);
@@ -269,7 +269,7 @@
   color: transparent;
 }
 
-.form-4 .f4-hero-p {
+main .form-4 .f4-hero-p {
   font: var(--type-body-1-default-font, 300 1.6rem/2.4rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   max-width: 52rem;
@@ -277,25 +277,25 @@
 
 /* ── Progress ───────────────────────────────── */
 
-.form-4 .f4-progress {
+main .form-4 .f4-progress {
   margin-top: 3.2rem;
   display: flex;
   align-items: center;
 }
 
-.form-4 .f4-si {
+main .form-4 .f4-si {
   display: flex;
   align-items: center;
   flex: 1;
 }
 
-.form-4 .f4-sw {
+main .form-4 .f4-sw {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.form-4 .f4-sb {
+main .form-4 .f4-sb {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -312,35 +312,35 @@
   flex-shrink: 0;
 }
 
-.form-4 .f4-sb-check {
+main .form-4 .f4-sb-check {
   width: 1.6rem;
   height: 1.6rem;
   display: none;
 }
 
-.form-4 .f4-sb--active {
+main .form-4 .f4-sb--active {
   background: var(--f4-a);
   border-color: var(--f4-a);
   color: #fff;
   box-shadow: 0 4px 20px rgb(136 33 244 / 30%);
 }
 
-.form-4 .f4-sb--done {
+main .form-4 .f4-sb--done {
   background: var(--f4-ok);
   border-color: var(--f4-ok);
   color: #fff;
   box-shadow: 0 4px 16px rgb(83 130 76 / 25%);
 }
 
-.form-4 .f4-sb--done .f4-sn {
+main .form-4 .f4-sb--done .f4-sn {
   display: none;
 }
 
-.form-4 .f4-sb--done .f4-sb-check {
+main .form-4 .f4-sb--done .f4-sb-check {
   display: block;
 }
 
-.form-4 .f4-sl {
+main .form-4 .f4-sl {
   flex: 1;
   height: 2px;
   background: rgb(0 0 0 / 6%);
@@ -348,7 +348,7 @@
   overflow: hidden;
 }
 
-.form-4 .f4-slf {
+main .form-4 .f4-slf {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, var(--f4-ok), var(--f4-a));
@@ -357,7 +357,7 @@
   transition: transform 0.5s var(--f4-out);
 }
 
-.form-4 .f4-slbl {
+main .form-4 .f4-slbl {
   font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem 'adobe-clean', sans-serif);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -366,27 +366,27 @@
   text-align: center;
 }
 
-.form-4 .f4-si--active .f4-slbl {
+main .form-4 .f4-si--active .f4-slbl {
   color: var(--f4-a);
   font-weight: 600;
 }
 
-.form-4 .f4-si--done .f4-slbl {
+main .form-4 .f4-si--done .f4-slbl {
   color: var(--f4-ok);
 }
 
 /* ── Body ───────────────────────────────────── */
 
-.form-4 .f4-fbody {
+main .form-4 .f4-fbody {
   padding: 3.2rem 4.8rem 4rem;
 }
 
-.form-4 .f4-fstep {
+main .form-4 .f4-fstep {
   display: none;
   animation: f4-s-in 0.5s var(--f4-out) both;
 }
 
-.form-4 .f4-fstep--active {
+main .form-4 .f4-fstep--active {
   display: block;
 }
 
@@ -414,14 +414,14 @@
   }
 }
 
-.form-4 .f4-stitle {
+main .form-4 .f4-stitle {
   font: var(--type-headline-2-strong-font, 700 2rem/2.4rem 'adobe-clean', sans-serif);
   color: var(--f4-text);
   margin-bottom: 0.4rem;
   letter-spacing: -0.01em;
 }
 
-.form-4 .f4-ssub {
+main .form-4 .f4-ssub {
   font: var(--type-body-2-default-font, 300 1.4rem/2rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   margin-bottom: 3.2rem;
@@ -430,13 +430,13 @@
 
 /* ── Grid ───────────────────────────────────── */
 
-.form-4 .f4-grid {
+main .form-4 .f4-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
 
-.form-4 .f4-span2 {
+main .form-4 .f4-span2 {
   grid-column: 1 / -1;
 }
 
@@ -452,16 +452,16 @@
 
 /* ── Field ──────────────────────────────────── */
 
-.form-4 .f4-field {
+main .form-4 .f4-field {
   position: relative;
   transition: transform 0.2s var(--f4-spring);
 }
 
-.form-4 .f4-field:focus-within {
+main .form-4 .f4-field:focus-within {
   transform: translateY(-1px);
 }
 
-.form-4 .f4-flbl {
+main .form-4 .f4-flbl {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -473,40 +473,40 @@
   transition: color 0.2s;
 }
 
-.form-4 .f4-field--err .f4-flbl {
+main .form-4 .f4-field--err .f4-flbl {
   color: var(--f4-err);
 }
 
-.form-4 .f4-field--ok .f4-flbl {
+main .form-4 .f4-field--ok .f4-flbl {
   color: var(--f4-ok);
 }
 
-.form-4 .f4-field:focus-within .f4-flbl {
+main .form-4 .f4-field:focus-within .f4-flbl {
   color: var(--f4-a);
 }
 
-.form-4 .f4-flbl-opt {
+main .form-4 .f4-flbl-opt {
   color: var(--f4-dim);
   text-transform: none;
   letter-spacing: 0;
   font-weight: 300;
 }
 
-.form-4 .f4-freq {
+main .form-4 .f4-freq {
   color: var(--f4-a);
 }
 
-.form-4 .f4-fico {
+main .form-4 .f4-fico {
   width: 1.6rem;
   height: 1.6rem;
   opacity: 0.5;
 }
 
-.form-4 .f4-fwrap {
+main .form-4 .f4-fwrap {
   position: relative;
 }
 
-.form-4 .f4-fi {
+main .form-4 .f4-fi {
   width: 100%;
   background: var(--f4-glass);
   border: 1px solid var(--f4-gb);
@@ -522,16 +522,16 @@
   backdrop-filter: blur(12px);
 }
 
-.form-4 .f4-fi::placeholder {
+main .form-4 .f4-fi::placeholder {
   color: var(--color-neutral-500, #b8b8b8);
 }
 
-.form-4 .f4-fi:hover {
+main .form-4 .f4-fi:hover {
   background: var(--f4-glass-h);
   border-color: rgb(0 0 0 / 12%);
 }
 
-.form-4 .f4-fi:focus {
+main .form-4 .f4-fi:focus {
   background: rgb(255 255 255 / 80%);
   border-color: var(--f4-gb-f);
   box-shadow:
@@ -539,17 +539,17 @@
     0 0 24px rgb(136 33 244 / 5%) inset;
 }
 
-.form-4 .f4-field--err .f4-fi {
+main .form-4 .f4-field--err .f4-fi {
   border-color: rgb(195 80 80 / 50%);
   box-shadow: 0 0 0 3px rgb(195 80 80 / 8%);
 }
 
-.form-4 .f4-field--ok .f4-fi {
+main .form-4 .f4-field--ok .f4-fi {
   border-color: rgb(83 130 76 / 40%);
   box-shadow: 0 0 0 3px rgb(83 130 76 / 6%);
 }
 
-.form-4 .f4-ftrail {
+main .form-4 .f4-ftrail {
   position: absolute;
   right: 1.2rem;
   top: 50%;
@@ -561,30 +561,30 @@
   transition: color 0.2s;
 }
 
-.form-4 .f4-field--err .f4-ftrail {
+main .form-4 .f4-field--err .f4-ftrail {
   color: var(--f4-err);
 }
 
-.form-4 .f4-field--ok .f4-ftrail {
+main .form-4 .f4-field--ok .f4-ftrail {
   color: var(--f4-ok);
 }
 
-.form-4 .f4-fi--trail {
+main .form-4 .f4-fi--trail {
   padding-right: 4rem;
 }
 
-.form-4 textarea.f4-fi {
+main .form-4 textarea.f4-fi {
   resize: vertical;
   min-height: 14rem;
   line-height: 1.7;
 }
 
-.form-4 select.f4-fi {
+main .form-4 select.f4-fi {
   cursor: pointer;
   padding-right: 4rem;
 }
 
-.form-4 .f4-fchev {
+main .form-4 .f4-fchev {
   position: absolute;
   right: 1.4rem;
   top: 50%;
@@ -593,13 +593,13 @@
   color: var(--f4-dim);
 }
 
-.form-4 .f4-fchev svg {
+main .form-4 .f4-fchev svg {
   width: 1.6rem;
   height: 1.6rem;
   display: block;
 }
 
-.form-4 .f4-fmsg {
+main .form-4 .f4-fmsg {
   font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem 'adobe-clean', sans-serif);
   margin-top: 0.6rem;
   min-height: 1.4em;
@@ -610,24 +610,24 @@
 
 /* ── Pills ──────────────────────────────────── */
 
-.form-4 .f4-pills {
+main .form-4 .f4-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
 }
 
-.form-4 .f4-pc {
+main .form-4 .f4-pc {
   position: relative;
 }
 
-.form-4 .f4-pc input {
+main .form-4 .f4-pc input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.form-4 .f4-pc label {
+main .form-4 .f4-pc label {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -643,13 +643,13 @@
   backdrop-filter: blur(8px);
 }
 
-.form-4 .f4-pc label:hover {
+main .form-4 .f4-pc label:hover {
   border-color: rgb(136 33 244 / 25%);
   color: var(--f4-text);
   background: rgb(136 33 244 / 5%);
 }
 
-.form-4 .f4-pc input:checked + label {
+main .form-4 .f4-pc input:checked + label {
   background: rgb(136 33 244 / 10%);
   border-color: rgb(136 33 244 / 40%);
   color: var(--f4-a);
@@ -657,11 +657,11 @@
   box-shadow: 0 2px 12px rgb(136 33 244 / 10%);
 }
 
-.form-4 .f4-pc--wide {
+main .form-4 .f4-pc--wide {
   width: 100%;
 }
 
-.form-4 .f4-consent-label {
+main .form-4 .f4-consent-label {
   border-radius: var(--f4-rs);
   width: 100%;
   justify-content: flex-start;
@@ -669,7 +669,7 @@
 
 /* ── Slider ─────────────────────────────────── */
 
-.form-4 .f4-fslider {
+main .form-4 .f4-fslider {
   appearance: none;
   width: 100%;
   height: 4px;
@@ -679,7 +679,7 @@
   cursor: pointer;
 }
 
-.form-4 .f4-fslider::-webkit-slider-thumb {
+main .form-4 .f4-fslider::-webkit-slider-thumb {
   appearance: none;
   width: 2.4rem;
   height: 2.4rem;
@@ -691,11 +691,11 @@
   transition: box-shadow 0.2s;
 }
 
-.form-4 .f4-fslider::-webkit-slider-thumb:hover {
+main .form-4 .f4-fslider::-webkit-slider-thumb:hover {
   box-shadow: 0 4px 20px rgb(136 33 244 / 50%);
 }
 
-.form-4 .f4-fslider::-moz-range-thumb {
+main .form-4 .f4-fslider::-moz-range-thumb {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
@@ -705,7 +705,7 @@
   cursor: pointer;
 }
 
-.form-4 .f4-slabels {
+main .form-4 .f4-slabels {
   display: flex;
   justify-content: space-between;
   font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem 'adobe-clean', sans-serif);
@@ -713,7 +713,7 @@
   margin-top: 0.8rem;
 }
 
-.form-4 .f4-sval {
+main .form-4 .f4-sval {
   text-align: center;
   font: var(--type-headline-2-strong-font, 700 2rem/2.4rem 'adobe-clean', sans-serif);
   color: var(--f4-a);
@@ -723,13 +723,13 @@
 
 /* ── Toggle ─────────────────────────────────── */
 
-.form-4 .f4-toggles {
+main .form-4 .f4-toggles {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.form-4 .f4-trow {
+main .form-4 .f4-trow {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -741,27 +741,27 @@
   transition: border-color 0.2s;
 }
 
-.form-4 .f4-trow:hover {
+main .form-4 .f4-trow:hover {
   border-color: rgb(0 0 0 / 12%);
 }
 
-.form-4 .f4-ttxt {
+main .form-4 .f4-ttxt {
   flex: 1;
 }
 
-.form-4 .f4-ttitle {
+main .form-4 .f4-ttitle {
   font: var(--type-body-2-default-font, 300 1.4rem/2rem 'adobe-clean', sans-serif);
   font-weight: 400;
   color: var(--f4-text);
 }
 
-.form-4 .f4-tsub {
+main .form-4 .f4-tsub {
   font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   margin-top: 0.2rem;
 }
 
-.form-4 .f4-tswitch {
+main .form-4 .f4-tswitch {
   position: relative;
   width: 4.8rem;
   height: 2.8rem;
@@ -769,13 +769,13 @@
   margin-left: 1.6rem;
 }
 
-.form-4 .f4-tswitch input {
+main .form-4 .f4-tswitch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.form-4 .f4-ttrack {
+main .form-4 .f4-ttrack {
   position: absolute;
   inset: 0;
   cursor: pointer;
@@ -785,7 +785,7 @@
   border: 1px solid rgb(0 0 0 / 6%);
 }
 
-.form-4 .f4-ttrack::after {
+main .form-4 .f4-ttrack::after {
   content: '';
   position: absolute;
   left: 3px;
@@ -800,12 +800,12 @@
     background 0.3s;
 }
 
-.form-4 .f4-tswitch input:checked + .f4-ttrack {
+main .form-4 .f4-tswitch input:checked + .f4-ttrack {
   background: var(--f4-a);
   border-color: var(--f4-a);
 }
 
-.form-4 .f4-tswitch input:checked + .f4-ttrack::after {
+main .form-4 .f4-tswitch input:checked + .f4-ttrack::after {
   transform: translateX(2rem);
   background: #fff;
   box-shadow: 0 2px 8px rgb(136 33 244 / 30%);
@@ -813,7 +813,7 @@
 
 /* ── Dropzone ───────────────────────────────── */
 
-.form-4 .f4-dropzone {
+main .form-4 .f4-dropzone {
   border: 2px dashed rgb(0 0 0 / 10%);
   border-radius: var(--f4-rs);
   padding: 3.2rem 2.4rem;
@@ -826,46 +826,46 @@
   overflow: hidden;
 }
 
-.form-4 .f4-dropzone:hover,
-.form-4 .f4-dropzone--over {
+main .form-4 .f4-dropzone:hover,
+main .form-4 .f4-dropzone--over {
   border-color: rgb(136 33 244 / 30%);
   background: rgb(136 33 244 / 4%);
 }
 
-.form-4 .f4-dropzone input[type='file'] {
+main .form-4 .f4-dropzone input[type='file'] {
   position: absolute;
   inset: 0;
   opacity: 0;
   cursor: pointer;
 }
 
-.form-4 .f4-dzico {
+main .form-4 .f4-dzico {
   font-size: 3.2rem;
   margin-bottom: 1.2rem;
 }
 
-.form-4 .f4-dztitle {
+main .form-4 .f4-dztitle {
   font: var(--type-body-2-default-font, 300 1.4rem/2rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
 }
 
-.form-4 .f4-dztitle strong {
+main .form-4 .f4-dztitle strong {
   color: var(--f4-a);
   font-weight: 500;
 }
 
-.form-4 .f4-dzsub {
+main .form-4 .f4-dzsub {
   font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   margin-top: 0.4rem;
   opacity: 0.6;
 }
 
-.form-4 .f4-dzfiles {
+main .form-4 .f4-dzfiles {
   margin-top: 1.2rem;
 }
 
-.form-4 .f4-dzpill {
+main .form-4 .f4-dzpill {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -880,7 +880,7 @@
 
 /* ── Counter ────────────────────────────────── */
 
-.form-4 .f4-counter {
+main .form-4 .f4-counter {
   position: absolute;
   bottom: 1rem;
   right: 1.2rem;
@@ -890,35 +890,35 @@
   transition: color 0.2s;
 }
 
-.form-4 .f4-counter--warn {
+main .form-4 .f4-counter--warn {
   color: var(--f4-gold);
 }
 
-.form-4 .f4-counter--over {
+main .form-4 .f4-counter--over {
   color: var(--f4-err);
 }
 
 /* ── Date ───────────────────────────────────── */
 
-.form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator {
+main .form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.5;
 }
 
-.form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator:hover {
+main .form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator:hover {
   opacity: 0.8;
 }
 
 /* ── Color picker ───────────────────────────── */
 
-.form-4 .f4-colorpicks {
+main .form-4 .f4-colorpicks {
   display: flex;
   gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.form-4 .f4-cpick {
+main .form-4 .f4-cpick {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -929,13 +929,13 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
 }
 
-.form-4 .f4-cpick--sel {
+main .form-4 .f4-cpick--sel {
   transform: scale(1.15);
   border-color: var(--f4-text);
   box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
 }
 
-.form-4 .f4-cpick--sel::after {
+main .form-4 .f4-cpick--sel::after {
   content: '\2713';
   position: absolute;
   inset: 0;
@@ -948,7 +948,7 @@
   text-shadow: 0 1px 3px rgb(0 0 0 / 40%);
 }
 
-.form-4 .f4-cpick-label {
+main .form-4 .f4-cpick-label {
   font: var(--type-body-2-default-font, 300 1.4rem/2rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   margin-left: 0.4rem;
@@ -956,12 +956,12 @@
 
 /* ── Stars ──────────────────────────────────── */
 
-.form-4 .f4-stars {
+main .form-4 .f4-stars {
   display: flex;
   gap: 0.4rem;
 }
 
-.form-4 .f4-sbtn {
+main .form-4 .f4-sbtn {
   background: none;
   border: none;
   cursor: pointer;
@@ -974,7 +974,7 @@
 
 /* ── Nav ────────────────────────────────────── */
 
-.form-4 .f4-nav {
+main .form-4 .f4-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -982,7 +982,7 @@
   gap: 1.6rem;
 }
 
-.form-4 .f4-bbk {
+main .form-4 .f4-bbk {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -997,18 +997,18 @@
   transition: all 0.2s;
 }
 
-.form-4 .f4-bbk:hover {
+main .form-4 .f4-bbk:hover {
   border-color: rgb(0 0 0 / 18%);
   color: var(--f4-text);
   background: rgb(0 0 0 / 3%);
 }
 
-.form-4 .f4-bbk svg {
+main .form-4 .f4-bbk svg {
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.form-4 .f4-bnx {
+main .form-4 .f4-bnx {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1032,7 +1032,7 @@
   box-shadow: 0 4px 24px rgb(136 33 244 / 25%);
 }
 
-.form-4 .f4-bnx::before {
+main .form-4 .f4-bnx::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1041,30 +1041,30 @@
   transition: opacity 0.3s;
 }
 
-.form-4 .f4-bnx:hover {
+main .form-4 .f4-bnx:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgb(136 33 244 / 35%);
 }
 
-.form-4 .f4-bnx:hover::before {
+main .form-4 .f4-bnx:hover::before {
   opacity: 1;
 }
 
-.form-4 .f4-bnx:active {
+main .form-4 .f4-bnx:active {
   transform: translateY(0);
 }
 
-.form-4 .f4-bnx svg {
+main .form-4 .f4-bnx svg {
   width: 1.6rem;
   height: 1.6rem;
   transition: transform 0.2s;
 }
 
-.form-4 .f4-bnx--ld {
+main .form-4 .f4-bnx--ld {
   pointer-events: none;
 }
 
-.form-4 .f4-bnx--ld svg {
+main .form-4 .f4-bnx--ld svg {
   animation: f4-spin 0.8s linear infinite;
 }
 
@@ -1074,37 +1074,37 @@
   }
 }
 
-.form-4 .f4-bnx:hover svg {
+main .form-4 .f4-bnx:hover svg {
   transform: translateX(3px);
 }
 
-.form-4 .f4-bsub {
+main .form-4 .f4-bsub {
   background: linear-gradient(135deg, var(--f4-a), #e74694);
   box-shadow: 0 4px 24px rgb(136 33 244 / 25%);
 }
 
-.form-4 .f4-bsub:hover {
+main .form-4 .f4-bsub:hover {
   box-shadow: 0 8px 32px rgb(136 33 244 / 35%);
 }
 
 /* ── Link ───────────────────────────────────── */
 
-.form-4 .f4-link {
+main .form-4 .f4-link {
   color: var(--f4-a);
   text-decoration: none;
 }
 
-.form-4 .f4-link:hover {
+main .form-4 .f4-link:hover {
   text-decoration: underline;
 }
 
 /* ── Success ────────────────────────────────── */
 
-.form-4 .f4-success-wrap {
+main .form-4 .f4-success-wrap {
   display: contents;
 }
 
-.form-4 .f4-success {
+main .form-4 .f4-success {
   padding: 6.4rem 4.8rem;
   text-align: center;
   opacity: 0;
@@ -1112,19 +1112,19 @@
   transition: opacity 0.6s var(--f4-out), transform 0.6s var(--f4-out);
 }
 
-.form-4 .f4-success--visible {
+main .form-4 .f4-success--visible {
   opacity: 1;
   transform: scale(1);
 }
 
-.form-4 .f4-sburst {
+main .form-4 .f4-sburst {
   position: relative;
   width: 12rem;
   height: 12rem;
   margin: 0 auto 3.2rem;
 }
 
-.form-4 .f4-sbring {
+main .form-4 .f4-sbring {
   position: absolute;
   inset: 0;
   border: 2px solid rgb(83 130 76 / 25%);
@@ -1132,11 +1132,11 @@
   animation: f4-burst 1.8s var(--f4-out) forwards;
 }
 
-.form-4 .f4-sbring:nth-child(2) {
+main .form-4 .f4-sbring:nth-child(2) {
   animation-delay: 0.18s;
 }
 
-.form-4 .f4-sbring:nth-child(3) {
+main .form-4 .f4-sbring:nth-child(3) {
   animation-delay: 0.36s;
 }
 
@@ -1152,7 +1152,7 @@
   }
 }
 
-.form-4 .f4-sico {
+main .form-4 .f4-sico {
   position: absolute;
   inset: 0;
   display: flex;
@@ -1163,13 +1163,13 @@
   border-radius: 50%;
 }
 
-.form-4 .f4-sico-svg {
+main .form-4 .f4-sico-svg {
   width: 4rem;
   height: 4rem;
   stroke: var(--f4-ok);
 }
 
-.form-4 .f4-sh {
+main .form-4 .f4-sh {
   font: var(--type-display-3-font, 300 3.4rem/4rem 'adobe-clean', sans-serif);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -1177,7 +1177,7 @@
   margin-bottom: 0.8rem;
 }
 
-.form-4 .f4-ssb {
+main .form-4 .f4-ssb {
   font: var(--type-body-1-default-font, 300 1.6rem/2.4rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   line-height: 1.7;
@@ -1185,7 +1185,7 @@
   margin: 0 auto 4rem;
 }
 
-.form-4 .f4-chips {
+main .form-4 .f4-chips {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1193,7 +1193,7 @@
   margin-bottom: 4rem;
 }
 
-.form-4 .f4-chip {
+main .form-4 .f4-chip {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -1205,47 +1205,47 @@
   color: var(--f4-text);
 }
 
-.form-4 .f4-chip-svg {
+main .form-4 .f4-chip-svg {
   width: 1.4rem;
   height: 1.4rem;
   stroke: var(--f4-a);
 }
 
-.form-4 .f4-scount {
+main .form-4 .f4-scount {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
 }
 
-.form-4 .f4-cring {
+main .form-4 .f4-cring {
   position: relative;
   width: 8.8rem;
   height: 8.8rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.form-4 .f4-cring svg {
+main .form-4 .f4-cring svg {
   transform: rotate(-90deg);
   width: 100%;
   height: 100%;
 }
 
-.form-4 .f4-cring circle {
+main .form-4 .f4-cring circle {
   fill: none;
   stroke-width: 2;
 }
 
-.form-4 .f4-rbg {
+main .form-4 .f4-rbg {
   stroke: rgb(0 0 0 / 5%);
 }
 
-.form-4 .f4-rfg {
+main .form-4 .f4-rfg {
   stroke: var(--f4-a);
   stroke-linecap: round;
 }
 
-.form-4 .f4-cnum {
+main .form-4 .f4-cnum {
   position: absolute;
   inset: 0;
   display: flex;
@@ -1256,13 +1256,13 @@
   color: var(--f4-a);
 }
 
-.form-4 .f4-clbl {
+main .form-4 .f4-clbl {
   font: var(--type-details-caption-1-font, 500 1.2rem/1.6rem 'adobe-clean', sans-serif);
   color: var(--f4-dim);
   letter-spacing: 0.04em;
 }
 
-.form-4 .f4-bgn {
+main .form-4 .f4-bgn {
   background: none;
   border: 1px solid rgb(136 33 244 / 25%);
   color: var(--f4-a);
@@ -1276,7 +1276,7 @@
   transition: all 0.2s;
 }
 
-.form-4 .f4-bgn:hover {
+main .form-4 .f4-bgn:hover {
   background: rgb(136 33 244 / 5%);
   border-color: rgb(136 33 244 / 45%);
 }

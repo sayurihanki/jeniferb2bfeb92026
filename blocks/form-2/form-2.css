@@ -1,6 +1,6 @@
 /* ===== Form-2 — Dark / Gold Luxury Theme ===== */
 
-.form-2 {
+main .form-2 {
   --f2-bg: #0f0e0c;
   --f2-surface: #1a1815;
   --f2-border: #2e2b26;
@@ -32,21 +32,21 @@
 
 /* --- Form element --- */
 
-.form-2 .f2-element {
+main .form-2 .f2-element {
   padding: 3rem 3.5rem 3.5rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* --- Header --- */
 
-.form-2 .f2-header {
+main .form-2 .f2-header {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--f2-border);
   position: relative;
 }
 
-.form-2 .f2-header::after {
+main .form-2 .f2-header::after {
   content: '';
   position: absolute;
   bottom: -1px;
@@ -56,7 +56,7 @@
   background: var(--f2-gold);
 }
 
-.form-2 .f2-title {
+main .form-2 .f2-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 600;
   color: var(--f2-text);
@@ -65,7 +65,7 @@
   letter-spacing: -0.02em;
 }
 
-.form-2 .f2-subtitle {
+main .form-2 .f2-subtitle {
   font-size: 0.9375rem;
   color: var(--f2-text-muted);
   margin: 0;
@@ -75,16 +75,16 @@
 
 /* --- Fields grid --- */
 
-.form-2 .f2-fields {
+main .form-2 .f2-fields {
   display: grid;
   gap: 1.5rem;
 }
 
-.form-2 .f2-fields--two-col {
+main .form-2 .f2-fields--two-col {
   grid-template-columns: 1fr 1fr;
 }
 
-.form-2 .f2-span-2 {
+main .form-2 .f2-span-2 {
   grid-column: 1 / -1;
 }
 
@@ -100,13 +100,13 @@
 
 /* --- Field group --- */
 
-.form-2 .f2-group {
+main .form-2 .f2-group {
   position: relative;
 }
 
 /* --- Labels (base) --- */
 
-.form-2 .f2-label {
+main .form-2 .f2-label {
   display: block;
   font-size: 0.75rem;
   font-weight: 500;
@@ -117,13 +117,13 @@
   transition: color var(--f2-transition);
 }
 
-.form-2 .f2-req {
+main .form-2 .f2-req {
   color: var(--f2-gold);
 }
 
 /* --- Validation messages --- */
 
-.form-2 .f2-msg {
+main .form-2 .f2-msg {
   display: block;
   font-size: 0.75rem;
   margin-top: 0.375rem;
@@ -133,13 +133,13 @@
 
 /* --- Input wrapper --- */
 
-.form-2 .f2-input-wrap {
+main .form-2 .f2-input-wrap {
   position: relative;
 }
 
 /* --- Inputs (base) --- */
 
-.form-2 .f2-input {
+main .form-2 .f2-input {
   width: 100%;
   background: var(--f2-surface);
   border: 1px solid var(--f2-border);
@@ -159,17 +159,17 @@
   caret-color: var(--f2-gold);
 }
 
-.form-2 .f2-input::placeholder {
+main .form-2 .f2-input::placeholder {
   color: var(--f2-text-muted);
   opacity: 0.6;
 }
 
-.form-2 .f2-input:hover {
+main .form-2 .f2-input:hover {
   border-color: #3e3a34;
   background: #1e1c19;
 }
 
-.form-2 .f2-input:focus {
+main .form-2 .f2-input:focus {
   border-color: var(--f2-border-focus);
   box-shadow: var(--f2-shadow-focus);
   background: #1e1c19;
@@ -177,7 +177,7 @@
 
 /* --- Floating label --- */
 
-.form-2 .f2-group--float .f2-label {
+main .form-2 .f2-group--float .f2-label {
   position: absolute;
   top: 0.9375rem;
   left: 1.125rem;
@@ -196,13 +196,13 @@
   margin-bottom: 0;
 }
 
-.form-2 .f2-group--float .f2-input {
+main .form-2 .f2-group--float .f2-input {
   padding-top: 1.375rem;
   padding-bottom: 0.375rem;
 }
 
-.form-2 .f2-group--float.f2-group--filled .f2-label,
-.form-2 .f2-group--float:focus-within .f2-label {
+main .form-2 .f2-group--float.f2-group--filled .f2-label,
+main .form-2 .f2-group--float:focus-within .f2-label {
   top: 0.3125rem;
   font-size: 0.65rem;
   text-transform: uppercase;
@@ -212,7 +212,7 @@
 
 /* --- Textarea --- */
 
-.form-2 .f2-textarea {
+main .form-2 .f2-textarea {
   resize: vertical;
   min-height: 8rem;
   line-height: 1.6;
@@ -220,12 +220,12 @@
 
 /* --- Select --- */
 
-.form-2 .f2-input-wrap select.f2-input {
+main .form-2 .f2-input-wrap select.f2-input {
   padding-right: 3rem;
   cursor: pointer;
 }
 
-.form-2 .f2-select-chevron {
+main .form-2 .f2-select-chevron {
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -236,14 +236,14 @@
   align-items: center;
 }
 
-.form-2 .f2-select-chevron svg {
+main .form-2 .f2-select-chevron svg {
   width: 1rem;
   height: 1rem;
 }
 
 /* --- Legend (for radio/checkbox groups) --- */
 
-.form-2 .f2-legend {
+main .form-2 .f2-legend {
   display: block;
   font-size: 0.75rem;
   font-weight: 500;
@@ -255,13 +255,13 @@
 
 /* --- Choices (radio / checkbox pills) --- */
 
-.form-2 .f2-choices {
+main .form-2 .f2-choices {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.form-2 .f2-choice {
+main .form-2 .f2-choice {
   display: flex;
   align-items: center;
   gap: 0.625rem;
@@ -275,12 +275,12 @@
   transition: border-color var(--f2-transition);
 }
 
-.form-2 .f2-choice:hover {
+main .form-2 .f2-choice:hover {
   border-color: #3e3a34;
 }
 
-.form-2 .f2-choice input[type='checkbox'],
-.form-2 .f2-choice input[type='radio'] {
+main .form-2 .f2-choice input[type='checkbox'],
+main .form-2 .f2-choice input[type='radio'] {
   width: 1rem;
   height: 1rem;
   min-width: 1rem;
@@ -294,20 +294,20 @@
   flex-shrink: 0;
 }
 
-.form-2 .f2-choice input[type='radio'] {
+main .form-2 .f2-choice input[type='radio'] {
   border-radius: 50%;
 }
 
-.form-2 .f2-choice input:checked {
+main .form-2 .f2-choice input:checked {
   background: var(--f2-gold);
   border-color: var(--f2-gold);
 }
 
-.form-2 .f2-choice:has(input:checked) {
+main .form-2 .f2-choice:has(input:checked) {
   border-color: rgb(201 169 110 / 40%);
 }
 
-.form-2 .f2-choice input[type='checkbox']:checked::after {
+main .form-2 .f2-choice input[type='checkbox']:checked::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -317,7 +317,7 @@
   background-size: 80%;
 }
 
-.form-2 .f2-choice input[type='radio']:checked::after {
+main .form-2 .f2-choice input[type='radio']:checked::after {
   content: '';
   position: absolute;
   inset: 3px;
@@ -327,18 +327,18 @@
 
 /* --- Link inside choices --- */
 
-.form-2 .f2-link {
+main .form-2 .f2-link {
   color: var(--f2-gold);
   text-decoration: none;
 }
 
-.form-2 .f2-link:hover {
+main .form-2 .f2-link:hover {
   text-decoration: underline;
 }
 
 /* --- Success screen --- */
 
-.form-2 .f2-success {
+main .form-2 .f2-success {
   padding: 4rem 3.5rem;
   text-align: center;
   opacity: 0;
@@ -346,12 +346,12 @@
   transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
 }
 
-.form-2 .f2-success--visible {
+main .form-2 .f2-success--visible {
   opacity: 1;
   transform: scale(1);
 }
 
-.form-2 .f2-success-icon {
+main .form-2 .f2-success-icon {
   width: 4rem;
   height: 4rem;
   margin: 0 auto 1.5rem;
@@ -363,19 +363,19 @@
   justify-content: center;
 }
 
-.form-2 .f2-success-icon svg {
+main .form-2 .f2-success-icon svg {
   width: 1.75rem;
   height: 1.75rem;
   stroke: var(--f2-border-success);
 }
 
-.form-2 .f2-success h3 {
+main .form-2 .f2-success h3 {
   font-size: 1.75rem;
   color: var(--f2-text);
   margin: 0 0 0.625rem;
 }
 
-.form-2 .f2-success p {
+main .form-2 .f2-success p {
   color: var(--f2-text-muted);
   font-size: 0.9375rem;
   margin: 0;
@@ -383,7 +383,7 @@
 
 /* --- Submit button --- */
 
-.form-2 .f2-submit {
+main .form-2 .f2-submit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -409,7 +409,7 @@
   overflow: hidden;
 }
 
-.form-2 .f2-submit::before {
+main .form-2 .f2-submit::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -422,49 +422,49 @@
   transition: transform 0.4s ease;
 }
 
-.form-2 .f2-submit:hover::before {
+main .form-2 .f2-submit:hover::before {
   transform: translateX(0);
 }
 
-.form-2 .f2-submit:hover {
+main .form-2 .f2-submit:hover {
   background: var(--f2-gold-light);
   transform: translateY(-1px);
   box-shadow: 0 8px 24px rgb(201 169 110 / 25%);
 }
 
-.form-2 .f2-submit:active {
+main .form-2 .f2-submit:active {
   transform: translateY(0);
   box-shadow: none;
 }
 
-.form-2 .f2-submit:focus-visible {
+main .form-2 .f2-submit:focus-visible {
   outline: 2px solid var(--f2-gold);
   outline-offset: 2px;
 }
 
-.form-2 .f2-submit-icon {
+main .form-2 .f2-submit-icon {
   display: flex;
   align-items: center;
 }
 
-.form-2 .f2-submit-icon svg {
+main .form-2 .f2-submit-icon svg {
   width: 1rem;
   height: 1rem;
   transition: transform 0.2s ease;
 }
 
-.form-2 .f2-submit:hover .f2-submit-icon svg {
+main .form-2 .f2-submit:hover .f2-submit-icon svg {
   transform: translateX(3px);
 }
 
 /* --- Loading state --- */
 
-.form-2 .f2-submit.f2-submit--loading {
+main .form-2 .f2-submit.f2-submit--loading {
   pointer-events: none;
   opacity: 0.7;
 }
 
-.form-2 .f2-submit.f2-submit--loading .f2-submit-icon svg {
+main .form-2 .f2-submit.f2-submit--loading .f2-submit-icon svg {
   animation: f2-spin 0.8s linear infinite;
 }
 
@@ -476,27 +476,27 @@
 
 /* --- Validation states (last — highest specificity overrides) --- */
 
-.form-2 .f2-group.f2-group--success .f2-label {
+main .form-2 .f2-group.f2-group--success .f2-label {
   color: var(--f2-border-success);
 }
 
-.form-2 .f2-group.f2-group--error .f2-label {
+main .form-2 .f2-group.f2-group--error .f2-label {
   color: var(--f2-border-error);
 }
 
-.form-2 .f2-group.f2-group--success .f2-input {
+main .form-2 .f2-group.f2-group--success .f2-input {
   border-color: var(--f2-border-success);
 }
 
-.form-2 .f2-group.f2-group--error .f2-input {
+main .form-2 .f2-group.f2-group--error .f2-input {
   border-color: var(--f2-border-error);
 }
 
-.form-2 .f2-group.f2-group--success .f2-input:focus {
+main .form-2 .f2-group.f2-group--success .f2-input:focus {
   box-shadow: 0 0 0 3px rgb(90 158 114 / 20%);
 }
 
-.form-2 .f2-group.f2-group--error .f2-input:focus {
+main .form-2 .f2-group.f2-group--error .f2-input:focus {
   box-shadow: 0 0 0 3px rgb(192 80 80 / 20%);
 }
 

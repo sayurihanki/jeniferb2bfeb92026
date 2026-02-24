@@ -20,7 +20,7 @@ main .promo-popup,
 }
 
 /* Hide raw table content */
-.promo-popup > div {
+main .promo-popup > div {
   display: none;
 }
 

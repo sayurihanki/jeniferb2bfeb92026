@@ -66,7 +66,7 @@ main .video .video-placeholder picture img {
   border-radius: var(--shape-border-radius-3, 24px);
 }
 
-main main .video .video-placeholder-play button {
+main .video .video-placeholder-play button {
   position: relative;
   display: block;
   width: 56px;
@@ -85,14 +85,14 @@ main main .video .video-placeholder-play button {
     box-shadow 0.3s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-main main .video .video-placeholder-play button:hover {
+main .video .video-placeholder-play button:hover {
   background: rgb(136 33 244 / 60%);
   border-color: rgb(136 33 244 / 40%);
   transform: scale(1.1);
   box-shadow: 0 4px 24px rgb(136 33 244 / 35%);
 }
 
-main main .video .video-placeholder-play button::before {
+main .video .video-placeholder-play button::before {
   content: '';
   display: block;
   box-sizing: border-box;

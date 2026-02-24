@@ -16,13 +16,13 @@
    ============================================ */
 
 /* Franklin wrapper must stretch for full/wide section metadata to take effect */
-.store-locator-container .store-locator-wrapper {
+main .store-locator-container .store-locator-wrapper {
   display: block;
   width: 100%;
   max-width: none;
 }
 
-.store-locator {
+main .store-locator {
   /* Standard block pattern - inherit wrapper width constraints */
   width: 100%;
   box-sizing: border-box;

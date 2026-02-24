@@ -1,8 +1,8 @@
-.tabs .tabs-list {
+main .tabs .tabs-list {
   display: flex;
   gap: 6px;
   max-width: 100%;
-  font-size: var(--body-font-size-xs);
+  font-size: 1.2rem;
   overflow-x: auto;
   padding: 4px;
   background: var(--glass-bg, rgb(255 255 255 / 52%));
@@ -12,18 +12,18 @@
 }
 
 @media (min-width: 600px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-s);
+  main .tabs .tabs-list {
+    font-size: 1.4rem;
   }
 }
 
 @media (min-width: 900px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-m);
+  main .tabs .tabs-list {
+    font-size: 1.6rem;
   }
 }
 
-.tabs .tabs-list button {
+main .tabs .tabs-list button {
   flex: 0 0 max-content;
   margin: 0;
   border: 1px solid transparent;
@@ -46,17 +46,17 @@
     box-shadow 0.3s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.tabs .tabs-list button p {
+main .tabs .tabs-list button p {
   margin: 0;
 }
 
-.tabs .tabs-list button:hover {
+main .tabs .tabs-list button:hover {
   background: rgb(136 33 244 / 5%);
   color: var(--accent-1, #8821f4);
   border-color: rgb(136 33 244 / 10%);
 }
 
-.tabs .tabs-list button[aria-selected='true'] {
+main .tabs .tabs-list button[aria-selected='true'] {
   background: rgb(255 255 255 / 80%);
   backdrop-filter: blur(8px);
   color: var(--accent-1, #8821f4);
@@ -67,7 +67,7 @@
   font-weight: 600;
 }
 
-.tabs .tabs-panel {
+main .tabs .tabs-panel {
   margin-top: 8px;
   padding: 24px;
   background: var(--glass-bg, rgb(255 255 255 / 52%));
@@ -83,7 +83,7 @@
   position: relative;
 }
 
-.tabs .tabs-panel::before {
+main .tabs .tabs-panel::before {
   content: '';
   position: absolute;
   top: 0;
@@ -101,6 +101,6 @@
   pointer-events: none;
 }
 
-.tabs .tabs-panel[aria-hidden='true'] {
+main .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
 }

@@ -22,31 +22,31 @@ main .table table {
   }
 }
 
-main main main .table table thead tr {
+main .table table thead tr {
   border-top: 2px solid #dadada;
   border-bottom: 2px solid #dadada;
 }
 
-main main .table table tbody tr {
+main .table table tbody tr {
   border-bottom: 1px solid #dadada;
 }
 
-main main .table table th {
+main .table table th {
   font-weight: 700;
 }
 
-main main .table table th,
-main main .table table td {
+main .table table th,
+main .table table td {
   padding: 0.5em;
   text-align: left;
 }
 
-main main .table table th p,
-main main .table table td p {
+main .table table th p,
+main .table table td p {
   margin: 0;
 }
 
-main main .table table td p + p {
+main .table table td p + p {
   margin-top: 0.25em;
 }
 

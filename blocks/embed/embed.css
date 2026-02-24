@@ -42,7 +42,7 @@ main .embed .embed-placeholder picture img {
   object-fit: cover;
 }
 
-main main .embed .embed-placeholder-play button {
+main .embed .embed-placeholder-play button {
   box-sizing: border-box;
   position: relative;
   display: block;
@@ -54,7 +54,7 @@ main main .embed .embed-placeholder-play button {
   padding: 0;
 }
 
-main main .embed .embed-placeholder-play button::before {
+main .embed .embed-placeholder-play button::before {
   content: "";
   display: block;
   box-sizing: border-box;
